@@ -6,7 +6,7 @@ var seatGeekAPI = require('./controllers/seatgeekController.js');
 var ticketMasterAPI = require('./controllers/ticketMasterController.js');
 
 var app = express();
-app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.static(__dirname + '/../client/'));
 
 app.post('/event', function(req, res) {
   var body = '';
