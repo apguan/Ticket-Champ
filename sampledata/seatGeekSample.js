@@ -18,73 +18,202 @@
 //
 // Example Response Document
 
+//https://api.seatgeek.com/2/performers?q=lady+gaga&client_id=NzA2MzY4MnwxNDg5NTE0NDA0Ljc1
+
 {
-    "stats": {
-        "listing_count": 161,
-        "average_price": 97,
-        "lowest_price": 62,
-        "highest_price": 296
-    },
-    "title": "Young The Giant with Grouplove",
-    "url": "https://seatgeek.com/young-the-giant-with-grouplove-tickets/new-york-new-york-terminal-5-2012-03-09/concert/721901/",
-    "datetime_local": "2012-03-09T19:00:00",
-    "performers": [
+  "meta": {
+    "per_page": 10,
+    "total": 6,
+    "page": 1,
+    "took": 14,
+    "geolocation": null
+  },
+  "performers": [
+    {
+      "links": [],
+      "image": "https://chairnerd.global.ssl.fastly.net/images/performers-landscape/lady-gaga-5a5ffb/1083/huge.jpg",
+      "colors": null,
+      "images": {
+        "huge": "https://chairnerd.global.ssl.fastly.net/images/performers-landscape/lady-gaga-5a5ffb/1083/huge.jpg"
+      },
+      "has_upcoming_events": true,
+      "id": 1083,
+      "genres": [
         {
-            "name": "Young The Giant",
-            "short_name": "Young The Giant",
-            "url": "https://seatgeek.com/young-the-giant-tickets/",
-            "image": "https://chairnerd.global.ssl.fastly.net/images/bandshuge/band_8741.jpg",
-            "images": {
-                "large": "https://chairnerd.global.ssl.fastly.net/images/performers/8741/eec61caec82950448b257c5e539147bc/large.jpg",
-                "huge": "https://chairnerd.global.ssl.fastly.net/images/performers/8741/555bce1815140ad65ab0b1066467ae7d/huge.jpg",
-                "small": "https://chairnerd.global.ssl.fastly.net/images/performers/8741/af7a8925e50bb74315337a9450206a39/small.jpg",
-                "medium": "https://chairnerd.global.ssl.fastly.net/images/performers/8741/686f925886504610936135abd240235c/medium.jpg"
-            },
-            "primary": true,
-            "id": 8741,
-            "score": 6404,
-            "type": "band",
-            "slug": "young-the-giant"
+          "id": 452,
+          "slug": "pop",
+          "name": "Pop",
+          "primary": true
         },
         {
-            "name": "Grouplove",
-            "short_name": "Grouplove",
-            "url": "https://seatgeek.com/grouplove-tickets/",
-            "image": null,
-            "images": null,
-            "id": 8987,
-            "score": 4486,
-            "type": "band",
-            "slug": "grouplove"
+          "id": 456,
+          "slug": "rock",
+          "name": "Rock",
+          "primary": false
         }
-    ],
-    "venue": {
-        "city": "New York",
-        "name": "Terminal 5",
-        "extended_address": null,
-        "url": "https://seatgeek.com/terminal-5-tickets/",
-        "country": "US",
-        "state": "NY",
-        "score": 149.259,
-        "postal_code": "10019",
-        "location": {
-            "lat": 40.77167,
-            "lon": -73.99277
-        },
-        "address": null,
-        "id": 814
-    },
-    "short_title": "Young The Giant with Grouplove",
-    "datetime_utc": "2012-03-10T00:00:00",
-    "score": 116.977,
-    "taxonomies": [
+      ],
+      "stats": {
+        "event_count": 88
+      },
+      "image_license": "https://creativecommons.org/licenses/by-nd/2.0/",
+      "score": 0.751465,
+      "taxonomies": [
         {
-            "parent_id": null,
-            "id": 2000000,
-            "name": "concert"
+          "parent_id": null,
+          "id": 2000000,
+          "name": "concert"
         }
-    ],
-    "type": "concert",
-    "id": 721901
-}
+      ],
+      "type": "band",
+      "short_name": "Lady Gaga",
+      "home_venue_id": null,
+      "slug": "lady-gaga",
+      "divisions": null,
+      "name": "Lady Gaga",
+      "url": "https://seatgeek.com/lady-gaga-tickets",
+      "image_attribution": "https://www.flickr.com/photos/disneyabc/31127222066/in/photolist-PqB9Ew-PeC7oC-NTPhJU-NdW5zX-Ninrvb-PnRWFV-NintmL-PuLQ7W-PxUTh8-PuLQmJ-PxUTpH-PuLQW1-PxUSu6-PuLR9q-PxUTyk-PxUTH8-PuLQyN-PxUSFt-PxUT7i-PuLRo3-PxUSUe-PsMvHZ-PeC7s5-Ninwmy-PnRXJr-Ninw13-PxUUsz-NinvFf-PxUVyn-NinuCy-PuLRT1-PuLTEs-NinuhJ-PxUV4p-PxUUHV-PuLRA7-NintB5-NinuUq-PnRYox-NintXq-Ninvff-PuLTSS-MBT1Ur-Ni1rht-NeRD8E-NeREv9-MCBtZS-MspA7S-PmGgzh-NanWjS"
+    },
+    {
+      "links": [],
+      "image": null,
+      "colors": null,
+      "images": {},
+      "has_upcoming_events": false,
+      "id": 305269,
+      "stats": {
+        "event_count": 0
+      },
+      "image_license": null,
+      "score": 0.663591,
+      "taxonomies": [
+        {
+          "parent_id": null,
+          "id": 2000000,
+          "name": "concert"
+        }
+      ],
+      "type": "band",
+      "short_name": "Tony Bennett & Lady Gaga",
+      "home_venue_id": null,
+      "slug": "tony-bennett-lady-gaga",
+      "divisions": null,
+      "name": "Tony Bennett & Lady Gaga",
+      "url": "https://seatgeek.com/tony-bennett-lady-gaga-tickets",
+      "image_attribution": null
+    },
+    {
+      "links": [],
+      "image": "https://chairnerd.global.ssl.fastly.net/images/performers-landscape/the-lady-gaga-experience-b6c155/252111/huge.jpg",
+      "colors": null,
+      "images": {
+        "huge": "https://chairnerd.global.ssl.fastly.net/images/performers-landscape/the-lady-gaga-experience-b6c155/252111/huge.jpg"
+      },
+      "has_upcoming_events": false,
+      "id": 252111,
+      "stats": {
+        "event_count": 0
+      },
+      "image_license": null,
+      "score": 0,
+      "taxonomies": [
+        {
+          "parent_id": null,
+          "id": 2000000,
+          "name": "concert"
+        }
+      ],
+      "type": "band",
+      "short_name": "The Lady Gaga Experience",
+      "home_venue_id": null,
+      "slug": "the-lady-gaga-experience",
+      "divisions": null,
+      "name": "The Lady Gaga Experience",
+      "url": "https://seatgeek.com/the-lady-gaga-experience-tickets",
+      "image_attribution": "http://www.theladygagaexperience.com/wp-content/flagallery/g/img_1244.jpg"
+    },
+    {
+      "links": [],
+      "image": null,
+      "colors": null,
+      "images": {},
+      "has_upcoming_events": false,
+      "id": 319663,
+      "stats": {
+        "event_count": 0
+      },
+      "image_license": null,
+      "score": 0,
+      "taxonomies": [
+        {
+          "parent_id": null,
+          "id": 2000000,
+          "name": "concert"
+        }
+      ],
+      "type": "band",
+      "short_name": "The Fame Monster - Lady Gaga Tribute Band",
+      "home_venue_id": null,
+      "slug": "the-fame-monster-lady-gaga-tribute-band",
+      "divisions": null,
+      "name": "The Fame Monster - Lady Gaga Tribute Band",
+      "url": "https://seatgeek.com/the-fame-monster-lady-gaga-tribute-band-tickets",
+      "image_attribution": null
+    },
+    {
+      "links": [],
+      "image": null,
+      "colors": null,
+      "images": {},
+      "has_upcoming_events": false,
+      "id": 606279,
+      "stats": {
+        "event_count": 0
+      },
+      "image_license": null,
+      "score": 0,
+      "taxonomies": [
+        {
+          "parent_id": null,
+          "id": 2000000,
+          "name": "concert"
+        }
+      ],
+      "type": "band",
+      "short_name": "Prince, Lady Gaga & Michael Jackson Tribute",
+      "home_venue_id": null,
+      "slug": "prince-lady-gaga-michael-jackson-tribute",
+      "divisions": null,
+      "name": "Prince, Lady Gaga & Michael Jackson Tribute",
+      "url": "https://seatgeek.com/prince-lady-gaga-michael-jackson-tribute-tickets",
+      "image_attribution": null
+    },
+    {
+      "links": [],
+      "image": null,
+      "colors": null,
+      "images": {},
+      "has_upcoming_events": false,
+      "id": 145932,
+      "stats": {
+        "event_count": 0
+      },
+      "image_license": null,
+      "score": 0,
+      "taxonomies": [
+        {
+          "parent_id": null,
+          "id": 2000000,
+          "name": "concert"
+        }
+      ],
+      "type": "band",
+      "short_name": "Lady Gaga Tribute",
+      "home_venue_id": null,
+      "slug": "lady-gaga-tribute",
+      "divisions": null,
+      "name": "Lady Gaga Tribute",
+      "url": "https://seatgeek.com/lady-gaga-tribute-tickets",
+      "image_attribution": null
+    }
+  ]
 }
