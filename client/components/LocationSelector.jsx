@@ -8,20 +8,20 @@ class Location extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ''
+      location: ''
     }
   }
 
   handleLocation(event) {
     this.setState({
-      value: event.target.value
+      location: event.target.value
     })
   }
 
   render() {
     return (
       <span>Select Location</span>
-      <select value={this.state.value} onChange={this.handleLocation.bind(this)}>
+      <select value={this.state.location} onChange={this.handleLocation.bind(this)}>
         <option value="1" active>San Francisco</option>
         <option value="2">Los Angeles</option>
         <option value="3">Chicago</option>
