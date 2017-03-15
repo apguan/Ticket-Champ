@@ -24,7 +24,8 @@ class Location extends React.Component {
       <select value={this.state.value} onChange={this.handleLocation.bind(this)}>
         <option value="1" active>San Francisco</option>
         <option value="2">Los Angeles</option>
-        <option value="3">New York</option>
+        <option value="3">Chicago</option>
+        <option value="4">New York</option>
       </select>
     );
   }
