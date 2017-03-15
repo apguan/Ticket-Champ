@@ -25,7 +25,7 @@ class Search extends react.components {
     return (
       <div>
         <input type="text" value={this.state.value} placeholder="search up an artist" onChange={this.onChange}></input>
-        <button>Compare Tickets</button>
+        <button onClick={this.search}>Compare Tickets</button>
       </div>
     )
   }
