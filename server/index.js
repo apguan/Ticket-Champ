@@ -11,7 +11,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.post('/event', function(req, res) {
   var body = '';
   req.on('data', function(chunk) {
-    data += chunk
+    body += chunk
   })
   req.on('end', function() {
     var userInput = body;
