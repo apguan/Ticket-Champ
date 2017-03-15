@@ -5,6 +5,8 @@ var dbModel = require('./models/dbModels.js');
 var seatGeekAPI = require('./controllers/seatgeekController.js');
 var ticketMasterAPI = require('./controllers/ticketMasterController.js');
 
+var port = process.env.PORT || 5000;
+
 var app = express();
 app.use(express.static(__dirname + '/../client/'));
 
@@ -24,4 +26,6 @@ app.get('/home', function(req, res) {
 });
 
 //changed port
-app.listen(process.env.PORT || 5000);
+app.listen(port, function(){
+  console.log('listening on', port);
+});
