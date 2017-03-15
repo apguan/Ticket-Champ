@@ -1,16 +1,18 @@
 import React from 'react';
-import {render} from 'react-dom';
+import ReactDOM from 'react-dom';
 import $ from 'jquery';
+// import Search from '../components/SearchBar.jsx';
 
 class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      value: ""
+      value: "",
+      data: []
     }
   }
 
-search (input) {
+search(input) {
   $.ajax({
       type:"POST",
       url:"/event",
@@ -22,6 +24,8 @@ search (input) {
 }
 
 componentDidMount() {
+  // setState({
+  // data:
   $.ajax({
       type:"GET",
       url:"/home",
@@ -31,13 +35,12 @@ componentDidMount() {
       }
   })
 }
+// })
 
 
-  render  () {
+  render() {
     return <p>We up</p>;
   }
 }
 
-render (<App/>, document.getElementById('app'));
-
-
+ReactDOM.render(<App />, document.getElementById('app'));
