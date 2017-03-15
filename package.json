@@ -1,0 +1,30 @@
+{
+  "name": "ticketpal",
+  "version": "1.0.0",
+  "description": "Ticket price aggregator and comparator ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack -d --watch",
+    "build": "webpack -p"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cchu08/ticketPal.git"
+  },
+  "author": "sam allen chris aly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cchu08/ticketPal/issues"
+  },
+  "homepage": "https://github.com/cchu08/ticketPal#readme",
+  "dependencies": {
+    "babel-loader": "^6.4.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "webpack": "^2.2.1"
+  }
+}
