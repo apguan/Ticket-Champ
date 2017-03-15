@@ -6,9 +6,9 @@ CREATE TABLE ticketinfo (
 
   id int NOT NULL AUTO_INCREMENT,
   name varchar(255) NOT NULL,
-  min int NOT NULL,
-  avg int NOT NULL,
-  max int NOT NULL,
+  min float(2,2) NOT NULL,
+  avg float(2,2) NOT NULL,
+  max float(2,2) NOT NULL,
   location varchar(255) NOT NULL,
   webID varchar(255) NOT NULL,
   api varchar(30) NOT NULL
