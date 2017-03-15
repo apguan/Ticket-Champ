@@ -5,7 +5,7 @@ USE ticketpal;
 CREATE TABLE ticketinfo (
 
   id int NOT NULL AUTO_INCREMENT,
-  name int NOT NULL,
+  name varchar(255) NOT NULL,
   min int NOT NULL,
   avg int NOT NULL,
   max int NOT NULL,
