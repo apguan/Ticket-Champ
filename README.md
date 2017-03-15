@@ -1,3 +1,3 @@
 # ticketPal
 
-# Making tickets cheaper on seat at a time
+## Making tickets cheaper on seat at a time
