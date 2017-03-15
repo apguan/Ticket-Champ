@@ -1,4 +1,7 @@
 var app = require('../index.js');
 
-module.exports = {}
+var seatGeekGetter = function(callback) {
 
+}
+
+module.exports = {}
