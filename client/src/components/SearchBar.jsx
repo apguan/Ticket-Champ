@@ -8,18 +8,18 @@ class Search extends React.Component {
     }
 
     this.onChange = this.onChange.bind(this);
-    this.search = this.search.bind(this);
+    this.searchBar = this.searchBar.bind(this);
   }
 
-  onChange(e) {
+  onChange(event) {
     this.setState({
-      value: e.target.value
+      value: event.target.value
     });
   }
 
-  search(props) {
-    console.log(this.props)
-    this.props.onSearch(this.state.value);
+  searchBar() {
+    console.log(this.state.value);
+    this.props.searching(this.state.value);
   }
 
   render() {
@@ -27,7 +27,7 @@ class Search extends React.Component {
       <div>
         <h3> SEARCH EVENTS </h3>
         Search an artist <input value={this.state.value} onChange={this.onChange}/>
-        <button onClick={this.search}> Compare Tickets </button>
+        <button onClick={this.searchBar}> Compare Tickets </button>
       </div>
     )
   }

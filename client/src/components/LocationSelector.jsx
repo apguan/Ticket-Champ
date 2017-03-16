@@ -1,6 +1,4 @@
 import React from 'react';
-
-
 // simple rendering for Location
 // dropdown menu
 
@@ -23,7 +21,7 @@ class Location extends React.Component {
       <div>
       <h3>Select Location</h3>
       Search Location
-      <select value={this.state.location} onChange={this.handleLocation.bind(this)}>
+      <select value={this.props.locale.location} onChange={this.handleLocation.bind(this)}>
         <option value="1" active>San Francisco</option>
         <option value="2">Los Angeles</option>
         <option value="3">Chicago</option>
