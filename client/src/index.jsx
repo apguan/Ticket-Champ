@@ -2,12 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Search from './components/SearchBar.jsx';
+import Location from './components/LocationSelector.jsx';
 
 class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      value: "",
+      value: {
+        location: "",
+        search: ""
+      },
       data: []
     }
   }
@@ -42,6 +46,7 @@ class App extends React.Component {
       <div>
         <p>We up</p>
         <Search onSearch={this.search.bind(this)}/>
+        <Location />
       </div>
     )
   }
