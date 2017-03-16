@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import Search from './components/SearchBar.jsx';
-import Location from './components/LocationSelector.jsx';
+import SearchUnit from './components/SearchUnit.jsx';
 
 class App extends React.Component {
   constructor (props) {
@@ -11,18 +10,21 @@ class App extends React.Component {
       value: {
         location: "",
         search: ""
-      },
-      data: []
+      }
     }
+    this.search = this.search.bind(this);
   }
 
   search(term) {
     $.ajax({
         type:"POST",
         url:"/event",
-        data: `${term}`,
+        data: JSON.stringify(term),
         success: function() {
-          console.log('Post Data Success')
+          console.log('Post Data Success');
+        },
+        error: function() {
+          console.log('try again');
         }
     })
   }
@@ -44,9 +46,7 @@ class App extends React.Component {
   render() {
     return(
       <div>
-        <p>We up</p>
-        <Search onSearch={this.search.bind(this)}/>
-        <Location />
+        <SearchUnit searchstate={this.state.value} onSearch={this.search}/>
       </div>
     )
   }
