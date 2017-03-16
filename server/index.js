@@ -17,6 +17,9 @@ app.get('/', function(req, res) {
 })
 // app.use('/', express.static())
 
+//test case for ticket master api
+//ticketMasterAPI.queryTicketMaserForEvent('warriors');
+
 app.post('/event', function(req, res) {
   var body = '';
   req.on('data', function(chunk) {
