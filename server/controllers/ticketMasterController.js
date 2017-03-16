@@ -20,6 +20,7 @@ var queryTicketMaserForEvent = function(searchParam) {
 
 var queryTicketMaserForPrices = function(eventId) {
 	//remove hard coded api key
+  // testing PR
 	var queryString = 'https://app.ticketmaster.com/commerce/v2/events/' + eventId + '/offers.json?apikey=kyYiscxIL5hihtSs95QwNGsixEv738Zj'
 	request(queryString, function (error, response, body) {
     if (!error && response.statusCode == 200) {
