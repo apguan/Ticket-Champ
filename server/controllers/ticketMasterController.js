@@ -4,7 +4,7 @@ var app = require('../index.js');
 
 var request = require('request');
 
-var queryTicketMaserForEvent = function(searchParam) {
+var queryTicketMasterForEvent = function(searchParam, callback) {
 	//remove hard coded api key
   var queryString = 'https://app.ticketmaster.com/discovery/v2/events.json?keyword=' + searchParam + '&apikey=kyYiscxIL5hihtSs95QwNGsixEv738Zj&page=1';
   request(queryString, function (error, response, body) {
@@ -12,26 +12,29 @@ var queryTicketMaserForEvent = function(searchParam) {
       console.log('fired event query');
       var event = JSON.parse(body);
       var id = event._embedded.events[0].id;
-      queryTicketMaserForPrices(id);
+      callback(null, id )
+    } else {
+      callback(error, null);
     }
-	})
+  })
 };
 //
 
-var queryTicketMaserForPrices = function(eventId) {
+var queryTicketMasterForPrices = function(eventId, callback) {
 	//remove hard coded api key
-  // testing PR
 	var queryString = 'https://app.ticketmaster.com/commerce/v2/events/' + eventId + '/offers.json?apikey=kyYiscxIL5hihtSs95QwNGsixEv738Zj'
 	request(queryString, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('price query is returning a dataset');
-      //Parse the data here and get min and max
-      //console.log(body)
+      callback(null, body);
+    } else {
+      callback(error, null);
     }
 	})
 }
 
 module.exports = {
-	queryTicketMaserForEvent: queryTicketMaserForEvent,
+	queryTicketMasterForEvent: queryTicketMasterForEvent,
+  queryTicketMasterForPrices: queryTicketMasterForPrices,
 }
 

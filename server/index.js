@@ -17,8 +17,21 @@ app.get('/', function(req, res) {
 })
 // app.use('/', express.static())
 
-//test case for ticket master api
-//ticketMasterAPI.queryTicketMaserForEvent('warriors');
+//ticket master api query with
+// ticketMasterAPI.queryTicketMasterForEvent('lady gaga', function(err, data) {
+//       console.log(data)
+//   if(err) {
+//     console.log('Error on query', err);
+//   } else {
+//     ticketMasterAPI.queryTicketMasterForPrices(data, function(err, data) {
+//       if(err) {
+//         console.log('Error in Ticket Master Price query', err);
+//       } else {
+//         console.log(data);
+//       }
+//     })
+//   }
+// });
 
 app.post('/event', function(req, res) {
   var body = '';
