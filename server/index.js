@@ -1,5 +1,6 @@
 var express = require('express');
 var mysql = require('mysql');
+var path = require('path');
 var request = require('request');
 var dbModel = require('./models/dbModels.js');
 var seatGeekAPI = require('./controllers/seatgeekController.js');
@@ -8,7 +9,13 @@ var ticketMasterAPI = require('./controllers/ticketMasterController.js');
 var port = process.env.PORT || 5000;
 
 var app = express();
-app.use(express.static(__dirname + '/../client/'));
+// console.log('WHERE IS THIS SHIT', __dirname + '../client/dist/')
+app.use(express.static(path.join(__dirname, '../client/dist/')));
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"))
+})
+// app.use('/', express.static())
 
 app.post('/event', function(req, res) {
   var body = '';

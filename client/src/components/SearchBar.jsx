@@ -1,10 +1,10 @@
 import React from 'react';
 
-class Search extends react.components {
+class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value = "lol try again"
+      value: ""
     }
 
     this.onChange = this.onChange.bind(this);
@@ -18,17 +18,19 @@ class Search extends react.components {
   }
 
   search(props) {
+    console.log(this.props)
     this.props.onSearch(this.state.value);
   }
 
   render() {
     return (
       <div>
-        <input type="text" value={this.state.value} placeholder="search up an artist" onChange={this.onChange}></input>
-        <button onClick={this.search}>Compare Tickets</button>
+        <h3> SEARCH EVENTS </h3>
+        Search an artist <input value={this.state.value} onChange={this.onChange}/>
+        <button onClick={this.search}> Compare Tickets </button>
       </div>
     )
   }
 }
 
-export default Search
+export default Search;
