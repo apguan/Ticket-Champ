@@ -16,6 +16,7 @@ var queryTicketMaserForEvent = function(searchParam) {
     }
 	})
 };
+//
 
 var queryTicketMaserForPrices = function(eventId) {
 	//remove hard coded api key
