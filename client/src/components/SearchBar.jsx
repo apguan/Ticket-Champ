@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 
 class Search extends React.Component {
   constructor(props) {
@@ -25,9 +25,14 @@ class Search extends React.Component {
   render() {
     return (
       <div>
+
         <h3> SEARCH EVENTS </h3>
         Search an artist <input value={this.state.value} onChange={this.onChange}/>
         <button onClick={this.searchBar}> Compare Tickets </button>
+
+        Search an artist <input className='form-control' type='text' placeholder='Search' value={this.state.value} onChange={this.onChange}/>
+        <button type="submit" className="btn btn-default" onClick={this.search}> Compare Tickets </button>
+ added bootstrap and new data sets
       </div>
     )
   }
