@@ -20,11 +20,7 @@ class Location extends React.Component {
     return (
       <div>
       Search Location
-<<<<<<< HEAD
-      <select value={this.props.locale.location} onChange={this.handleLocation.bind(this)}>
-=======
-      <select className="selectpicker" value={this.state.location} onChange={this.handleLocation.bind(this)}>
->>>>>>> added bootstrap and new data sets
+      <select className="selectpicker" value={this.props.locale.location} onChange={this.handleLocation.bind(this)}>
         <option value="1" active>San Francisco</option>
         <option value="2">Los Angeles</option>
         <option value="3">Chicago</option>
