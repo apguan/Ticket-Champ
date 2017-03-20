@@ -18,18 +18,21 @@ class Location extends React.Component {
     })
   }
 
+   locate(props) {
+    console.log(this.props)
+    this.props.onLocate(this.state.location);
+  }
+
   render() {
     return (
-      <div>
-      <h3>Select Location</h3>
-      Search Location
-      <select value={this.state.location} onChange={this.handleLocation.bind(this)}>
+      <li className="flex-item-location" >
+      <select  className="select-location"value={this.state.location} onChange={this.handleLocation.bind(this)}>
         <option value="1" active>San Francisco</option>
         <option value="2">Los Angeles</option>
         <option value="3">Chicago</option>
         <option value="4">New York</option>
       </select>
-      </div>
+      </li>
     );
   }
 }

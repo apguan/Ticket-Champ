@@ -24,13 +24,13 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div>
-        <h3> SEARCH EVENTS </h3>
-        Search an artist <input value={this.state.value} onChange={this.onChange}/>
-        <button onClick={this.search}> Compare Tickets </button>
-      </div>
+      <li className="flex-item-search" >
+        <input className="search-input" value={this.state.value} onChange={this.onChange}/>
+        <button className="search-button" onClick={this.search}> Compare Tickets </button>
+      </li>
     )
   }
 }
 
 export default Search;
+        // <h3> SEARCH EVENTS </h3>

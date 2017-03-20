@@ -1,0 +1,91 @@
+html, body, h1, h2, h3, h4, ul, li {
+  padding: 0;
+  margin: 0;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  margin-top: 1em;
+
+  list-style: none;
+  display: flex;
+
+  justify-content: center;
+  flex-direction: row;
+}
+
+.flex-item-logo {
+  flex-grow: 2;
+  height: 10%;
+
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.flex-item-search {
+  flex-grow: 4;
+  height: 10%;
+
+
+  color: white;
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+}
+
+.flex-item-location {
+  flex-grow: 2;
+  height: 10%;
+
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.flex-item-gutter {
+  flex-grow: 4;
+  height: 10%;
+
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.select-location {
+  width: 22em;
+  height: 5em;
+
+  -moz-border-radius: 5px 5px 0px 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  border-radius: 5px 5px 0px 0px;
+  padding: 10px;
+
+  color: #ffffff;
+  background-color: #b5b5b5;
+}
+
+.search-input {
+  width: 34em;
+  height: 5em;
+  border-radius: 5em;
+  background-color: #b5b5b5;
+  text-align: center;
+  padding: 0px;
+
+}
+
+.search-button {
+  width: 10em;
+  height: 5em;
+  border-radius: 5em;
+  background-color: #000000;
+  color: #ffffff;
+
+}
+
+.img-responsive {
+  width: 12em;
+  height: 3em;
+}

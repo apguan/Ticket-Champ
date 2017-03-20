@@ -8,19 +8,20 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      value: {
-        location: "",
-        search: ""
-      },
+      value: "",
+      local: "",
       data: []
     }
+    console.log('APP STATE', this.state.value)
   }
 
-  search(term) {
+  search(value) {
+  console.log('APP STATE POST', this.state.value)
+
     $.ajax({
         type:"POST",
         url:"/event",
-        data: `${term}`,
+        data: `${value}`,
         success: function() {
           console.log('Post Data Success')
         }
@@ -43,11 +44,14 @@ class App extends React.Component {
 
   render() {
     return(
-      <div>
-        <p>We up</p>
-        <Search onSearch={this.search.bind(this)}/>
-        <Location />
-      </div>
+      <ul className="flex-container">
+          <li className="flex-item-gutter" ></li>
+          <li className="flex-item-logo" >{<img src={'https://s3-us-west-1.amazonaws.com/zollstorage/ticket_champ_logo(4-)1).png'} className='img-responsive'/>}</li>
+          <Search onSearch={this.search.bind(this)}/>
+          <Location/>
+          <li className="flex-item-gutter" ></li>
+
+      </ul>
     )
   }
 }
