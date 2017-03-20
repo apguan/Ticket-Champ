@@ -19,9 +19,8 @@ class Location extends React.Component {
   render() {
     return (
       <div>
-      <h3>Select Location</h3>
       Search Location
-      <select value={this.props.locale.location} onChange={this.handleLocation.bind(this)}>
+      <select className="selectpicker" value={this.props.locale.location} onChange={this.handleLocation.bind(this)}>
         <option value="1" active>San Francisco</option>
         <option value="2">Los Angeles</option>
         <option value="3">Chicago</option>

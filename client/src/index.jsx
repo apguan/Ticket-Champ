@@ -45,9 +45,47 @@ class App extends React.Component {
 
   render() {
     return(
-      <div>
-        <SearchUnit searchstate={this.state.value} onSearch={this.search}/>
+    <div>
+
+      <SearchUnit searchstate={this.state.value} onSearch={this.search}/>
+
+
+      <div className="jumbotron">
+        <div className="container">
+          <h1>Trending</h1>
+        </div>
       </div>
+
+      <div className="container">
+        <div className="row">
+
+          <div className="col-md-4">
+            <h2>Trending 1</h2>
+            <img src='https://placeholdit.imgix.net/~text?txtsize=28&txt=300%C3%97200&w=300&h=200' />
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          </div>
+
+          <div className="col-md-4">
+            <h2>Trending 2</h2>
+            <img src='https://placeholdit.imgix.net/~text?txtsize=28&txt=300%C3%97200&w=300&h=200' />
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
+          </div>
+
+          <div className="col-md-4">
+            <h2>Trending 3</h2>
+            <img src='https://placeholdit.imgix.net/~text?txtsize=28&txt=300%C3%97200&w=300&h=200' />
+           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          </div>
+
+        </div>
+
+
+        <footer>
+          <p>&copy; 2017 TicetPal, Inc.</p>
+        </footer>
+      </div>
+
+    </div>
     )
   }
 }
