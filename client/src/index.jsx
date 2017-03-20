@@ -7,6 +7,7 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+
       value: {
         location: "",
         search: ""
@@ -18,7 +19,7 @@ class App extends React.Component {
 
   search(value) {
 
-  // coznsole.log('APP STATE POST', this.state.value)
+  // console.log('APP STATE POST', this.state.value)
 
     $.ajax({
         type:"POST",
@@ -49,6 +50,7 @@ class App extends React.Component {
 
   render() {
     return(
+
     <div>
 
       <SearchUnit searchstate={this.state.value} onSearch={this.search}/>
@@ -90,6 +92,7 @@ class App extends React.Component {
       </div>
 
     </div>
+
     )
   }
 }
