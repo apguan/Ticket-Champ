@@ -1,5 +1,3 @@
-
-
 var app = require('../index.js');
 
 var request = require('request');
@@ -37,4 +35,3 @@ module.exports = {
 	queryTicketMasterForEvent: queryTicketMasterForEvent,
   queryTicketMasterForPrices: queryTicketMasterForPrices,
 }
-
