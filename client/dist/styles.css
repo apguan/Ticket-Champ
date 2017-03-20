@@ -7,8 +7,7 @@ html, body, h1, h2, h3, h4, ul, li {
   padding: 0;
   margin: 0;
   margin-top: 1em;
-
-/*  margin-bottom: -2.8em;*/
+  margin-bottom: -2.8em;
 
 
   list-style: none;
@@ -35,7 +34,7 @@ html, body, h1, h2, h3, h4, ul, li {
 
   color: white;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 1.6em;
 
   text-align: center;
 }
@@ -51,7 +50,7 @@ html, body, h1, h2, h3, h4, ul, li {
 
 .flex-item-gutter {
 
-  flex-grow: 2;
+  flex-grow: 6;
 
   height: 10%;
 
@@ -77,8 +76,8 @@ html, body, h1, h2, h3, h4, ul, li {
 
 .search-input {
 
-  width: 22em;
-  height: 3em;
+  width: 16em;
+  height: 2em;
 
   border-radius: 5em;
   background-color: #b5b5b5;
@@ -87,10 +86,19 @@ html, body, h1, h2, h3, h4, ul, li {
 
 }
 
+.search-button {
+  width: 6em;
+  height: 2em;
+  border-radius: 5em;
+  background-color: #000000;
+  color: #ffffff;
+
+}
 
 .footer {
   position: initial;
-  margin-top: 18em;
+  padding-top: 24em;
+
 }
 
 
@@ -101,6 +109,6 @@ html, body, h1, h2, h3, h4, ul, li {
 }
 
 .jumbotron {
-  padding-top: 0px;
+  padding-top: 2em;
   padding-bottom: 2em;
 }
