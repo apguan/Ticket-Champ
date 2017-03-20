@@ -13,13 +13,17 @@ class App extends React.Component {
       }
     }
     this.search = this.search.bind(this);
-  }
+    }
 
-  search(term) {
+
+  search(value) {
+
+  // coznsole.log('APP STATE POST', this.state.value)
+
     $.ajax({
         type:"POST",
         url:"/event",
-        data: JSON.stringify(term),
+        data: `${value}`,
         success: function() {
           console.log('Post Data Success');
         },

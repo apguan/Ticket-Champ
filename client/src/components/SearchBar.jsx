@@ -24,12 +24,13 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div>
-        Search an artist <input className='form-control' type='text' placeholder='Search' value={this.state.value} onChange={this.onChange}/>
-        <button type="submit" className="btn btn-default" onClick={this.search}> Compare Tickets </button>
-      </div>
+      <li className="flex-item-search" >
+        <input className="search-input" value={this.state.value} onChange={this.onChange}/>
+        <button className="search-button" onClick={this.search}> Compare Tickets </button>
+      </li>
     )
   }
 }
 
 export default Search;
+        // <h3> SEARCH EVENTS </h3>
