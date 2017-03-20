@@ -7,19 +7,24 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+
       value: {
         location: "",
         search: ""
       }
     }
     this.search = this.search.bind(this);
-  }
+    }
 
-  search(term) {
+
+  search(value) {
+
+  // console.log('APP STATE POST', this.state.value)
+
     $.ajax({
         type:"POST",
         url:"/event",
-        data: JSON.stringify(term),
+        data: `${value}`,
         success: function() {
           console.log('Post Data Success');
         },
@@ -45,6 +50,7 @@ class App extends React.Component {
 
   render() {
     return(
+
     <div>
 
       <SearchUnit searchstate={this.state.value} onSearch={this.search}/>
@@ -86,6 +92,7 @@ class App extends React.Component {
       </div>
 
     </div>
+
     )
   }
 }
