@@ -26,7 +26,7 @@ class Search extends React.Component {
     return (
       <li className="flex-item-search" >
         <input className="search-input" value={this.state.value} onChange={this.onChange}/>
-        <button className="search-button" onClick={this.search}> Compare Tickets </button>
+        <button className="search-button" onClick={this.search}> Compare </button>
       </li>
     )
   }

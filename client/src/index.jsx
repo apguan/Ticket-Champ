@@ -86,10 +86,12 @@ class App extends React.Component {
         </div>
 
 
-        <footer>
-          <p>&copy; 2017 TicetPal, Inc.</p>
-        </footer>
       </div>
+        <div className="container">
+          <footer className="footer">
+            <p>&copy; 2017 TicetPal, Inc.</p>
+          </footer>
+        </div>
 
     </div>
 
