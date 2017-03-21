@@ -20,6 +20,12 @@ app.get('/', function(req, res) {
 })
 // app.use('/', express.static())
 
+//seatgeek api query
+app.post('/findtickets', function(req, res) {
+  seatGeekAPI.seatGeekGetter()
+
+})
+
 //ticket master api query with
 
 ticketMasterAPI.queryTicketMasterForEvent(ticketMasterAPI.ticketmasterData, 'lady gaga', function(err, data) {
