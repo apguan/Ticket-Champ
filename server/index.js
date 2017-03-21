@@ -1,5 +1,6 @@
 var express = require('express');
 var mysql = require('mysql');
+var db = require('./db/index.js');
 var path = require('path');
 var request = require('request');
 var dbModel = require('./models/dbModels.js');
@@ -8,6 +9,7 @@ var ticketMasterAPI = require('./controllers/ticketMasterController.js');
 
 
 var port = process.env.PORT || 5000;
+
 
 var app = express();
 // console.log('WHERE IS THIS SHIT', __dirname + '../client/dist/')
