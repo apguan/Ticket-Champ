@@ -7,11 +7,11 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-
       value: {
         location: "",
         search: ""
-      }
+      },
+      trending: []
     }
     this.search = this.search.bind(this);
     }
@@ -19,14 +19,14 @@ class App extends React.Component {
 
   search(value) {
 
-  // console.log('APP STATE POST', this.state.value)
-
+  console.log('searching post input', value)
     $.ajax({
         type:"POST",
         url:"/event",
-        data: `${value}`,
-        success: function() {
-          console.log('Post Data Success');
+        data: value,
+        success: function(output) {
+
+          console.log('Post Data Success', JSON.parse(output));
         },
         error: function() {
           console.log('try again');
@@ -34,68 +34,132 @@ class App extends React.Component {
     })
   }
 
-  componentDidMount() {
+  componentWillMount() {
     // setState({
     // data:
-    // $.ajax({
-    //     type:"GET",
-    //     url:"/home",
-    //     // data: data,
-    //     success: function() {
-    //       console.log('Post Data Success')
-    //     }
-    // })
+    var context = this;
+    $.ajax({
+        type:"GET",
+        url:"/home",
+        // data: data,
+        success: function(response) {
+          console.log('Post Data Success', JSON.parse(response));
+          var trendingRes = JSON.parse(response);
+          context.setState({
+            trending: trendingRes
+          })
+
+        }
+    })
   }
 
 
   render() {
-    return(
-
-    <div>
-
-      <SearchUnit searchstate={this.state.value} onSearch={this.search}/>
+    console.log('Trending Test 1', this.state.trending)
 
 
-      <div className="jumbotron">
-        <div className="container">
-          <h1>Trending</h1>
+    if (this.state.trending.length > 0) {
+      console.log('Trending Test 2', this.state.trending)
+      return (
+
+      <div>
+
+        <SearchUnit searchstate={this.state.value} onSearch={this.search}/>
+
+        <div className="jumbotron">
+          <div className="container">
+            <h1>Trending</h1>
+          </div>
         </div>
+
+        <div className="container">
+          <div className="row">
+
+            <div className="col-md-4">
+              <h2>{this.state.trending[0].venueName}</h2>
+              <img className="img-trending" src={this.state.trending[0].url} />
+              <p>{this.state.trending[0].venueLocation}</p>
+              <p>{this.state.trending[0].city}, {this.state.trending[0].state}</p>
+            </div>
+
+            <div className="col-md-4">
+              <h2>{this.state.trending[1].venueName}</h2>
+              <img className="img-trending" src={this.state.trending[1].url} />
+              <p>{this.state.trending[1].venueLocation} </p>
+              <p>{this.state.trending[1].city}, {this.state.trending[1].state}</p>
+            </div>
+
+            <div className="col-md-4">
+              <h2>{this.state.trending[2].venueName}</h2>
+              <img className="img-trending" src={this.state.trending[2].url} />
+             <p>{this.state.trending[2].venueLocation}</p>
+             <p>{this.state.trending[2].city}, {this.state.trending[2].state}</p>
+            </div>
+
+          </div>
+
+
+        </div>
+          <div className="container">
+            <footer className="footer">
+              <p>&copy; 2017 TicketPal, Inc.</p>
+            </footer>
+          </div>
+
       </div>
 
-      <div className="container">
-        <div className="row">
+      )
 
-          <div className="col-md-4">
-            <h2>Trending 1</h2>
-            <img src='https://placeholdit.imgix.net/~text?txtsize=28&txt=300%C3%97200&w=300&h=200' />
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    } else {
+      console.log('Trending Test 3', this.state.trending)
+
+      return (
+        <div>
+
+          <SearchUnit searchstate={this.state.value} onSearch={this.search}/>
+
+
+          <div className="jumbotron">
+            <div className="container">
+              <h1>Trending</h1>
+            </div>
           </div>
 
-          <div className="col-md-4">
-            <h2>Trending 2</h2>
-            <img src='https://placeholdit.imgix.net/~text?txtsize=28&txt=300%C3%97200&w=300&h=200' />
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
-          </div>
+          <div className="container">
+            <div className="row">
 
-          <div className="col-md-4">
-            <h2>Trending 3</h2>
-            <img src='https://placeholdit.imgix.net/~text?txtsize=28&txt=300%C3%97200&w=300&h=200' />
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+              <div className="col-md-4">
+                <h2>Trending 1</h2>
+                <img src='https://placeholdit.imgix.net/~text?txtsize=28&txt=300%C3%97200&w=300&h=200' />
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+              </div>
+
+              <div className="col-md-4">
+                <h2>Trending 2</h2>
+                <img src='https://placeholdit.imgix.net/~text?txtsize=28&txt=300%C3%97200&w=300&h=200' />
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
+              </div>
+
+              <div className="col-md-4">
+                <h2>Trending 2</h2>
+                <img src='https://placeholdit.imgix.net/~text?txtsize=28&txt=300%C3%97200&w=300&h=200' />
+               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+              </div>
+
+            </div>
+
+
           </div>
+            <div className="container">
+              <footer className="footer">
+                <p>&copy; 2017 TicketPal, Inc.</p>
+              </footer>
+            </div>
 
         </div>
 
-
-      </div>
-        <div className="container">
-          <footer className="footer">
-            <p>&copy; 2017 TicetPal, Inc.</p>
-          </footer>
-        </div>
-
-    </div>
-
-    )
+        )
+    }
   }
 }
 

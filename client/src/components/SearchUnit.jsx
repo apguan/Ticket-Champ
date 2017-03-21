@@ -3,6 +3,7 @@ import Search from './SearchBar.jsx';
 import Location from './LocationSelector.jsx';
 
 function SearchUnit(props) {
+
   return (
 
     <ul className="flex-container">
