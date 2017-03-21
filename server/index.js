@@ -20,17 +20,16 @@ app.get('/', function(req, res) {
 })
 // app.use('/', express.static())
 
-<<<<<<< HEAD
 //seatgeek api query
 // app.post('/findtickets', function(req, res) {
 //   seatGeekAPI.seatGeekGetter()
 
 // })
-
 //ticket master api query with
+
 testObj = {
-  event: 'Pink Floyd',
-  location: 'Oakland',
+  event: 'Lady Gaga',
+  location: 'San Francisco',
 }
 
 
@@ -74,24 +73,7 @@ testObj = {
       state: 'LA'
     }]
 
-//ticket master api query with
-ticketMasterAPI.queryTicketMasterForEvent(ticketMasterAPI.ticketmasterData, testObj, function(err, data) {
-  // console.log("this is the event id ", ticketMasterAPI.ticketmasterData.id)
-  if(err) {
-    console.log('Error on query', err);
-  } else {
-    ticketMasterAPI.queryTicketMasterForPrices(ticketMasterAPI.ticketmasterData, ticketMasterAPI.ticketmasterData.id, function(err, data2) {
-      if(err) {
-        console.log('Error in Ticket Master Price query', err);
-      } else {
-        ticketMasterAPI.ticketmasterDataParser(ticketMasterAPI.ticketmasterData, JSON.parse(data2));
 
-        db.addTicketMasterToDataBase(ticketMasterAPI.ticketmasterData);
-        // console.log(ticketMasterAPI.ticketmasterData)
-      }
-    })
-  }
-});
 
 app.post('/event', function(req, res) {
   var body = '';
@@ -99,9 +81,31 @@ app.post('/event', function(req, res) {
     body += chunk;
   })
   req.on('end', function() {
-    var userInput = body;
+    var userInput = JSON.parse(body);
     console.log('Post Request ', userInput);
-    res.end(JSON.stringify(fakeRes));
+
+        //ticket master api query with
+    ticketMasterAPI.queryTicketMasterForEvent(ticketMasterAPI.ticketmasterData, userInput, function(err, data) {
+      // console.log("this is the event id ", ticketMasterAPI.ticketmasterData.id)
+      if(err) {
+        console.log('Error on query', err);
+      } else {
+        ticketMasterAPI.queryTicketMasterForPrices(ticketMasterAPI.ticketmasterData, ticketMasterAPI.ticketmasterData.id, function(err, data2) {
+          if(err) {
+            console.log('Error in Ticket Master Price query', err);
+          } else {
+            ticketMasterAPI.ticketmasterDataParser(ticketMasterAPI.ticketmasterData, JSON.parse(data2));
+
+            db.addTicketMasterToDataBase(ticketMasterAPI.ticketmasterData);
+            console.log(ticketMasterAPI.ticketmasterData)
+
+            var tmResponse = ticketMasterAPI.ticketmasterData;
+
+            res.end(JSON.stringify([tmResponse]));
+          }
+        })
+      }
+    });
   })
 })
 

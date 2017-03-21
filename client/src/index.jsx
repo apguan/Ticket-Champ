@@ -8,10 +8,6 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      value: {
-        location: "",
-        search: ""
-      },
       trending: [],
       searchResults: []
     }
@@ -21,13 +17,13 @@ class App extends React.Component {
 
   search(value) {
 
-  console.log('searching post input', value)
+  console.log('searching post input', JSON.stringify(value))
 
     var context = this;
     $.ajax({
         type:"POST",
         url:"/event",
-        data: value,
+        data: JSON.stringify(value),
         success: function(output) {
           console.log('Post Data Success Search', JSON.parse(output));
           var searchRes = JSON.parse(output);
@@ -71,7 +67,7 @@ class App extends React.Component {
       return (
 
       <div>
-        <SearchUnit searchstate={this.state.value} onSearch={this.search}/>
+        <SearchUnit onSearch={this.search}/>
 
       { this.state.searchResults.length > 0 ?
         (

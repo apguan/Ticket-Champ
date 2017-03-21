@@ -14,7 +14,7 @@ function TicketListItem (props) {
             <td>{props.searchItem.date}</td>
             <td>{props.searchItem.venueName}</td>
             <td>{props.searchItem.venueLocation}</td>
-            <td>{props.searchItem.averagePrice}</td>
+            <td>{props.searchItem.averagePice}</td>
           </tr>
         </div>
     </div>
