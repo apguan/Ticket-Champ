@@ -50,8 +50,10 @@ var ticketmasterDataParser = function(dataOject, input) {
 
 
 var queryTicketMasterForEvent = function(dataOject, searchParam, callback) {
+  // console.log('this is a search' ,searchParam)
 	//remove hard coded api key
-  var queryString = 'https://app.ticketmaster.com/discovery/v2/events.json?keyword=' + searchParam + '&apikey=kyYiscxIL5hihtSs95QwNGsixEv738Zj&page=1';
+  // var queryString = 'https://app.ticketmaster.com/discovery/v2/events.json?keyword=' + searchParam + '&apikey=kyYiscxIL5hihtSs95QwNGsixEv738Zj&page=1';
+  var queryString = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=kyYiscxIL5hihtSs95QwNGsixEv738Zj&keyword=' + searchParam.event + '&city=' + searchParam.location;
   request(queryString, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('fired event query');
@@ -64,7 +66,7 @@ var queryTicketMasterForEvent = function(dataOject, searchParam, callback) {
       dataOject.city = event._embedded.events[0]._embedded.venues[0].city.name;
       dataOject.state = event._embedded.events[0]._embedded.venues[0].state.stateCode;
       var id = event._embedded.events[0].id;
-      callback(null, id );
+      callback(null, dataOject );
     } else {
       callback(error, null);
     }

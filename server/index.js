@@ -27,22 +27,11 @@ app.get('/', function(req, res) {
 // })
 
 //ticket master api query with
+testObj = {
+  event: 'Pink Floyd',
+  location: 'Oakland'
+}
 
-// ticketMasterAPI.queryTicketMasterForEvent(ticketMasterAPI.ticketmasterData, 'lady gaga', function(err, data) {
-//   console.log(data)
-//   if(err) {
-//     console.log('Error on query', err);
-//   } else {
-//     ticketMasterAPI.queryTicketMasterForPrices(ticketMasterAPI.ticketmasterData, data, function(err, data2) {
-//       if(err) {
-//         console.log('Error in Ticket Master Price query', err);
-//       } else {
-//         ticketMasterAPI.ticketmasterDataParser(ticketMasterAPI.ticketmasterData, JSON.parse(data2))
-//         console.log(ticketMasterAPI.ticketmasterData)
-//       }
-//     })
-//   }
-// });
 
  var fakeRes= [{
       url: 'http://static.highsnobiety.com/wp-content/uploads/2016/06/14133513/kanye-west-saint-pablo-tour-00.jpg',
@@ -83,6 +72,23 @@ app.get('/', function(req, res) {
       venueLocation: 'Fonda Theater',
       state: 'LA'
     }]
+
+ticketMasterAPI.queryTicketMasterForEvent(ticketMasterAPI.ticketmasterData, testObj, function(err, data) {
+  console.log("this is the event id ", ticketMasterAPI.ticketmasterData.id)
+  if(err) {
+    console.log('Error on query', err);
+  } else {
+    ticketMasterAPI.queryTicketMasterForPrices(ticketMasterAPI.ticketmasterData, ticketMasterAPI.ticketmasterData.id, function(err, data2) {
+      if(err) {
+        console.log('Error in Ticket Master Price query', err);
+      } else {
+        ticketMasterAPI.ticketmasterDataParser(ticketMasterAPI.ticketmasterData, JSON.parse(data2))
+        db.addTicketMasterToDataBase(ticketMasterAPI.ticketmasterData)
+        // console.log(ticketMasterAPI.ticketmasterData)
+      }
+    })
+  }
+});
 
 app.post('/event', function(req, res) {
   var body = '';
