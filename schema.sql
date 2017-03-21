@@ -5,7 +5,6 @@ CREATE DATABASE ticketpal;
 USE ticketpal;
 
 CREATE TABLE ticketinfo (
-
     id int NOT NULL AUTO_INCREMENT,
     name varchar(255),
     min int,
@@ -18,7 +17,6 @@ CREATE TABLE ticketinfo (
     venueLocation varchar(255),
     state varchar(255),
     PRIMARY KEY (id)
-
 );
 
 /*  Execute this file from the command line by typing:

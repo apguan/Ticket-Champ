@@ -2,7 +2,7 @@ var app = require('../index.js');
 
 var request = require('request');
 
-var sampleData = require('../../sampledata/ticket_master_price')
+var sampleData = require('../../sampledata/ticket_master_price');
 
 //global obj to client
 var ticketmasterData = {
@@ -17,10 +17,11 @@ var ticketmasterData = {
   city: null,
   venueLocation: null,
   state: null,
-}
+};
+
 // parses the data from prices query
 var ticketmasterDataParser = function(dataOject, input) {
-  var data = input.prices.data
+  var data = input.prices.data;
   var high = 0;
   var low = Number(input.prices.data[0].attributes.value);
   dataOject.lowPrice = low;
@@ -30,24 +31,20 @@ var ticketmasterDataParser = function(dataOject, input) {
   for (var i = 0; i < data.length; i++) {
     var items = data[i].attributes.value;
     var item = Number(items);
-    average += item
+    average += item;
     if (item > high) {
       high = item
       dataOject.highPrice = high;
     }
     if (item < low ) {
-      low = item
+      low = item;
       dataOject.lowPrice = low;
     }
   }
   dataOject.averagePice = parseInt(average / len, 10);
   // console.log(data.prices.data[0].attributes.value)
-
-  return dataOject
+  return dataOject;
 }
-
-//console.log(ticketmasterDataParser(ticketmasterData,sampleData.prices))
-
 
 var queryTicketMasterForEvent = function(dataOject, searchParam, callback) {
   // console.log('this is a search' ,searchParam)
@@ -56,7 +53,7 @@ var queryTicketMasterForEvent = function(dataOject, searchParam, callback) {
   var queryString = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=kyYiscxIL5hihtSs95QwNGsixEv738Zj&keyword=' + searchParam.event + '&city=' + searchParam.location;
   request(queryString, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      console.log('fired event query');
+      console.log('event query is returning a dataset');
       var event = JSON.parse(body);
       dataOject.venueName = event._embedded.events[0].name;
       dataOject.url = event._embedded.events[0].images[0].url;
@@ -72,7 +69,7 @@ var queryTicketMasterForEvent = function(dataOject, searchParam, callback) {
     }
   })
 };
-//
+
 
 var queryTicketMasterForPrices = function(dataObject, eventId, callback) {
 	//remove hard coded api key
