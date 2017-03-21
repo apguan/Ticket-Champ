@@ -10,10 +10,18 @@ function TicketList (props) {
       console.log('city', item.city)
     })
 
+  var imgUrl = props.searchRes[0].url;
+
+  console.log('IMG URL', imgUrl);
+
+  var imgBannerUpdate = {
+    'backgroundImage': 'url('+ imgUrl +')'
+  }
+
   return (
     <li className="flex-item-ticketItem" >
 
-      <div className="img-banner">
+      <div className="img-banner" style={imgBannerUpdate}>
       </div>
 
       <h1>TicketList Component</h1>

@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS  ticketpal;
+-- DROP DATABASE IF EXISTS  ticketpal;
 
 CREATE DATABASE ticketpal;
 
