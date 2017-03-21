@@ -31,10 +31,8 @@ app.get('/', function(req, res) {
 testObj = {
   event: 'Lady Gaga',
   location: 'San Francisco',
-  event: 'lady gaga',
-  location: 'san Francisco',
-
 }
+
 
 
  var fakeRes= [{

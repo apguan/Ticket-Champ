@@ -16,6 +16,20 @@ connection.connect(function(err){
   }
 })
 
+// query to get our top three searches in our DB
+var getTopThreeTrending = function(callback) {
+  var queryString = 'SELECT name, COUNT(name) AS nameCount from ticketinfo GROUP BY name ORDER BY COUNT(name) desc limit 3;';
+  connection.query(queryString, function(err, results) {
+    if (err) {
+      console.log('error fetching trending', err);
+      callback(err, null);
+    } else {
+      console.log('success fetching top three set');
+      callback(null, results);
+    }
+  })
+}
+
 
 var addTicketMasterToDataBase = function(dataObject) {
 	var params = [ dataObject.venueName, dataObject.lowPrice, dataObject.averagePice, dataObject.highPrice, dataObject.url, dataObject.date, dataObject.apiId, dataObject.city, dataObject.venueLocation, dataObject.state];
@@ -30,9 +44,9 @@ var addTicketMasterToDataBase = function(dataObject) {
 }
 
 module.exports = {
+  getTopThreeTrending: getTopThreeTrending,
   addTicketMasterToDataBase: addTicketMasterToDataBase,
   connection: connection,
-
 };
 
 
