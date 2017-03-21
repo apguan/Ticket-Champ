@@ -6,6 +6,7 @@ var dbModel = require('./models/dbModels.js');
 var seatGeekAPI = require('./controllers/seatgeekController.js');
 var ticketMasterAPI = require('./controllers/ticketMasterController.js');
 
+
 var port = process.env.PORT || 5000;
 
 var app = express();
@@ -20,16 +21,16 @@ app.get('/', function(req, res) {
 //ticket master api query with
 
 ticketMasterAPI.queryTicketMasterForEvent(ticketMasterAPI.ticketmasterData, 'lady gaga', function(err, data) {
-      console.log(data)
+  console.log(data)
   if(err) {
     console.log('Error on query', err);
   } else {
-    ticketMasterAPI.queryTicketMasterForPrices(data, function(err, data) {
+    ticketMasterAPI.queryTicketMasterForPrices(ticketMasterAPI.ticketmasterData, data, function(err, data2) {
       if(err) {
         console.log('Error in Ticket Master Price query', err);
       } else {
-        ticketMasterAPI.ticketmasterDataParser(ticketMasterAPI.ticketmasterData, data)
-        //console.log(data);
+        ticketMasterAPI.ticketmasterDataParser(ticketMasterAPI.ticketmasterData, JSON.parse(data2))
+        console.log(ticketMasterAPI.ticketmasterData)
       }
     })
   }

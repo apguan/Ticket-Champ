@@ -4,16 +4,22 @@ var request = require('request');
 
 var sampleData = require('../../sampledata/ticket_master_price')
 
-  var ticketmasterData = {
-    url: null,
-    highPrice: null,
-    lowPrice: null,
-    averagePice: null,
-    venueName: null,
-  }
-
+//global obj to client
+var ticketmasterData = {
+  url: null,
+  highPrice: null,
+  lowPrice: null,
+  averagePice: null,
+  venueName: null,
+  id: null,
+  date: '',
+  apiId: 0,
+  city: null,
+  venueLocation: null,
+  state: null,
+}
+// parses the data from prices query
 var ticketmasterDataParser = function(dataOject, input) {
-  console.log('this is ', input)
   var data = input.prices.data
   var high = 0;
   var low = Number(input.prices.data[0].attributes.value);
@@ -30,7 +36,6 @@ var ticketmasterDataParser = function(dataOject, input) {
       dataOject.highPrice = high;
     }
     if (item < low ) {
-      console.log(item)
       low = item
       dataOject.lowPrice = low;
     }
@@ -51,8 +56,15 @@ var queryTicketMasterForEvent = function(dataOject, searchParam, callback) {
     if (!error && response.statusCode == 200) {
       console.log('fired event query');
       var event = JSON.parse(body);
+      dataOject.venueName = event._embedded.events[0].name;
+      dataOject.url = event._embedded.events[0].images[0].url;
+      dataOject.id = event._embedded.events[0].id;
+      dataOject.date = event._embedded.events[0].dates.start.localDate;
+      dataOject.venueLocation = event._embedded.events[0]._embedded.venues[0].name;
+      dataOject.city = event._embedded.events[0]._embedded.venues[0].city.name;
+      dataOject.state = event._embedded.events[0]._embedded.venues[0].state.stateCode;
       var id = event._embedded.events[0].id;
-      callback(null, id )
+      callback(null, id );
     } else {
       callback(error, null);
     }
@@ -60,7 +72,7 @@ var queryTicketMasterForEvent = function(dataOject, searchParam, callback) {
 };
 //
 
-var queryTicketMasterForPrices = function(eventId, callback) {
+var queryTicketMasterForPrices = function(dataObject, eventId, callback) {
 	//remove hard coded api key
 	var queryString = 'https://app.ticketmaster.com/commerce/v2/events/' + eventId + '/offers.json?apikey=kyYiscxIL5hihtSs95QwNGsixEv738Zj'
 	request(queryString, function (error, response, body) {
@@ -77,4 +89,5 @@ module.exports = {
 	queryTicketMasterForEvent: queryTicketMasterForEvent,
   queryTicketMasterForPrices: queryTicketMasterForPrices,
   ticketmasterDataParser: ticketmasterDataParser,
+  ticketmasterData: ticketmasterData,
 }
