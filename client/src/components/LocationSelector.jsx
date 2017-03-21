@@ -16,7 +16,7 @@ class Location extends React.Component {
     })
   }
 
-   locate(props) {
+  locate(props) {
     console.log(this.props)
     this.props.onLocate(this.state.location);
   }
