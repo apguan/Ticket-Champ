@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import SearchUnit from './components/SearchUnit.jsx';
+import TicketList from './components/TicketList.jsx';
 
 class App extends React.Component {
   constructor (props) {
@@ -11,7 +12,8 @@ class App extends React.Component {
         location: "",
         search: ""
       },
-      trending: []
+      trending: [],
+      searchResults: []
     }
     this.search = this.search.bind(this);
     }
@@ -20,13 +22,19 @@ class App extends React.Component {
   search(value) {
 
   console.log('searching post input', value)
+
+    var context = this;
     $.ajax({
         type:"POST",
         url:"/event",
         data: value,
         success: function(output) {
+          console.log('Post Data Success Search', JSON.parse(output));
+          var searchRes = JSON.parse(output);
+          context.setState({
+            searchResults: searchRes
+          })
 
-          console.log('Post Data Success', JSON.parse(output));
         },
         error: function() {
           console.log('try again');
@@ -43,7 +51,7 @@ class App extends React.Component {
         url:"/home",
         // data: data,
         success: function(response) {
-          console.log('Post Data Success', JSON.parse(response));
+          console.log('GET Data Success Trending', JSON.parse(response));
           var trendingRes = JSON.parse(response);
           context.setState({
             trending: trendingRes
@@ -63,48 +71,55 @@ class App extends React.Component {
       return (
 
       <div>
-
         <SearchUnit searchstate={this.state.value} onSearch={this.search}/>
 
-        <div className="jumbotron">
-          <div className="container">
-            <h1>Trending</h1>
+      { this.state.searchResults.length > 0 ?
+        (
+          <ul className="flex-container">
+            <li className="flex-item-gutter" ></li>
+            <TicketList searchRes={this.state.searchResults}/>
+            <li className="flex-item-gutter" ></li>
+          </ul>
+          ) :
+        (<div>
+          <div className="jumbotron">
+            <div className="container">
+              <h1>Trending</h1>
+            </div>
           </div>
-        </div>
 
+          <div className="container">
+            <div className="row">
+
+              <div className="col-md-4">
+                <h2>{this.state.trending[0].venueName}</h2>
+                <img className="img-trending" src={this.state.trending[0].url} />
+                <p>{this.state.trending[0].venueLocation}</p>
+                <p>{this.state.trending[0].city}, {this.state.trending[0].state}</p>
+              </div>
+
+              <div className="col-md-4">
+                <h2>{this.state.trending[1].venueName}</h2>
+                <img className="img-trending" src={this.state.trending[1].url} />
+                <p>{this.state.trending[1].venueLocation} </p>
+                <p>{this.state.trending[1].city}, {this.state.trending[1].state}</p>
+              </div>
+
+              <div className="col-md-4">
+                <h2>{this.state.trending[2].venueName}</h2>
+                <img className="img-trending" src={this.state.trending[2].url} />
+               <p>{this.state.trending[2].venueLocation}</p>
+               <p>{this.state.trending[2].city}, {this.state.trending[2].state}</p>
+              </div>
+            </div>
+          </div>
+        </div>)
+      }
         <div className="container">
-          <div className="row">
-
-            <div className="col-md-4">
-              <h2>{this.state.trending[0].venueName}</h2>
-              <img className="img-trending" src={this.state.trending[0].url} />
-              <p>{this.state.trending[0].venueLocation}</p>
-              <p>{this.state.trending[0].city}, {this.state.trending[0].state}</p>
-            </div>
-
-            <div className="col-md-4">
-              <h2>{this.state.trending[1].venueName}</h2>
-              <img className="img-trending" src={this.state.trending[1].url} />
-              <p>{this.state.trending[1].venueLocation} </p>
-              <p>{this.state.trending[1].city}, {this.state.trending[1].state}</p>
-            </div>
-
-            <div className="col-md-4">
-              <h2>{this.state.trending[2].venueName}</h2>
-              <img className="img-trending" src={this.state.trending[2].url} />
-             <p>{this.state.trending[2].venueLocation}</p>
-             <p>{this.state.trending[2].city}, {this.state.trending[2].state}</p>
-            </div>
-
-          </div>
-
-
+          <footer className="footer">
+            <p>&copy; 2017 TicketPal, Inc.</p>
+          </footer>
         </div>
-          <div className="container">
-            <footer className="footer">
-              <p>&copy; 2017 TicketPal, Inc.</p>
-            </footer>
-          </div>
 
       </div>
 

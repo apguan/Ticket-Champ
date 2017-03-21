@@ -1,6 +1,15 @@
 html, body, h1, h2, h3, h4, ul, li {
   padding: 0;
   margin: 0;
+
+}
+
+body {
+  font-size: 1.4em;
+}
+
+h1 {
+  padding-bottom: 1em;
 }
 
 .flex-container {
@@ -15,6 +24,19 @@ html, body, h1, h2, h3, h4, ul, li {
 
   justify-content: center;
   flex-direction: row;
+}
+
+.flex-container-listItem {
+  padding: 0;
+  margin: 0;
+  margin-top: 2em;
+  margin-bottom: 2em;
+
+  list-style: none;
+  display: flex;
+
+  justify-content: center;
+  flex-direction: column;
 }
 
 .flex-item-logo {
@@ -39,6 +61,29 @@ html, body, h1, h2, h3, h4, ul, li {
   text-align: center;
 }
 
+.flex-item-banner {
+
+  flex-grow: 6;
+  height: 30%;
+
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+  font-size: 1.6em;
+
+  text-align: center;
+}
+
+.flex-item-ticketItem {
+
+  flex-grow: 10;
+
+  font-weight: bold;
+  font-size: 1.6em;
+
+  text-align: center;
+}
+
 .flex-item-location {
   flex-grow: 2;
   height: 10%;
@@ -48,9 +93,20 @@ html, body, h1, h2, h3, h4, ul, li {
   text-align: center;
 }
 
-.flex-item-gutter {
+.flex-item-gutter-header {
 
   flex-grow: 6;
+
+  height: 10%;
+
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.flex-item-gutter {
+
+  flex-grow: 2;
 
   height: 10%;
 
@@ -101,6 +157,22 @@ html, body, h1, h2, h3, h4, ul, li {
 
 }
 
+.well {
+  height: 8%;
+  width: 100%;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  box-shadow: inset 0 0 10px black, 0 0 10px black;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+
+.col-md-4 {
+/*  background-color: blue;
+*/}
+
 
 .img-responsive {
   width: 12em;
@@ -111,6 +183,18 @@ html, body, h1, h2, h3, h4, ul, li {
 .img-trending {
   width: 300px;
   height: 200px;
+
+}
+
+.img-banner {
+  width: 100%;
+  height: 300px;
+
+  padding-bottom: 1em;
+  background-image: url(http://www.nylon.com.sg/wp-content/uploads/2017/01/kanye-banner.png);
+  background-color: purple;
+  background-position: center;
+  margin-bottom: 1em;
 
 }
 
