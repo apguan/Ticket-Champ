@@ -38,7 +38,7 @@ class App extends React.Component {
     })
   }
 
-  componentWillMount() {
+  componentDidMount() {
     // setState({
     // data:
     var context = this;
@@ -47,12 +47,13 @@ class App extends React.Component {
         url:"/home",
         // data: data,
         success: function(response) {
-          console.log('GET Data Success Trending', JSON.parse(response));
-          var trendingRes = JSON.parse(response);
           context.setState({
-            trending: trendingRes
+            trending: response
           })
-
+          console.log('success', response);
+        },
+        error: function(error) {
+          console.log('error getting back top three');
         }
     })
   }

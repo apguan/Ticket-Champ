@@ -18,7 +18,7 @@ connection.connect(function(err){
 
 // query to get our top three searches in our DB
 var getTopThreeTrending = function(callback) {
-  var queryString = 'SELECT name, COUNT(name) AS nameCount from ticketinfo GROUP BY name ORDER BY COUNT(name) desc limit 3;';
+  var queryString = 'select webId, max, min, avg, name, id, localDate, api, city, venueLocation, state, COUNT(name) AS nameCount from ticketinfo GROUP BY webId, max, min, avg, name, id, localDate, api, city, venueLocation, state ORDER BY COUNT(NAME) desc limit 3;';
   connection.query(queryString, function(err, results) {
     if (err) {
       console.log('error fetching trending', err);
