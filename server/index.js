@@ -15,6 +15,7 @@ var app = express();
 // console.log('WHERE IS THIS SHIT', __dirname + '../client/dist/')
 app.use(express.static(path.join(__dirname, '../client/dist/')));
 
+
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 })
@@ -30,6 +31,9 @@ app.get('/', function(req, res) {
 testObj = {
   event: 'Lady Gaga',
   location: 'San Francisco',
+  event: 'lady gaga',
+  location: 'san Francisco',
+
 }
 
 

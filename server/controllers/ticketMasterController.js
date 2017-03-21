@@ -41,7 +41,7 @@ var ticketmasterDataParser = function(dataOject, input) {
       dataOject.lowPrice = low;
     }
   }
-  dataOject.averagePice = parseInt(average / len, 10);
+  dataOject.averagePice = average / len;
   // console.log(data.prices.data[0].attributes.value)
   return dataOject;
 }
