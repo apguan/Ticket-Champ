@@ -1,6 +1,5 @@
 var request = require('request');
 
-
 var seatGeekParser = function(data) {
   //info.event wil be passed in as data
   var seatGeekCompare = {
