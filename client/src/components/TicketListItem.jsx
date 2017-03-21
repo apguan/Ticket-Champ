@@ -9,7 +9,13 @@ function TicketListItem (props) {
   return (
     <div >
         <div className="well">
-          <h3>{props.searchItem.venueName}</h3>
+          <tr>
+            <td>TicketMaster</td>
+            <td>{props.searchItem.date}</td>
+            <td>{props.searchItem.venueName}</td>
+            <td>{props.searchItem.venueLocation}</td>
+            <td>{props.searchItem.averagePrice}</td>
+          </tr>
         </div>
     </div>
   )

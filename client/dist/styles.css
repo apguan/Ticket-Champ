@@ -157,6 +157,10 @@ h1 {
 
 }
 
+#table {
+  padding-left: 20%
+}
+
 .well {
   height: 8%;
   width: 100%;
@@ -164,7 +168,7 @@ h1 {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   box-shadow: inset 0 0 10px black, 0 0 10px black;
-  display: inline-block;
+  display: inherit;
   vertical-align: top;
   text-align: center;
 }

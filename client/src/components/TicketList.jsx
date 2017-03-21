@@ -17,14 +17,23 @@ function TicketList (props) {
       </div>
 
       <h1>TicketList Component</h1>
-
+      <table>
+      <div className="well">
+        <tr>
+          <th> Provider </th>
+          <th> Date </th>
+          <th> Event </th>
+          <th> Location </th>
+          <th> Price </th>
+        </tr>
+      </div>
       { props.searchRes.map(function(item) {
           return (
             <TicketListItem searchItem={item}/>
           )
         })
       }
-
+      </table>
     </li>
 
 
