@@ -1,12 +1,16 @@
 var express = require('express');
-var db = require('mysql');
+var mysql = require('mysql');
 
 var connection = mysql.createConnection({
   user: 'root',
   password: '',
   database: 'ticketpal'
 });
-
-connect.connect();
-
+connection.connect(function(err){
+  if(err) {
+    console.log('database did not load', err);
+  } else {
+    console.log('the database is connected');
+  }
+})
 module.exports = connection;
