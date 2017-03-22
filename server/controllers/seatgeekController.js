@@ -1,59 +1,56 @@
 var request = require('request');
 
-var seatGeekParser = function(data) {
-  //info.event wil be passed in as data
-  var seatGeekCompare = {
-    url: data.url || null,
-    highPrice: data.stats.highest_price || null,
-    lowPrice: data.stats.lowest_price || null,
-    averagePice: data.stats.average_price || null,
-    eventName: data.title || null,
-    id: data.performers[0].id || null,
-    date: data.datetime_local.slice(0,10) || null,
-    apiId: 1,
-    city: data.city || null,
-    venueLocation: data.venue.display_location || null,
-    state: data.venue.state || null,
-  }
+//venueName === artist name
+//venueLocation ===
+var seatGeekData = {
+  url: null,
+  highPrice: null,
+  lowPrice: null,
+  averagePice: null,
+  venueName: null,
+  date: '',
+  apiId: 1,
+  city: null,
+  venueLocation: null,
+  state: null,
+};
 
-  console.log(seatGeekCompare);
-  return seatGeekCompare
-}
-
-
-var seatGeekGetter = function(searchParam, location, callback) {
+var seatGeekGetter = function(dataObj, searchParam, location, callback) {
 
   var artistName = searchParam.split(' ').join('+');
 
-  var queryString = 'https://api.seatgeek.com/2/events?q=' + artistName + '&client_id=NzA2MzY4MnwxNDg5NTE0NDA0Ljc1';
+  var queryString = 'https://api.seatgeek.com/2/events?q=' + artistName +'&per_page=100' + '&client_id=NzA2MzY4MnwxNDg5NTE0NDA0Ljc1';
 
   request(queryString, function (error, response, body) {
+    console.log('testing');
     if (!error && response.statusCode == 200) {
       var info = JSON.parse(body);
-      for (var i = 0; i < info.event; i++){
-        if (info.events[i].slug === 'lady-gaga' && info.events[i].venue.city === location)
-        seatGeekParser(info.events[i]);
+      // console.log('this is our data', info.events)
+      for (var i = 0; i < info.events.length; i++){
+        if (info.events[i].title === searchParam && info.events[i].venue.display_location === location)
+
+        dataObj.id = info.events[i].performers[0].id;
+          dataObj.highPrice = info.events[i].stats.highest_price;
+          dataObj.lowPrice = info.events[i].stats.lowest_price;
+          dataObj.venueName = info.events[i].title;
+          dataObj.date = info.events[i].datetime_local.slice(0,10);
+          dataObj.averagePice = info.events[i].stats.average_price;
+          dataObj.city = info.events[i].venue.city;
+          dataObj.apiId= 1;
+          dataObj.venueLocation = info.events[i].venue.name;
+          dataObj.state = info.events[i].venue.state;
+          dataObj.url = info.events[i].url;
+
+          console.log(dataObj)
+          callback(null, dataObj);
       }
     } else {
-      console.log(error);
+      callback(error, null);
     }
   })
 }
 
 module.exports = {
   seatGeekGetter: seatGeekGetter,
-  seatGeekParser: seatGeekParser
+  seatGeekData: seatGeekData
 }
-
-
-// seatGeekCompare[url] = data.url
-// seatGeekCompare[highPrice] = data.stats.highest_price
-// seatGeekCompare[lowPrice] = data.stats.lowest_price
-// seatGeekCompare[averagePice] = data.stats.average_price
-// seatGeekCompare[venueName] = data.venue.name
-// seatGeekCompare[id] = data.performers[0].id
-// seatGeekCompare[date] = data.datetime_local.slice(0,10)
-// seatGeekCompare[apiId] = 1
-// seatGeekCompare[city] = data.city
-// seatGeekCompare[venueLocation] = data.venue.display_location
-// seatGeekCompare[state] = data.venue.state

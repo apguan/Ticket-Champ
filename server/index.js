@@ -34,6 +34,15 @@ testObj = {
 }
 
 
+seatGeekAPI.seatGeekGetter(seatGeekAPI.seatGeekData, testObj.event, testObj.location, function(err, results) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log('success!')
+    db.addTicketMasterToDataBase(results);
+  }
+})
+
 
  var fakeRes= [{
       url: 'http://static.highsnobiety.com/wp-content/uploads/2016/06/14133513/kanye-west-saint-pablo-tour-00.jpg',
