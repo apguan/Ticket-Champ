@@ -114,11 +114,13 @@ app.post('/event', function(req, res) {
               if (err) {
                 console.log(err);
               } else {
-                console.log('ALYS 1 ITEM:', tmResponse)
-                console.log('ALLENS ARRAY:', results);
-                var sendArr = results.unshift(tmResponse);
-                console.log('WHAT WE WANT COMBO', sendArr);
-                res.end(JSON.stringify(sendArr));
+                var arrayToClient = [];
+                arrayToClient[0] = tmResponse;
+                var result = JSON.parse(JSON.stringify(results));
+                for (var i = 0; i < result.length; i++) {
+                  arrayToClient.push(result[i]);
+                }
+                res.end(JSON.stringify(arrayToClient));
               }
             });
           }
