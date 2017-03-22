@@ -25,12 +25,11 @@ class App extends React.Component {
         url:"/event",
         data: JSON.stringify(value),
         success: function(output) {
-          console.log('Post Data Success Search', JSON.parse(output));
+          console.log('Post Data Success Search', output);
           var searchRes = JSON.parse(output);
           context.setState({
             searchResults: searchRes
           })
-
         },
         error: function() {
           console.log('try again');
@@ -71,13 +70,7 @@ class App extends React.Component {
         <SearchUnit onSearch={this.search}/>
 
       { this.state.searchResults.length > 0 ?
-        (
-          <ul className="flex-container">
-            <li className="flex-item-gutter" ></li>
-            <TicketList searchRes={this.state.searchResults}/>
-            <li className="flex-item-gutter" ></li>
-          </ul>
-          ) :
+        (<TicketList searchRes={this.state.searchResults}/>) :
         (<div>
           <div className="jumbotron">
             <div className="container">
