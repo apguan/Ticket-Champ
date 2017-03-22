@@ -71,13 +71,7 @@ class App extends React.Component {
         <SearchUnit onSearch={this.search}/>
 
       { this.state.searchResults.length > 0 ?
-        (
-          <ul className="flex-container">
-            <li className="flex-item-gutter" ></li>
-            <TicketList searchRes={this.state.searchResults}/>
-            <li className="flex-item-gutter" ></li>
-          </ul>
-          ) :
+        (<TicketList searchRes={this.state.searchResults}/>) :
         (<div>
           <div className="jumbotron">
             <div className="container">
