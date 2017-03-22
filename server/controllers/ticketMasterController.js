@@ -17,6 +17,7 @@ var ticketmasterData = {
   city: null,
   venueLocation: null,
   state: null,
+  eventUrl: null,
 };
 
 // parses the data from prices query
@@ -56,6 +57,7 @@ var queryTicketMasterForEvent = function(dataOject, searchParam, callback) {
       console.log('event query is returning a dataset');
       var event = JSON.parse(body);
       dataOject.venueName = event._embedded.events[0].name;
+      dataOject.eventUrl = event._embedded.events[0].url;
       dataOject.url = event._embedded.events[0].images[0].url;
       dataOject.id = event._embedded.events[0].id;
       dataOject.date = event._embedded.events[0].dates.start.localDate;
