@@ -89,21 +89,21 @@ class App extends React.Component {
             <div className="row">
 
               <div className="col-md-4">
-                <h2>{this.state.trending[0].venueName}</h2>
+                <h2>{this.state.trending[0].name}</h2>
                 <img className="img-trending" src={this.state.trending[0].webId} />
                 <p>{this.state.trending[0].venueLocation}</p>
                 <p>{this.state.trending[0].city}, {this.state.trending[0].state}</p>
               </div>
 
               <div className="col-md-4">
-                <h2>{this.state.trending[1].venueName}</h2>
+                <h2>{this.state.trending[1].name}</h2>
                 <img className="img-trending" src={this.state.trending[1].webId} />
                 <p>{this.state.trending[1].venueLocation} </p>
                 <p>{this.state.trending[1].city}, {this.state.trending[1].state}</p>
               </div>
 
               <div className="col-md-4">
-                <h2>{this.state.trending[2].venueName}</h2>
+                <h2>{this.state.trending[2].name}</h2>
                 <img className="img-trending" src={this.state.trending[2].webId} />
                <p>{this.state.trending[2].venueLocation}</p>
                <p>{this.state.trending[2].city}, {this.state.trending[2].state}</p>
