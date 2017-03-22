@@ -37,6 +37,14 @@ seatGeekAPI.seatGeekGetter(seatGeekAPI.seatGeekData, testObj.event, testObj.loca
   }
 })
 
+dataParser.seatGeekListCheck(testObj.event, testObj.location, function(err, results) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(results);
+  }
+});
+
 //retrieve data from the db, return to front-end
 
  var fakeRes= [{
@@ -89,14 +97,6 @@ app.post('/event', function(req, res) {
   req.on('end', function() {
     var userInput = JSON.parse(body);
     console.log('Post Request ', userInput);
-
-    dataParser.seatGeekListCheck(testObj.event, testObj.location, function(err, results) {
-      if (err) {
-        console.log(err);
-      } else {
-
-      }
-    });
 
         //ticket master api query with
     ticketMasterAPI.queryTicketMasterForEvent(ticketMasterAPI.ticketmasterData, userInput, function(err, data) {
