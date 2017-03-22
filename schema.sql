@@ -7,9 +7,9 @@ USE ticketpal;
 CREATE TABLE ticketinfo (
     id int NOT NULL AUTO_INCREMENT,
     name varchar(255),
-    min int,
-    avg int,
-    max int,
+    min float,
+    avg float,
+    max float,
     webID varchar(255),
     localDate varchar(255),
     api int,
@@ -18,7 +18,7 @@ CREATE TABLE ticketinfo (
     state varchar(255),
     PRIMARY KEY (id)
 );
-
+-- 45.0
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql
  *  to create the database and the tables.*/
