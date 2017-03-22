@@ -36,6 +36,7 @@ seatGeekAPI.seatGeekGetter(seatGeekAPI.seatGeekData, testObj.event, testObj.loca
     db.addTicketMasterToDataBase(results);
   }
 })
+
 dataParser.seatGeekListCheck(testObj.event, testObj.location, function(err, results) {
   if (err) {
     console.log(err);
@@ -96,8 +97,6 @@ app.post('/event', function(req, res) {
   req.on('end', function() {
     var userInput = JSON.parse(body);
     console.log('Post Request ', userInput);
-
-    });
 
         //ticket master api query with
     ticketMasterAPI.queryTicketMasterForEvent(ticketMasterAPI.ticketmasterData, userInput, function(err, data) {
