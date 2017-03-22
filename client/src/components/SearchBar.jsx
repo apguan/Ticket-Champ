@@ -54,6 +54,39 @@ class Search extends React.Component {
             <option value="Los Angeles">Los Angeles</option>
             <option value="Chicago">Chicago</option>
             <option value="New York">New York</option>
+            <option value="Oakland">Oakland</option>
+            <option value="New York" >New York</option>
+            <option value="Los Angeles">Los Angeles</option>
+            <option value="Chicago">Chicago</option>
+            <option value="Houston">Houston</option>
+            <option value="Philadelphia">Philadelphia</option>
+            <option value="Phoenix">Phoenix</option>
+            <option value="San Antonio">San Antonio</option>
+            <option value="San Diego">San Diego</option>
+            <option value="Dallas">Dallas</option>
+            <option value="San Jose">San Jose</option>
+            <option value="Austin">Austin</option>
+            <option value="Jacksonville">Jacksonville</option>
+            <option value="San Francisco">San Francisco</option>
+            <option value="Indianapolis">Indianapolis</option>
+            <option value="Columbus">Columbus</option>
+            <option value="Fort Worth">Fort Worth</option>
+            <option value="Charlotte">Charlotte</option>
+            <option value="Seattle">Seattle</option>
+            <option value="El Paso">El Paso</option>
+            <option value="Detroit">Detroit</option>
+            <option value="Denver">Denver</option>
+            <option value="Memphis">Memphis</option>
+            <option value="Boston">Boston</option>
+            <option value="Nashville">Nashville</option>
+            <option value="Baltimore">Baltimore</option>
+            <option value="Oklahoma">Oklahoma</option>
+            <option value="Portland">Portland</option>
+            <option value="Las Vegas">Las Vegas</option>
+            <option value="Louisville">Louisville</option>
+            <option value="Albuquerque">Albuquerque</option>
+            <option value="Jackson">Jackson</option>
+            <option value="Green Bay">Green Bay</option>
           </select>
         </li>
       </ul>

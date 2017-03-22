@@ -1,4 +1,4 @@
--- DROP DATABASE IF EXISTS  ticketpal;
+DROP DATABASE IF EXISTS  ticketpal;
 
 CREATE DATABASE ticketpal;
 
@@ -16,6 +16,7 @@ CREATE TABLE ticketinfo (
     city varchar(255),
     venueLocation varchar(255),
     state varchar(255),
+    eventUrl varchar(255),
     PRIMARY KEY (id)
 );
 -- 45.0
