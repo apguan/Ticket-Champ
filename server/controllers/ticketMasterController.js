@@ -17,6 +17,7 @@ var ticketmasterData = {
   city: null,
   venueLocation: null,
   state: null,
+  eventUrl: null,
 };
 
 // parses the data from prices query
