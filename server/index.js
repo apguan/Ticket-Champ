@@ -6,6 +6,7 @@ var request = require('request');
 var dbModel = require('./models/dbModels.js');
 var seatGeekAPI = require('./controllers/seatgeekController.js');
 var ticketMasterAPI = require('./controllers/ticketMasterController.js');
+var dataParser = require('./utilities/dataParser.js');
 
 
 var port = process.env.PORT || 5000;
@@ -19,13 +20,6 @@ app.use(express.static(path.join(__dirname, '../client/dist/')));
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 })
-// app.use('/', express.static())
-
-//seatgeek api query
-// app.post('/findtickets', function(req, res) {
-//   seatGeekAPI.seatGeekGetter()
-
-// })
 
 
 testObj = {
@@ -43,6 +37,7 @@ seatGeekAPI.seatGeekGetter(seatGeekAPI.seatGeekData, testObj.event, testObj.loca
   }
 })
 
+//retrieve data from the db, return to front-end
 
  var fakeRes= [{
       url: 'http://static.highsnobiety.com/wp-content/uploads/2016/06/14133513/kanye-west-saint-pablo-tour-00.jpg',
@@ -95,6 +90,14 @@ app.post('/event', function(req, res) {
     var userInput = JSON.parse(body);
     console.log('Post Request ', userInput);
 
+    dataParser.seatGeekListCheck(testObj.event, testObj.location, function(err, results) {
+      if (err) {
+        console.log(err);
+      } else {
+
+      }
+    });
+
         //ticket master api query with
     ticketMasterAPI.queryTicketMasterForEvent(ticketMasterAPI.ticketmasterData, userInput, function(err, data) {
       // console.log("this is the event id ", ticketMasterAPI.ticketmasterData.id)
@@ -119,6 +122,8 @@ app.post('/event', function(req, res) {
     });
   })
 })
+
+
 
 app.get('/home', function(req, res) {
   // console.log('Get Request Recieved!')
