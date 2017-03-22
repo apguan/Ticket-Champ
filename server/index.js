@@ -42,6 +42,7 @@ dataParser.seatGeekListCheck(testObj.event, testObj.location, function(err, resu
   } else {
     console.log(results);
   }
+});
 
 //retrieve data from the db, return to front-end
 
