@@ -38,7 +38,7 @@ class App extends React.Component {
     })
   }
 
-  componentWillMount() {
+  componentDidMount() {
     // setState({
     // data:
     var context = this;
@@ -47,12 +47,13 @@ class App extends React.Component {
         url:"/home",
         // data: data,
         success: function(response) {
-          console.log('GET Data Success Trending', JSON.parse(response));
-          var trendingRes = JSON.parse(response);
           context.setState({
-            trending: trendingRes
+            trending: response
           })
-
+          console.log('success', response);
+        },
+        error: function(error) {
+          console.log('error getting back top three');
         }
     })
   }
@@ -88,22 +89,22 @@ class App extends React.Component {
             <div className="row">
 
               <div className="col-md-4">
-                <h2>{this.state.trending[0].venueName}</h2>
-                <img className="img-trending" src={this.state.trending[0].url} />
+                <h2>{this.state.trending[0].name}</h2>
+                <img className="img-trending" src={this.state.trending[0].webId} />
                 <p>{this.state.trending[0].venueLocation}</p>
                 <p>{this.state.trending[0].city}, {this.state.trending[0].state}</p>
               </div>
 
               <div className="col-md-4">
-                <h2>{this.state.trending[1].venueName}</h2>
-                <img className="img-trending" src={this.state.trending[1].url} />
+                <h2>{this.state.trending[1].name}</h2>
+                <img className="img-trending" src={this.state.trending[1].webId} />
                 <p>{this.state.trending[1].venueLocation} </p>
                 <p>{this.state.trending[1].city}, {this.state.trending[1].state}</p>
               </div>
 
               <div className="col-md-4">
-                <h2>{this.state.trending[2].venueName}</h2>
-                <img className="img-trending" src={this.state.trending[2].url} />
+                <h2>{this.state.trending[2].name}</h2>
+                <img className="img-trending" src={this.state.trending[2].webId} />
                <p>{this.state.trending[2].venueLocation}</p>
                <p>{this.state.trending[2].city}, {this.state.trending[2].state}</p>
               </div>

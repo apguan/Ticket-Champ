@@ -26,15 +26,13 @@ app.get('/', function(req, res) {
 //   seatGeekAPI.seatGeekGetter()
 
 // })
-//ticket master api query with
+
 
 testObj = {
   event: 'Lady Gaga',
   location: 'San Francisco',
-  event: 'lady gaga',
-  location: 'san Francisco',
-
 }
+
 
 
  var fakeRes= [{
@@ -114,10 +112,20 @@ app.post('/event', function(req, res) {
 })
 
 app.get('/home', function(req, res) {
-  console.log('Get Request Recieved!')
-  res.end(JSON.stringify(fakeRes))
+  // console.log('Get Request Recieved!')
+  // res.end(JSON.stringify(fakeRes))
 
-  console.log('Get Request Recieved!');
+  // console.log('Get Request Recieved!');
+
+  db.getTopThreeTrending(function (err, results) {
+    if(err) {
+      console.log('err heppend server side');
+    } else {
+      console.log('sending results')
+      res.send(results);
+    }
+  })
+
 
 });
 
