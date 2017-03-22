@@ -28,8 +28,7 @@ var seatGeekGetter = function(dataObj, searchParam, location, callback) {
       // console.log('this is our data', info.events)
       for (var i = 0; i < info.events.length; i++){
 
-
-        if (info.events[i].title === searchParam && info.events[i].venue.display_location === location) {
+        if (info.events[i].title === searchParam && info.events[i].venue.city === location){
 
           dataObj.id = info.events[i].performers[0].id;
           dataObj.highPrice = info.events[i].stats.highest_price;
