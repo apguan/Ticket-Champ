@@ -9,7 +9,7 @@ var ticketmasterData = {
   url: null,
   highPrice: null,
   lowPrice: null,
-  averagePice: null,
+  averagePrice: null,
   venueName: null,
   id: null,
   date: '',
@@ -28,6 +28,7 @@ var ticketmasterDataParser = function(dataOject, input) {
   dataOject.lowPrice = low;
   var average = 0;
   var len = data.length;
+  console.log(len);
 
   for (var i = 0; i < data.length; i++) {
     var items = data[i].attributes.value;
@@ -42,7 +43,8 @@ var ticketmasterDataParser = function(dataOject, input) {
       dataOject.lowPrice = low;
     }
   }
-  dataOject.averagePice = average / len;
+  var ave = average / len;
+  dataOject.averagePrice = ave.toFixed(2);
   // console.log(data.prices.data[0].attributes.value)
   return dataOject;
 }

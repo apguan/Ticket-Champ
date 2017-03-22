@@ -6,13 +6,14 @@ var seatGeekData = {
   url: null,
   highPrice: null,
   lowPrice: null,
-  averagePice: null,
+  averagePrice: null,
   venueName: null,
   date: '',
   apiId: 1,
   city: null,
   venueLocation: null,
   state: null,
+  eventUrl: null
 };
 
 var seatGeekGetter = function(dataObj, searchParam, location, callback) {
@@ -36,13 +37,13 @@ var seatGeekGetter = function(dataObj, searchParam, location, callback) {
           dataObj.lowPrice = info.events[i].stats.lowest_price;
           dataObj.venueName = info.events[i].title;
           dataObj.date = info.events[i].datetime_local.slice(0,10);
-          dataObj.averagePice = info.events[i].stats.average_price;
+          dataObj.averagePrice = info.events[i].stats.average_price;
           dataObj.city = info.events[i].venue.city;
           dataObj.apiId= 1;
           dataObj.venueLocation = info.events[i].venue.name;
           dataObj.state = info.events[i].venue.state;
-          dataObj.url = info.events[i].url;
-
+          dataObj.eventUrl = info.events[i].url;
+          dataObj.url = info.events[i].performers[0].image;
           console.log(dataObj)
           callback(null, dataObj);
 

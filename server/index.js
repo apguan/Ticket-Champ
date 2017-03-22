@@ -28,26 +28,7 @@ testObj = {
 }
 
 
-seatGeekAPI.seatGeekGetter(seatGeekAPI.seatGeekData, testObj.event, testObj.location, function(err, results) {
-  if (err) {
-    console.log(err)
-  } else {
 
-    console.log('SG res success!', results);
-
-    console.log('success!')
-
-    // db.addTicketMasterToDataBase(results);
-  }
-})
-
-dataParser.seatGeekListCheck(testObj.event, testObj.location, function(err, results) {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(results);
-  }
-});
 
 //retrieve data from the db, return to front-end
 
@@ -102,6 +83,16 @@ app.post('/event', function(req, res) {
     var userInput = JSON.parse(body);
     console.log('Post Request ', userInput);
 
+    seatGeekAPI.seatGeekGetter(seatGeekAPI.seatGeekData, userInput.event, userInput.location, function(err, results) {
+      if (err) {
+        console.log(err)
+      } else {
+
+        console.log('SG res success!', results);
+
+        db.addTicketMasterToDataBase(results);
+      }
+    })
         //ticket master api query with
     ticketMasterAPI.queryTicketMasterForEvent(ticketMasterAPI.ticketmasterData, userInput, function(err, data) {
       // console.log("this is the event id ", ticketMasterAPI.ticketmasterData.id)
@@ -119,7 +110,17 @@ app.post('/event', function(req, res) {
 
             var tmResponse = ticketMasterAPI.ticketmasterData;
 
-            res.end(JSON.stringify([tmResponse]));
+            dataParser.seatGeekListCheck(userInput.event, userInput.location, function(err, results) {
+              if (err) {
+                console.log(err);
+              } else {
+                console.log('ALYS 1 ITEM:', tmResponse)
+                console.log('ALLENS ARRAY:', results);
+                var sendArr = results.unshift(tmResponse);
+                console.log('WHAT WE WANT COMBO', sendArr);
+                res.end(JSON.stringify(sendArr));
+              }
+            });
           }
         })
       }
