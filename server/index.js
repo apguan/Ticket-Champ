@@ -88,7 +88,7 @@ app.post('/event', function(req, res) {
         console.log(err)
       } else {
 
-        console.log('SG res success!', results);
+        // console.log('SG res success!', results);
 
         db.addTicketMasterToDataBase(results);
       }
@@ -114,6 +114,7 @@ app.post('/event', function(req, res) {
               if (err) {
                 console.log(err);
               } else {
+
                 var arrayToClient = [];
                 arrayToClient[0] = tmResponse;
                 var result = JSON.parse(JSON.stringify(results));
