@@ -28,7 +28,6 @@ function TicketList (props) {
       <table>
       <div className="well">
         <tr>
-          <th> Provider </th>
           <th> Date </th>
           <th> Event </th>
           <th> Location </th>
