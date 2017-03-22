@@ -28,6 +28,7 @@ var seatGeekGetter = function(dataObj, searchParam, location, callback) {
       // console.log('this is our data', info.events)
       for (var i = 0; i < info.events.length; i++){
 
+
         if (info.events[i].title === searchParam && info.events[i].venue.display_location === location) {
 
           dataObj.id = info.events[i].performers[0].id;
@@ -44,6 +45,7 @@ var seatGeekGetter = function(dataObj, searchParam, location, callback) {
 
           console.log(dataObj)
           callback(null, dataObj);
+
         }
 
       }
