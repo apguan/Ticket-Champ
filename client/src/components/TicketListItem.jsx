@@ -8,7 +8,7 @@ function TicketListItem (props) {
   // RENDER EACH ITEM IN A TABLE
   return (
     <div >
-        <div className="well">
+        <div className="card">
           <tr>
             <td>{props.searchItem.date}</td>
             <td>{props.searchItem.venueName}</td>

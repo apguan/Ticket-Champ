@@ -12,6 +12,14 @@ h1 {
   padding-bottom: 1em;
 }
 
+th, td {
+  border-bottom: 1px solid #ddd;
+}
+
+.tableClass {
+
+}
+
 .flex-container {
   padding: 0;
   margin: 0;

@@ -31,7 +31,7 @@ function TicketList (props) {
         <li className="flex-item-gutter" ></li>
         <li className="flex-item-ticketItem" >
           <table>
-          <div className="well">
+          <div className="tableClass">
             <tr>
               <th> Date </th>
               <th> Event </th>
@@ -50,7 +50,7 @@ function TicketList (props) {
         <li className="flex-item-ticketCompare">
           <div className="card">
             <div className="cardContainer">
-              <img src={imgUrl} style={imgCard}></img>
+              <img src={imgUrl} ></img>
               <h2> Artist Text </h2>
               <p> Artist Description Goes Here </p>
             </div>
@@ -65,3 +65,4 @@ function TicketList (props) {
 
 export default TicketList;
 
+// style={imgCard}

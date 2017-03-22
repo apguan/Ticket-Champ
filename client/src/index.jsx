@@ -25,12 +25,11 @@ class App extends React.Component {
         url:"/event",
         data: JSON.stringify(value),
         success: function(output) {
-          console.log('Post Data Success Search', JSON.parse(output));
+          console.log('Post Data Success Search', output);
           var searchRes = JSON.parse(output);
           context.setState({
             searchResults: searchRes
           })
-
         },
         error: function() {
           console.log('try again');
