@@ -26,6 +26,20 @@ h1 {
   flex-direction: row;
 }
 
+.flex-container-search {
+  padding: 0;
+  margin: 0;
+
+  /*margin-bottom: -2.8em;*/
+
+
+  list-style: none;
+  display: flex;
+
+  justify-content: space-between;
+  flex-direction: row;
+}
+
 .flex-container-listItem {
   padding: 0;
   margin: 0;
@@ -61,6 +75,15 @@ h1 {
   text-align: center;
 }
 
+.flex-item-location {
+  flex-grow: 2;
+  height: 10%;
+
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
 .flex-item-banner {
 
   flex-grow: 6;
@@ -84,14 +107,6 @@ h1 {
   text-align: center;
 }
 
-.flex-item-location {
-  flex-grow: 2;
-  height: 10%;
-
-  color: white;
-  font-weight: bold;
-  text-align: center;
-}
 
 .flex-item-gutter-header {
 

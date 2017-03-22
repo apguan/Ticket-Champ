@@ -10,7 +10,6 @@ function TicketListItem (props) {
     <div >
         <div className="well">
           <tr>
-            <td>TicketMaster</td>
             <td>{props.searchItem.date}</td>
             <td>{props.searchItem.venueName}</td>
             <td>{props.searchItem.venueLocation}</td>

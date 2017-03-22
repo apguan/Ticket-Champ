@@ -27,7 +27,9 @@ var seatGeekGetter = function(dataObj, searchParam, location, callback) {
       var info = JSON.parse(body);
       // console.log('this is our data', info.events)
       for (var i = 0; i < info.events.length; i++){
-        // if (info.events[i].title === searchParam && info.events[i].venue.city === location){
+
+
+        if (info.events[i].title === searchParam && info.events[i].venue.display_location === location) {
 
           dataObj.id = info.events[i].performers[0].id;
           dataObj.highPrice = info.events[i].stats.highest_price;
@@ -43,7 +45,9 @@ var seatGeekGetter = function(dataObj, searchParam, location, callback) {
 
           console.log(dataObj)
           callback(null, dataObj);
-        // }
+
+        }
+
       }
     } else {
       callback(error, null);

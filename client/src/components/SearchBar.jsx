@@ -40,12 +40,15 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div>
+      <ul className="flex-container-search">
         <li className="flex-item-search" >
           <input className="search-input" value={this.state.search} onChange={this.onChange}/>
           <button className="search-button" onClick={this.searchBar}> Compare </button>
         </li>
-         <li className="flex-item-location" >
+        <li className="flex-item-gutter">
+          <div> </div>
+        </li>
+         <li className="flex-item-location">
           <select  className="select-location" value={this.state.location} onChange={this.handleLocation}>
             <option value="San Francisco">San Francisco</option>
             <option value="Los Angeles">Los Angeles</option>
@@ -53,7 +56,7 @@ class Search extends React.Component {
             <option value="New York">New York</option>
           </select>
         </li>
-      </div>
+      </ul>
     )
   }
 }
