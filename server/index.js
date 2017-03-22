@@ -32,7 +32,11 @@ seatGeekAPI.seatGeekGetter(seatGeekAPI.seatGeekData, testObj.event, testObj.loca
   if (err) {
     console.log(err)
   } else {
+<<<<<<< 417f4202e87f032d135b8b116f5663add817747c
     console.log('SG res success!', results);
+=======
+    console.log('success!')
+>>>>>>> tinkering
     // db.addTicketMasterToDataBase(results);
   }
 })
