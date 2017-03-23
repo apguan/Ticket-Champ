@@ -45,13 +45,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // setState({
-    // data:
+
     var context = this;
     $.ajax({
         type:"GET",
         url:"/home",
-        // data: data,
         success: function(response) {
           context.setState({
             trending: response
