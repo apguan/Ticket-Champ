@@ -72,7 +72,7 @@ app.post('/event', function(req, res) {
                 sendToClient.push(comparisonArray);
                 console.log("LAST ITEM IN RES", sendToClient);
 
-                // res.end(JSON.stringify(sendToClient));
+                res.end(JSON.stringify(sendToClient));
               }
             })
           }
