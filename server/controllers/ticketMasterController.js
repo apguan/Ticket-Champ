@@ -55,14 +55,16 @@ var queryTicketMasterForEvent = function(dataOject, searchParam, callback) {
   // var queryString = 'https://app.ticketmaster.com/discovery/v2/events.json?keyword=' + searchParam + '&apikey=kyYiscxIL5hihtSs95QwNGsixEv738Zj&page=1';
   var queryString = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=kyYiscxIL5hihtSs95QwNGsixEv738Zj&keyword=' + searchParam.event + '&city=' + searchParam.location;
   request(queryString, function (error, response, body) {
+    var event = JSON.parse(body);
+    console.log(event);
+    console.log('this is the event', typeof event._links === 'object')
     if (!error && response.statusCode == 200) {
       console.log('event query is returning a dataset');
-      var event = JSON.parse(body);
       dataOject.venueName = event._embedded.events[0].name;
       dataOject.eventUrl = event._embedded.events[0].url;
       dataOject.url = event._embedded.events[0].images[0].url;
       dataOject.id = event._embedded.events[0].id;
-      dataOject.date = event._embedded.events[0].dates.start.localDate;
+      dataOject.date = event._embedded.events[0].dates.start.localDate + 'T' + event._embedded.events[0].dates.start.localTime;
       dataOject.venueLocation = event._embedded.events[0]._embedded.venues[0].name;
       dataOject.city = event._embedded.events[0]._embedded.venues[0].city.name;
       dataOject.state = event._embedded.events[0]._embedded.venues[0].state.stateCode;
