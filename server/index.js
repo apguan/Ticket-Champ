@@ -37,8 +37,10 @@ app.post('/event', function(req, res) {
       } else {
 
         // console.log('SG res success!', results);
+
         tempStore.push(results)
         console.log(tempStore)
+
 
         ticketMasterAPI.queryTicketMasterForEvent(ticketMasterAPI.ticketmasterData, userInput, function(err, data) {
           // console.log("this is the event id ", ticketMasterAPI.ticketmasterData.id)
@@ -56,7 +58,6 @@ app.post('/event', function(req, res) {
 
                 var tmResponse = ticketMasterAPI.ticketmasterData;
 
-                // console.log('this is the TM response', tmResponse)
                 var arrayToClient = [];
                 var comparisonArray = [];
                 arrayToClient[0] = tmResponse;

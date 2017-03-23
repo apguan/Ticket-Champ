@@ -47,7 +47,7 @@ var seatGeekGetter = function(dataObj, searchParam, location, callback) {
           dataObj.state = info.events[i].venue.state;
           dataObj.eventUrl = info.events[i].url;
           dataObj.url = info.events[i].performers[0].image;
-          // console.log(dataObj);
+
           callback(null, dataObj);
 
         }
