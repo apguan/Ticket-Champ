@@ -11,7 +11,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       trending: [],
-      searchResults: []
+      searchResults: [],
+      compareResults: []
     }
     this.search = this.search.bind(this);
     }

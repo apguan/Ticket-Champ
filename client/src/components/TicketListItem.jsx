@@ -7,13 +7,13 @@ function TicketListItem (props) {
 
   // RENDER EACH ITEM IN A TABLE
   return (
-    <div >
-        <div className="card">
+    <div>
+        <div>
           <tr>
-            <td>{props.searchItem.date}</td>
-            <td>{props.searchItem.venueName}</td>
+            <td>{props.searchItem.localDate}</td>
+            <td>{props.searchItem.name}</td>
             <td>{props.searchItem.venueLocation}</td>
-            <td>{props.searchItem.averagePice}</td>
+            <td>{props.searchItem.avg}</td>
           </tr>
         </div>
     </div>
