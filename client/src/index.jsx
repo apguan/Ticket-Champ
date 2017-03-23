@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import SearchUnit from './components/SearchUnit.jsx';
 import TicketList from './components/TicketList.jsx';
+import Trending from './components/Trending.jsx';
+import TrendingItem from './components/TrendingItem.jsx';
 
 class App extends React.Component {
   constructor (props) {
@@ -70,40 +72,14 @@ class App extends React.Component {
         <SearchUnit onSearch={this.search}/>
 
       { this.state.searchResults.length > 0 ?
-        (<TicketList searchRes={this.state.searchResults}/>) :
-        (<div>
-          <div className="jumbotron">
-            <div className="container">
-              <h1>Trending</h1>
-            </div>
-          </div>
-
-          <div className="container">
-            <div className="row">
-
-              <div className="col-md-4">
-                <h2>{this.state.trending[0].name}</h2>
-                <img className="img-trending" src={this.state.trending[0].webId} />
-                <p>{this.state.trending[0].venueLocation}</p>
-                <p>{this.state.trending[0].city}, {this.state.trending[0].state}</p>
-              </div>
-
-              <div className="col-md-4">
-                <h2>{this.state.trending[1].name}</h2>
-                <img className="img-trending" src={this.state.trending[1].webId} />
-                <p>{this.state.trending[1].venueLocation} </p>
-                <p>{this.state.trending[1].city}, {this.state.trending[1].state}</p>
-              </div>
-
-              <div className="col-md-4">
-                <h2>{this.state.trending[2].name}</h2>
-                <img className="img-trending" src={this.state.trending[2].webId} />
-               <p>{this.state.trending[2].venueLocation}</p>
-               <p>{this.state.trending[2].city}, {this.state.trending[2].state}</p>
-              </div>
-            </div>
-          </div>
-        </div>)
+        (
+          <ul className="flex-container">
+            <li className="flex-item-gutter" ></li>
+            <TicketList searchRes={this.state.searchResults}/>
+            <li className="flex-item-gutter" ></li>
+          </ul>
+          ) :
+        (<Trending trending={this.state.trending} />)
       }
         <div className="container">
           <footer className="footer">
