@@ -25,8 +25,7 @@ function TicketList (props) {
     'overflow-x':'auto'
   }
 
-  var upcomingEvents = props.searchRes.splice(1);
-  console.log("upcomingEvents minus aly", upcomingEvents)
+  var upcomingEvents = props.searchRes.splice();
 
   return (
     <div>
@@ -45,7 +44,7 @@ function TicketList (props) {
               <th> Price </th>
             </tr>
           </div>
-          { upcomingEvents.map(function(item) {
+          { props.searchRes.map(function(item) {
               return (
                 <TicketListItem searchItem={item}/>
               )
@@ -57,24 +56,24 @@ function TicketList (props) {
           <div className="card">
             <div className="cardContainer">
               <img src={imgUrl} ></img>
-              <h2> Artist Text </h2>
-              <p> Artist Description Goes Here </p>
+              <h2> {props.searchRes[0].venueName} </h2>
+              <p> {props.searchRes[0].city} </p>
             </div>
           </div>
           <div className="card">
             <div className="cardContainer">
               <h2> TicketMaster </h2>
-              <p> Artist Description Goes Here </p>
-              <h3>Price</h3>
+              <p> {props.searchRes[0].venueLocation} </p>
+              <h3>{props.searchRes[0].averagePrice}</h3>
               <button className="buyButton">Buy</button>
             </div>
           </div>
           <div className="card">
             <div className="cardContainer">
               <h2> SeatGeek </h2>
-              <p> Artist Description Goes Here </p>
+              <p> {props.searchRes[0].venueLocation} </p>
               <span>
-              <h3>Price</h3>
+              <h3>{props.searchRes[0].averagePrice}</h3>
               <button className="buyButton">Buy</button>
               </span>
             </div>

@@ -10,10 +10,10 @@ function TicketListItem (props) {
     <div>
         <div>
           <tr>
-            <td>{props.searchItem.localDate}</td>
-            <td>{props.searchItem.name}</td>
+            <td>{props.searchItem.date}</td>
+            <td>{props.searchItem.venueName}</td>
             <td>{props.searchItem.venueLocation}</td>
-            <td>{props.searchItem.avg}</td>
+            <td>{props.searchItem.averagePrice}</td>
           </tr>
         </div>
     </div>
