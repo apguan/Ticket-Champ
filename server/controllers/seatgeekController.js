@@ -51,6 +51,8 @@ var seatGeekGetter = function(dataObj, searchParam, location, callback) {
 
       }
     } else {
+      alert('not found')
+      response.end('not found')
       callback(error, null);
     }
   })
