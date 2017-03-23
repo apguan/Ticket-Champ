@@ -36,11 +36,8 @@ app.post('/event', function(req, res) {
         console.log(err)
       } else {
 
-        // console.log('SG res success!', results);
-
         tempStore.push(results)
         console.log(tempStore)
-
 
         ticketMasterAPI.queryTicketMasterForEvent(ticketMasterAPI.ticketmasterData, userInput, function(err, data) {
           // console.log("this is the event id ", ticketMasterAPI.ticketmasterData.id)

@@ -20,6 +20,7 @@ var seatGeekData = {
 var seatGeekGetter = function(dataObj, searchParam, location, callback) {
 
   var artistName = searchParam.split(' ').join('+');
+  var slug = searchParam.toLowerCase().split(' ').join('-');
 
   var queryString = 'https://api.seatgeek.com/2/events?q=' + artistName +'&per_page=100' + '&client_id=NzA2MzY4MnwxNDg5NTE0NDA0Ljc1';
 
@@ -28,12 +29,12 @@ var seatGeekGetter = function(dataObj, searchParam, location, callback) {
     // console.log("SG RESPONSE :", JSON.parse(body));
     if (!error && response.statusCode == 200) {
       var info = JSON.parse(body);
-      // console.log('this is our data', info.events.length)
+      // console.log('this is our data', info.events[0].performers[0].slug)
 
       for (var i = 0; i < info.events.length; i++){
 
 
-        if (info.events[i].title === searchParam && info.events[i].venue.city === location) {
+        if (info.events[i].performers[0].slug === slug && info.events[i].venue.city === location) {
 
           dataObj.id = info.events[i].performers[0].id;
           dataObj.highPrice = info.events[i].stats.highest_price;
