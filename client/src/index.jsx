@@ -78,7 +78,7 @@ class App extends React.Component {
       { this.state.searchResults.length > 0 ?
         (
           <div className="container">
-            <TicketList searchRes={this.state.searchResults}/>
+            <TicketList searchRes={this.state.searchResults} compareRes={this.state.compareResults}/>
           </div>
           ) :
         (<Trending trending={this.state.trending} search={this.search}/>)

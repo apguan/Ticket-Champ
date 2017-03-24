@@ -29,8 +29,10 @@ function TicketList (props) {
 
   return (
     <div className="row">
+      <div>
         <div className="img-banner" width='100%'style={imgBannerUpdate}>
-        <h1 className="artist-name">Artist</h1>
+        <h1 className="animated zoomInDown artist-name">{props.searchRes[0].venueName}</h1>
+        </div>
       </div>
 
       <div className='row'>
@@ -59,10 +61,13 @@ function TicketList (props) {
         </div>
 
        <div className='col-md-6'>
-          <div className="row">
+          <div className="col-md-12 priceCompare">
+            Price Comparison
+          </div>
+          <div className="row well">
             <div className="col-md-12 poster">
-              <div className="thumbnail">
-                <img src={imgUrl} width='25%' alt=""/>
+              <div className="animated flipInX thumbnail">
+                <img src={imgUrl} width='50%' alt=""/>
                 <div className="caption">
                   <h3>Price</h3>
                   <p><a href="#" className="btn btn-primary" role="button">Purchase</a></p>
@@ -73,8 +78,8 @@ function TicketList (props) {
               </div>
               <br/>
             <div className='col-md-12 poster'>
-              <div className="thumbnail">
-                <img src={imgUrl} width='25%' alt=""/>
+              <div className="animated flipInX thumbnail">
+                <img src={imgUrl} width='50%' alt=""/>
                 <div className="caption">
                   <h3>Price</h3>
                   <p><a href="#" className="btn btn-primary" role="button">Purchase</a></p>

@@ -37,8 +37,7 @@ var ticketmasterDataParser = function(dataOject, input) {
     if (item > high) {
       high = item
       dataOject.highPrice = high;
-    }
-    if (item < low ) {
+    } else if (item < low ) {
       low = item;
       dataOject.lowPrice = low;
     }
@@ -53,13 +52,14 @@ var queryTicketMasterForEvent = function(dataOject, searchParam, callback) {
   // console.log('this is a search' ,searchParam)
 	//remove hard coded api key
   // var queryString = 'https://app.ticketmaster.com/discovery/v2/events.json?keyword=' + searchParam + '&apikey=kyYiscxIL5hihtSs95QwNGsixEv738Zj&page=1';
-  var queryString = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=kyYiscxIL5hihtSs95QwNGsixEv738Zj&keyword=' + searchParam.event + '&city=' + searchParam.location;
+  var queryString = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=kyYiscxIL5hihtSs95QwNGsixEv738Zj&keyword=' + searchParam.event + '&city=' + searchParam.location  + '&radius=100';
   request(queryString, function (error, response, body) {
     var event = JSON.parse(body);
     console.log('this is the event: ' ,event._embedded);
     console.log('this is the typeof event', typeof event._embedded === 'object')
     if (!error && response.statusCode == 200) {
       console.log('event query is returning a dataset');
+
       dataOject.venueName = event._embedded.events[0].name;
       dataOject.eventUrl = event._embedded.events[0].url;
       dataOject.url = event._embedded.events[0].images[0].url;
