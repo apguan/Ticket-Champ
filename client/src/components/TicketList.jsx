@@ -1,5 +1,6 @@
 import React from 'react';
 import TicketListItem from './TicketListItem.jsx';
+import PriceComparisonItem from './PriceComparisonItem.jsx';
 
 
 function TicketList (props) {
@@ -29,15 +30,17 @@ function TicketList (props) {
 
   return (
     <div className="row">
+      <div>
         <div className="img-banner" width='100%'style={imgBannerUpdate}>
-        <h1 className="artist-name">Artist</h1>
+        <h1 className="animated zoomInDown artist-name">{props.searchRes[0].venueName}</h1>
+        </div>
       </div>
 
       <div className='row'>
 
        <div className='col-md-6'>
        <div className="table-responsive">
-          <table className="table table-bordered">
+          <table className="table">
             <thead>
                 <tr>
                     <th>Event Date</th>
@@ -59,30 +62,16 @@ function TicketList (props) {
         </div>
 
        <div className='col-md-6'>
-          <div className="row">
-            <div className="col-md-12 poster">
-              <div className="thumbnail">
-                <img src={imgUrl} width='25%' alt=""/>
-                <div className="caption">
-                  <h3>Price</h3>
-                  <p><a href="#" className="btn btn-primary" role="button">Purchase</a></p>
-                  <h4>{props.searchRes[0].city}</h4>
-                  <p>{props.searchRes[0].venueName}</p>
-                </div>
-                </div>
-              </div>
-              <br/>
-            <div className='col-md-12 poster'>
-              <div className="thumbnail">
-                <img src={imgUrl} width='25%' alt=""/>
-                <div className="caption">
-                  <h3>Price</h3>
-                  <p><a href="#" className="btn btn-primary" role="button">Purchase</a></p>
-                  <h4>{props.searchRes[0].city}</h4>
-                  <p>{props.searchRes[0].venueName}</p>
-                </div>
-              </div>
-            </div>
+          <div className="col-md-12 priceCompare">
+            Price Comparison
+          </div>
+          <div className="row well">
+            { props.searchRes.map(function(item) {
+                  return (
+                    <PriceComparisonItem compareItem={item} imgUrl={imgUrl}/>
+                  )
+                })
+              }
           </div>
 
        </div>

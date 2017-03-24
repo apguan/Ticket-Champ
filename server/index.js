@@ -55,6 +55,7 @@ app.post('/event', function(req, res) {
             tmResponse = ticketMasterAPI.ticketmasterData;
 
             apiResListSend.push(tmResponse);
+
             compareResArr.push(tmResponse);
             apiResCount++;
             // console.log('tmAPI SUCCESS', tmResponse);

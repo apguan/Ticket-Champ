@@ -18,27 +18,40 @@ REFACTOR CSS
 */
 .poster {
   text-align: center;
-  margin-bottom: 30px;
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(166,166,166,1);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(166,166,166,1);
-  box-shadow: 10px 10px 5px 0px rgba(166,166,166,1);
+  margin-bottom: 2em;
+
 }
-.artist-name {
-  color: #fff;
-  padding-top: 30px
-  padding-right: 30px;
+
+
+
+
+.table-responsive, .table, .table-bordered, tr, th {
+  /*border: 1px solid #ccc;*/
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  /*width: 100%;*/
+  /*table-layout: fixed;*/
 }
+
+
+
 
 .table-bordered > tr {
   background-color: red;
+
 }
 .tbl-row {
-  border: 2px solid grey;
+    /*border: 1px solid #ccc;*/
+    border-collapse: collapse;
+    padding-bottom: 2em;
+  /*border: 2px solid grey;*/
 }
 .tbl-row:hover {
-  background: grey;
-  border: 2px solid #ddd;
-  cursor: pointer;
+  background: #ddd;
+/*  border: 2px solid #ddd;
+*/  cursor: pointer;
 
 }
 /*
@@ -48,7 +61,7 @@ REFACTOR CSS
   border-bottom: 1px solid #ddd;
 }*/
 
-.tableClass {
+/*.tableClass {
   width: 100%;
   border-collapse: collapse;
 }
@@ -72,7 +85,7 @@ REFACTOR CSS
     text-align: left;
     background-color: #ddd;
     color: white;
-}
+}*/
 
 .buyButton {
   /* text styles */
@@ -203,6 +216,8 @@ REFACTOR CSS
   text-align: center;
 }
 
+
+
 .flex-item-banner {
 
   flex-grow: 6;
@@ -302,10 +317,10 @@ REFACTOR CSS
   position: initial;
   padding-top: 24em;
 }
-
+/*
 #table {
   padding-left: 20%
-}
+}*/
 
 /*.well {
   height: 8%;
@@ -338,13 +353,28 @@ REFACTOR CSS
 .img-banner {
   width: 100%;
   height: 300px;
-
+  /*filter: blur(6px);*/
   padding-bottom: 1em;
+  /*border-radius: .2em;*/
   /*background-image: url(http://www.nylon.com.sg/wp-content/uploads/2017/01/kanye-banner.png);*/
   background-color: purple;
   background-position: center;
   margin-bottom: 1em;
 
+}
+
+.artist-name {
+  color: #fff;
+  padding-top: 1.4em;
+  text-align: center;
+  font-size: 5em;
+}
+
+.priceCompare {
+  margin-top: 0.7em;
+  margin-bottom: .6em;
+  text-align: center;
+  font-size: 2em;
 }
 
 .jumbotron {
