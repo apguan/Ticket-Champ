@@ -1,7 +1,6 @@
 var request = require('request');
 
-//venueName === artist name
-//venueLocation ===
+
 var seatGeekData = {
   url: null,
   highPrice: null,
@@ -17,47 +16,66 @@ var seatGeekData = {
 
 };
 
-var seatGeekGetter = function(dataObj, searchParam, location, callback) {
+var sgHelper = function(sgAPIresArr, cb) {
+  var dataObj = {};
 
-  var artistName = searchParam.split(' ').join('+');
+  for (var i = 0; i < sgAPIresArr.events.length; i++){
+
+    // console.log('SG API TITLE :', sgAPIresArr.events[i].title);
+    // console.log('SG API TITLE ------------------>');
+
+    dataObj.venueName = sgAPIresArr.events[i].title;
+    dataObj.highPrice = sgAPIresArr.events[i].stats.highest_price;
+    dataObj.lowPrice = sgAPIresArr.events[i].stats.lowest_price;
+    dataObj.averagePrice = sgAPIresArr.events[i].stats.average_price;
+    dataObj.date = sgAPIresArr.events[i].datetime_local;
+    dataObj.city = sgAPIresArr.events[i].venue.city;
+    dataObj.state = sgAPIresArr.events[i].venue.state;
+    dataObj.venueLocation = sgAPIresArr.events[i].venue.name;
+    dataObj.eventUrl = sgAPIresArr.events[i].url;
+    dataObj.url = sgAPIresArr.events[i].performers[0].image;
+    dataObj.id = sgAPIresArr.events[i].performers[0].id;
+    dataObj.apiId = 1;
+
+    cb(null, dataObj);
+    dataObj = {};
+  }
+}
+
+
+var seatGeekGetter = function(searchParam, location, callback) {
+
+  var sgParsedRes = [];
+  console.log('SG LOC', location)
+  console.log('SG EVENT', searchParam)
+  // var locationSearch = location.split(' ').join('+');
+  var artistSearch = searchParam.split(' ').join('+');
   var slug = searchParam.toLowerCase().split(' ').join('-');
 
-  var queryString = 'https://api.seatgeek.com/2/events?q=' + artistName +'&per_page=100' + '&client_id=NzA2MzY4MnwxNDg5NTE0NDA0Ljc1';
+  var queryString = 'https://api.seatgeek.com/2/events?q=' + artistSearch +'&per_page=100&venue.city=' + location + '&range=100mi&client_id=NzA2MzY4MnwxNDg5NTE0NDA0Ljc1';
 
   request(queryString, function (error, response, body) {
-    console.log('testing');
-    // console.log("SG RESPONSE :", JSON.parse(body));
-    if (!error && response.statusCode == 200) {
-      var info = JSON.parse(body);
-      // console.log('this is our data', info.events[0].performers[0].slug)
-
-      for (var i = 0; i < info.events.length; i++){
-
-
-        if (info.events[i].performers[0].slug === slug && info.events[i].venue.city === location) {
-
-          dataObj.id = info.events[i].performers[0].id;
-          dataObj.highPrice = info.events[i].stats.highest_price;
-          dataObj.lowPrice = info.events[i].stats.lowest_price;
-          dataObj.venueName = info.events[i].title;
-          dataObj.date = info.events[i].datetime_local;
-          dataObj.averagePrice = info.events[i].stats.average_price;
-          dataObj.city = info.events[i].venue.city;
-          dataObj.apiId= 1;
-          dataObj.venueLocation = info.events[i].venue.name;
-          dataObj.state = info.events[i].venue.state;
-          dataObj.eventUrl = info.events[i].url;
-          dataObj.url = info.events[i].performers[0].image;
-
-          callback(null, dataObj);
-
-        }
-
-      }
+    if (error) {
+      console.log('SG API ERROR');
+      callback(error, null)
     } else {
-      alert('not found')
-      response.end('not found')
-      callback(error, null);
+      var sgInfo = JSON.parse(body);
+
+      sgHelper(sgInfo, function(error, result) {
+        if (error) {
+          console.log('SG PARSING ERROR')
+          callback(error, null);
+        } else {
+          // console.log("SG ARR COMPLETE", result)
+          // console.log("SG ARR COMPLETE _--------------------------->")
+          sgParsedRes.push(result);
+          // callback(null, sgParsedRes);
+        }
+      });
+      callback(null, sgParsedRes);
+      // console.log("SG ARR COMPLETE", sgParsedRes)
+      // console.log("SG ARR COMPLETE _--------------------------->")
+
     }
   })
 }

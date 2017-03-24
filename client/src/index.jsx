@@ -35,7 +35,7 @@ class App extends React.Component {
 
           context.setState({
             searchResults: searchRes[0],
-            compareResults: searchRes[0]
+            compareResults: searchRes[1]
           })
 
           // $("#print").append(output)
