@@ -1,5 +1,6 @@
 import React from 'react';
 import TicketListItem from './TicketListItem.jsx';
+import PriceComparisonItem from './PriceComparisonItem.jsx';
 
 
 function TicketList (props) {
@@ -65,29 +66,12 @@ function TicketList (props) {
             Price Comparison
           </div>
           <div className="row well">
-            <div className="col-md-12 poster">
-              <div className="animated flipInX thumbnail">
-                <img src={imgUrl} width='50%' alt=""/>
-                <div className="caption">
-                  <h3>Price</h3>
-                  <p><a href="#" className="btn btn-primary" role="button">Purchase</a></p>
-                  <h4>{props.searchRes[0].city}</h4>
-                  <p>{props.searchRes[0].venueName}</p>
-                </div>
-                </div>
-              </div>
-              <br/>
-            <div className='col-md-12 poster'>
-              <div className="animated flipInX thumbnail">
-                <img src={imgUrl} width='50%' alt=""/>
-                <div className="caption">
-                  <h3>Price</h3>
-                  <p><a href="#" className="btn btn-primary" role="button">Purchase</a></p>
-                  <h4>{props.searchRes[0].city}</h4>
-                  <p>{props.searchRes[0].venueName}</p>
-                </div>
-              </div>
-            </div>
+            { props.searchRes.map(function(item) {
+                  return (
+                    <PriceComparisonItem compareItem={item} imgUrl={imgUrl}/>
+                  )
+                })
+              }
           </div>
 
        </div>
