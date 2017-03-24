@@ -56,8 +56,8 @@ var queryTicketMasterForEvent = function(dataOject, searchParam, callback) {
   var queryString = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=kyYiscxIL5hihtSs95QwNGsixEv738Zj&keyword=' + searchParam.event + '&city=' + searchParam.location;
   request(queryString, function (error, response, body) {
     var event = JSON.parse(body);
-    console.log(event);
-    console.log('this is the event', typeof event._links === 'object')
+    console.log('this is the event: ' ,event._embedded);
+    console.log('this is the typeof event', typeof event._embedded === 'object')
     if (!error && response.statusCode == 200) {
       console.log('event query is returning a dataset');
       dataOject.venueName = event._embedded.events[0].name;

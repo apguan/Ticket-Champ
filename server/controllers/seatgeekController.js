@@ -75,7 +75,6 @@ var seatGeekGetter = function(searchParam, location, callback) {
       callback(null, sgParsedRes);
       // console.log("SG ARR COMPLETE", sgParsedRes)
       // console.log("SG ARR COMPLETE _--------------------------->")
-
     }
   })
 }

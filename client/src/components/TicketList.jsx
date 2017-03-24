@@ -28,11 +28,69 @@ function TicketList (props) {
   var upcomingEvents = props.searchRes.splice();
 
   return (
-    <div>
-      <div className="img-banner" style={imgBannerUpdate}></div>
-      <h1>TicketList Component</h1>
+    <div className="row">
+        <div className="img-banner" width='100%'style={imgBannerUpdate}>
+        <h1 className="artist-name">Artist</h1>
+      </div>
 
-      <ul className="flex-container">
+      <div className='row'>
+
+       <div className='col-md-6'>
+       <div className="table-responsive">
+          <table className="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Event Date</th>
+                    <th>Event Name</th>
+                    <th>Location</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+              { props.searchRes.map(function(item) {
+                  return (
+                    <TicketListItem searchItem={item}/>
+                  )
+                })
+              }
+            </tbody>
+            </table>
+          </div>
+        </div>
+
+       <div className='col-md-6'>
+          <div className="row">
+            <div className="col-md-12 poster">
+              <div className="thumbnail">
+                <img src={imgUrl} width='25%' alt=""/>
+                <div className="caption">
+                  <h3>Price</h3>
+                  <p><a href="#" className="btn btn-primary" role="button">Purchase</a></p>
+                  <h4>{props.searchRes[0].city}</h4>
+                  <p>{props.searchRes[0].venueName}</p>
+                </div>
+                </div>
+              </div>
+              <br/>
+            <div className='col-md-12 poster'>
+              <div className="thumbnail">
+                <img src={imgUrl} width='25%' alt=""/>
+                <div className="caption">
+                  <h3>Price</h3>
+                  <p><a href="#" className="btn btn-primary" role="button">Purchase</a></p>
+                  <h4>{props.searchRes[0].city}</h4>
+                  <p>{props.searchRes[0].venueName}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+       </div>
+
+      </div>
+
+
+      {/*<ul className="flex-container">
         <li className="flex-item-gutter" ></li>
         <li className="flex-item-ticketItem" style={responsive}>
           <table className="tableClass">
@@ -80,9 +138,9 @@ function TicketList (props) {
           </div>
         </li>
         <li className="flex-item-gutter"></li>
-      </ul>
-    </div>
+      </ul>*/}
 
+    </div>
   )
 }
 

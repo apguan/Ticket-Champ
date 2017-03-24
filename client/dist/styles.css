@@ -11,7 +11,39 @@ body {
 h1 {
   padding-bottom: 1em;
 }
+/*
+=====================================================================================================
+REFACTOR CSS
+=====================================================================================================
+*/
+.poster {
+  text-align: center;
+  margin-bottom: 30px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(166,166,166,1);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(166,166,166,1);
+  box-shadow: 10px 10px 5px 0px rgba(166,166,166,1);
+}
+.artist-name {
+  color: #fff;
+  padding-top: 30px
+  padding-right: 30px;
+}
 
+.table-bordered > tr {
+  background-color: red;
+}
+.tbl-row {
+  border: 2px solid grey;
+}
+.tbl-row:hover {
+  background: grey;
+  border: 2px solid #ddd;
+  cursor: pointer;
+
+}
+/*
+=====================================================================================================
+*/
 /*th, td {
   border-bottom: 1px solid #ddd;
 }*/
