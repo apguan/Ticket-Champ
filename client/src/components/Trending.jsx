@@ -8,19 +8,24 @@ class Trending extends React.Component {
 
   render() {
     return (
-      <div>
-      <div className="jumbotron">
-        <div className="container">
+
+      <div className="container">
+        <div className="jumbotron">
           <h1>Trending</h1>
         </div>
-      </div>
 
         <div className="row">
-        {this.props.trending.map( (item, key) =>
-          <TrendingItem key={key} item={item} />
+          <div className="col-md-12">
+
+           {this.props.trending.map( (item, key) =>
+            <TrendingItem key={key} item={item} />
         )}
+          </div>
+
         </div>
+
       </div>
+
     )
   }
 }
