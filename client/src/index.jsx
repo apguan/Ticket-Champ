@@ -77,11 +77,9 @@ class App extends React.Component {
 
       { this.state.searchResults.length > 0 ?
         (
-          <ul className="flex-container">
-            <li className="flex-item-gutter" ></li>
+          <div className="container">
             <TicketList searchRes={this.state.searchResults}/>
-            <li className="flex-item-gutter" ></li>
-          </ul>
+          </div>
           ) :
         (<Trending trending={this.state.trending} search={this.search}/>)
       }
