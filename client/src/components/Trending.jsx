@@ -11,7 +11,7 @@ class Trending extends React.Component {
 
       <div className="container">
         <div className="jumbotron">
-          <h1>Trending</h1>
+          <h1>What's Hot</h1>
         </div>
 
 
