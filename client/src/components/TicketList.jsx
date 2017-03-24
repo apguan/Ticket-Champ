@@ -40,7 +40,7 @@ function TicketList (props) {
 
        <div className='col-md-6'>
        <div className="table-responsive">
-          <table className="table table-bordered">
+          <table className="table">
             <thead>
                 <tr>
                     <th>Event Date</th>
