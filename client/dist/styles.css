@@ -324,11 +324,13 @@ h1 {
 /* trending and trending list grid */
 .thumbnail {
   margin-bottom: 20px;
-  padding: 0px;
+  padding: 10px;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
-  border-radius: 0px;
-  min-height: 350px;
+  border-radius: 10px;
+  min-height: 300px;
+  min-width: 250px;
+  text-align: center;
 }
 
 .thumbnail:hover {
@@ -393,5 +395,9 @@ h1 {
 {
     background: #428bca;
 }
+
+
+
+
 
 

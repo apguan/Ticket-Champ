@@ -48,6 +48,7 @@ app.post('/event', function(req, res) {
           if(err) {
             console.log('Error in Ticket Master Price query', err);
           } else {
+
             ticketMasterAPI.ticketmasterDataParser(ticketMasterAPI.ticketmasterData, JSON.parse(data2));
 
             // console.log(ticketMasterAPI.ticketmasterData)
@@ -70,7 +71,6 @@ app.post('/event', function(req, res) {
 
           //SAVE TM TO DB
             db.addTicketMasterToDataBase(ticketMasterAPI.ticketmasterData);
-
           }
         })
       }

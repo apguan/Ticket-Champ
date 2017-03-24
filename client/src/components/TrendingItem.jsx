@@ -17,7 +17,7 @@ class TrendingItem extends React.Component {
     return (
       <div className="item col-md-4">
         <div className="thumbnail" onClick={this.onSearch}>
-          <img src={this.props.item.webId} />
+          <img width={200} height={200} src={this.props.item.webId} />
           <div className="caption">
             <h4 className="group inner list-group-item-heading">{this.props.item.name}</h4>
             <p className="group inner list-group-item-text">{this.props.item.venueLocation}</p>
