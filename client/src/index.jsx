@@ -84,7 +84,7 @@ class App extends React.Component {
             <li className="flex-item-gutter" ></li>
           </ul>
           ) :
-        (<Trending trending={this.state.trending} />)
+        (<Trending trending={this.state.trending} search={this.search}/>)
       }
         <div className="container">
           <footer className="footer">

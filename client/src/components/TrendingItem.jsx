@@ -3,23 +3,30 @@ import React from 'react';
 class TrendingItem extends React.Component {
   constructor(props) {
     super(props);
+
+    this.onSearch = this.onSearch.bind(this);
+  }
+
+  onSearch() {
+    this.props.search({"event": this.props.item.name, "location": this.props.item.city });
+    console.log('fired');
   }
 
   render() {
     console.log(this.props.item.venueLocation)
     return (
-      <div className="col-md-4">
-        <h3>{this.props.item.name}</h3>
-        <div className="col-md-4">
-        <img className="img-responsive" height="300" src={this.props.item.webId} />
+      <div className="item col-md-4">
+        <div className="thumbnail" onClick={this.onSearch}>
+          <img src={this.props.item.webId} />
+          <div className="caption">
+            <h4 className="group inner list-group-item-heading">{this.props.item.name}</h4>
+            <p className="group inner list-group-item-text">{this.props.item.venueLocation}</p>
+            <p>{this.props.item.city}, {this.props.item.state}</p>
+          </div>
         </div>
-        <p>{this.props.item.venueLocation}</p>
-        <p>{this.props.item.city}, {this.props.item.state}</p>
       </div>
     )
   }
-
-
 }
 
 export default TrendingItem;

@@ -14,27 +14,13 @@ class Trending extends React.Component {
           <h1>Trending</h1>
         </div>
 
-        <div className="well well-sm">
-          <strong>Display</strong>
-          <div className="btn-group">
-            <a href="#" id="list" className="btn btn-default btn-sm"><span className="glyphicon glyphicon-th-list">
-            </span>List</a>
-            <a href="#" id="grid" className="btn btn-default btn-sm"><span
-                className="glyphicon glyphicon-th"></span>Grid</a>
-          </div>
-        </div>
 
-
-
-        <div id="products" className="row list-group">
+        <div id="trending" className="row list-group">
            {this.props.trending.map( (item, key) =>
-            <TrendingItem key={key} item={item} />
+            <TrendingItem key={key} item={item} search={this.props.search}/>
            )}
-          </div>
         </div>
-
       </div>
-
     )
   }
 }
