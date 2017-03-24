@@ -275,7 +275,7 @@ h1 {
   padding-left: 20%
 }
 
-.well {
+/*.well {
   height: 8%;
   width: 100%;
   color: #ffffff;
@@ -285,20 +285,20 @@ h1 {
   display: inherit;
   vertical-align: top;
   text-align: center;
-}
+}*/
 
 .col-md-4 {
 /*  background-color: blue;
 */}
 
 
-.img-responsive {
+.ticket-pal-logo {
   width: 12em;
   height: 3em;
 }
 
 .img-trending {
-  width: 300px;
+  width: 200px;
   height: 200px;
 
 }
@@ -319,3 +319,85 @@ h1 {
   padding-top: 2em;
   padding-bottom: 2em;
 }
+
+/* ------------------------------------- */
+/* trending and trending list grid */
+.thumbnail {
+  margin-bottom: 20px;
+  padding: 10px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 10px;
+  min-height: 300px;
+  min-width: 250px;
+  text-align: center;
+}
+
+.thumbnail:hover {
+  border: 2px solid grey;
+}
+
+.item.list-group-item {
+  float: none;
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+
+.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
+{
+    background: #428bca;
+}
+
+.item.list-group-item .list-group-image
+{
+    margin-right: 10px;
+}
+.item.list-group-item .thumbnail
+{
+    margin-bottom: 0px;
+}
+.item.list-group-item .caption
+{
+    padding: 9px 9px 0px 9px;
+}
+.item.list-group-item:nth-of-type(odd)
+{
+    background: #eeeeee;
+}
+
+.item.list-group-item:before, .item.list-group-item:after
+{
+    display: table;
+    content: " ";
+}
+
+.item.list-group-item img
+{
+    float: left;
+}
+.item.list-group-item:after
+{
+    clear: both;
+}
+.list-group-item-text
+{
+    margin: 0 0 11px;
+}
+
+/*.imageClip{
+    width:60%;
+    height: 300px;
+    overflow:hidden;
+}*/
+
+.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
+{
+    background: #428bca;
+}
+
+
+
+
+
+

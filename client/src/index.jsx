@@ -66,11 +66,10 @@ class App extends React.Component {
 
 
   render() {
-    console.log('Trending Test 1', this.state.trending)
 
 
     if (this.state.trending.length > 0) {
-      console.log('Trending Test 2', this.state.trending)
+
       return (
 
       <div>
@@ -84,7 +83,7 @@ class App extends React.Component {
             <li className="flex-item-gutter" ></li>
           </ul>
           ) :
-        (<Trending trending={this.state.trending} />)
+        (<Trending trending={this.state.trending} search={this.search}/>)
       }
         <div className="container">
           <footer className="footer">
@@ -97,7 +96,7 @@ class App extends React.Component {
       )
 
     } else {
-      console.log('Trending Test 3', this.state.trending)
+
 
       return (
         <div>

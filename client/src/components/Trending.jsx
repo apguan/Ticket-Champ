@@ -8,17 +8,17 @@ class Trending extends React.Component {
 
   render() {
     return (
-      <div>
-      <div className="jumbotron">
-        <div className="container">
-          <h1>Trending</h1>
-        </div>
-      </div>
 
-        <div className="row">
-        {this.props.trending.map( (item, key) =>
-          <TrendingItem key={key} item={item} />
-        )}
+      <div className="container">
+        <div className="jumbotron">
+          <h1>What's Hot</h1>
+        </div>
+
+
+        <div id="trending" className="row list-group">
+           {this.props.trending.map( (item, key) =>
+            <TrendingItem key={key} item={item} search={this.props.search}/>
+           )}
         </div>
       </div>
     )

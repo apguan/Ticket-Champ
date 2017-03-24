@@ -7,7 +7,7 @@ function SearchUnit(props) {
 
     <ul className="flex-container">
       <li className="flex-item-gutter-header" ></li>
-      <li className="flex-item-logo" >{<img src={'https://s3-us-west-1.amazonaws.com/zollstorage/ticket_champ_logo(4-)1).png'} className='img-responsive'/>}</li>
+      <li className="flex-item-logo" >{<img src={'https://s3-us-west-1.amazonaws.com/zollstorage/ticket_champ_logo(4-)1).png'} className='ticket-pal-logo'/>}</li>
       <Search searching={props.onSearch}/>
       <li className="flex-item-gutter-header" ></li>
     </ul>
