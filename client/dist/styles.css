@@ -275,7 +275,7 @@ h1 {
   padding-left: 20%
 }
 
-.well {
+/*.well {
   height: 8%;
   width: 100%;
   color: #ffffff;
@@ -285,7 +285,7 @@ h1 {
   display: inherit;
   vertical-align: top;
   text-align: center;
-}
+}*/
 
 .col-md-4 {
 /*  background-color: blue;
