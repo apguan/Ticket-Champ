@@ -39,15 +39,14 @@ class App extends React.Component {
         success: function(output) {
           console.log('Post Data Success Search', output);
           var searchRes = JSON.parse(output);
-          console.log("SERVER RES ARR 0", JSON.stringify(searchRes[0]))
+          console.log("SERVER RES ARR 0", searchRes[0])
           console.log("SERVER RES ARR 1", searchRes[1])
+          console.log("SERVER RES ARR 2", searchRes[2])
 
           context.setState({
             searchResults: searchRes[0],
             compareResults: searchRes[1]
           })
-
-          // $("#print").append(output)
         },
         error: function() {
           console.log('try again');
@@ -92,7 +91,7 @@ class App extends React.Component {
         { this.state.searchResults.length > 0 ?
           (
             <div className="container">
-              <TicketList searchRes={this.state.searchResults} compareRes={this.state.compareResults} clickstate={this.changeClickState} clicked={this.state.clicked} />
+              <TicketList searchRes={this.state.searchResults} compareRes={this.state.compareResults} clickState={this.changeClickState} clicked={this.state.clicked} search={this.search}/>
             </div>
             ) :
           (<Trending trending={this.state.trending} search={this.search} loading={this.changeClickState} clicked={this.state.clicked}/>)
@@ -109,7 +108,7 @@ class App extends React.Component {
 
       return (
         <div>
-          <SearchUnit searchstate={this.state.value} onSearch={this.search} clickstate={this.changeClickState} />
+          <SearchUnit changePage={this.changePage} searchstate={this.state.value} onSearch={this.search} clickState={this.changeClickState} />
           <div className="jumbotron">
             <div className="container">
               <h1>Trending</h1>

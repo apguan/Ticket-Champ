@@ -51,14 +51,14 @@ function TicketList (props) {
                     <th>Price</th>
                 </tr>
             </thead>
-            <tbody>
-              { props.searchRes.map(function(item) {
-                  return (
-                    <TicketListItem searchItem={item}/>
-                  )
-                })
-              }
-            </tbody>
+               <tbody>
+                { props.searchRes.map(function(item) {
+                    return (
+                      <TicketListItem searchItem={item} search={props.search}/>
+                    )
+                  })
+                }
+              </tbody>
             </table>
           </div>
         </div>
