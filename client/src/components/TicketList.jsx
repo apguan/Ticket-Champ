@@ -42,7 +42,9 @@ function TicketList (props) {
       <div className='row'>
 
        <div className='col-md-6'>
+
        <div className="table-responsive">
+      <div className="col-md-12"><h3>Upcoming Events</h3></div> 
           <table className="table">
             <thead>
                 <tr>

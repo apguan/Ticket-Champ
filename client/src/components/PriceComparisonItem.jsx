@@ -23,9 +23,9 @@ function PriceComparisonItem (props) {
                 <tbody>
                   <tr>
                     <th></th>
-                      <td colspan="1"><h3>${props.compareItem.lowPrice}</h3><span>Min</span></td>
-                      <td colspan="1"><h3 className="bigAverage">${props.compareItem.averagePrice}</h3><span>Average</span></td>
-                      <td colspan="1"><h3>${props.compareItem.highPrice}</h3><span>Max</span></td>
+                      <td colspan="1"><h3>${Math.round(props.compareItem.lowPrice)}</h3><span>Min</span></td>
+                      <td colspan="1"><h3 className="bigAverage">${Math.round(props.compareItem.averagePrice)}</h3><span>Average</span></td>
+                      <td colspan="1"><h3>${Math.round(props.compareItem.highPrice)}</h3><span>Max</span></td>
                   </tr>
                 </tbody>
               </table>

@@ -22,13 +22,17 @@ REFACTOR CSS
 
 }
 
+.trendingImg {
+  border-radius: 5px;
+}
+
 .loader {
   text-align: center;
 }
 
 .loadingText {
     position: relative;
-    color: rgba(255, 255, 255, .7);
+    color: rgba(0, 0, 0, 1);
     font-size: 2em;
 }
 
@@ -38,7 +42,7 @@ REFACTOR CSS
     overflow: hidden;
     max-width: 11em;
     white-space: nowrap;
-    color: rgba(0, 0, 0, .4);
+    color: rgba(255, 255, 255, .7);
     animation: loadingText 8s linear;
 }
 

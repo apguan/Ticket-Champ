@@ -37,7 +37,7 @@ class TicketListItem extends React.Component {
                   window.open(url)}
                 } className='btn btn-default'
             >Check Price</button></td>) :
-          (<td>${this.props.searchItem.averagePrice}</td>)
+          (<td>${Math.round(this.props.searchItem.averagePrice)}</td>)
         }
       </tr>
     )
