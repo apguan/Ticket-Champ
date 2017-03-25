@@ -70,6 +70,8 @@ app.post('/event', function(req, res) {
           } else {
             apiComboResults.push(true);
           }
+          console.log('SEND API RES TM');
+          console.log('SEND API RES TM TRUE/FALSE SEND OPPOSITE TO CLIENT', apiErrorFlag);
           res.end(JSON.stringify(apiComboResults))
         }
 
@@ -77,6 +79,8 @@ app.post('/event', function(req, res) {
     });
 
     seatGeekAPI.seatGeekGetter(userSearch, userLocation, function(err, results) {
+        var tmResponse = ticketMasterAPI.ticketmasterData;
+
         if (err) {
           console.log(err)
         } else {
@@ -91,11 +95,15 @@ app.post('/event', function(req, res) {
             sgAPIarr.forEach(function(item) {
               apiResListSend.push(item);
 
-              var tmResponse = ticketMasterAPI.ticketmasterData;
               if (item.date === tmResponse.date) {
                 compareResArr.push(item)
               }
             });
+
+            //IF TM HAS ERROR + SG HAS NO ERROR --> SEND FIRST SG RESULT
+            if (tmResponse.id === null && sgAPIarr.length) {
+                compareResArr.push(sgAPIarr[0])
+            }
 
             apiResCount++;
           }
@@ -113,7 +121,8 @@ app.post('/event', function(req, res) {
             } else {
               apiComboResults.push(true);
             }
-            console.log('API RES PRAY THIS WORKS', apiComboResults);
+            console.log('SEND API RES SG');
+            console.log('SEND API RES SG TRUE/FALSE SEND OPPOSITE TO CLIENT', apiErrorFlag);
             res.end(JSON.stringify(apiComboResults))
           }
         }
