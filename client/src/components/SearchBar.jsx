@@ -32,8 +32,10 @@ class Search extends React.Component {
     }
     console.log("RESPONSE OBJ --> Trigger AJAX search fn: ", responseObj);
     // set State of clicked to true, pass this back up
-    this.props.changeClickState(true);
+    console.log("SHOULD BE A FN... OR SOMETHING", this.props.changeClickState)
     this.props.searching(responseObj);
+    this.props.changeClickState(true);
+    console.log("SHOULD BE A FN... OR SOMETHING 2", this.props.changeClickState)
   }
 
   render() {

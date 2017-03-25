@@ -92,7 +92,8 @@ app.post('/event', function(req, res) {
         // Check for SG Api errors, change flag if error
           apiErrorFlag = true;
           apiResCount++;
-        } else {
+        }
+        if (sgAPIarr.length) {
         // Add SG api res upcoming events to client res
           sgAPIarr.forEach(function(item) {
             apiResListSend.push(item);
