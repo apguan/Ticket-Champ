@@ -1,5 +1,5 @@
 var request = require('request');
-
+var apiKey = require('../../apiKeys.js')
 
 var seatGeekData = {
   url: null,
@@ -12,17 +12,14 @@ var seatGeekData = {
   city: null,
   venueLocation: null,
   state: null,
-  eventUrl: null
-
+  eventUrl: null,
+  searchParam: '',
 };
 
-var sgHelper = function(sgAPIresArr, cb) {
+var sgHelper = function(sgAPIresArr, searchParam, cb) {
   var dataObj = {};
 
   for (var i = 0; i < sgAPIresArr.events.length; i++){
-
-    // console.log('SG API TITLE :', sgAPIresArr.events[i].title);
-    // console.log('SG API TITLE ------------------>');
 
     dataObj.venueName = sgAPIresArr.events[i].title;
     dataObj.highPrice = sgAPIresArr.events[i].stats.highest_price;
@@ -36,23 +33,23 @@ var sgHelper = function(sgAPIresArr, cb) {
     dataObj.url = sgAPIresArr.events[i].performers[0].image;
     dataObj.id = sgAPIresArr.events[i].performers[0].id;
     dataObj.apiId = 1;
+    dataObj.searchParam = searchParam.toLowerCase();
 
     cb(null, dataObj);
     dataObj = {};
   }
 }
 
-
 var seatGeekGetter = function(searchParam, location, callback) {
 
   var sgParsedRes = [];
-  console.log('SG LOC', location)
-  console.log('SG EVENT', searchParam)
-  // var locationSearch = location.split(' ').join('+');
-  var artistSearch = searchParam.split(' ').join('+');
-  var slug = searchParam.toLowerCase().split(' ').join('-');
+  // console.log('SG LOC', location)
+  // console.log('SG EVENT', searchParam)
 
-  var queryString = 'https://api.seatgeek.com/2/events?q=' + artistSearch +'&per_page=100&venue.city=' + location + '&range=100mi&client_id=NzA2MzY4MnwxNDg5NTE0NDA0Ljc1';
+  var searchEventApiParsed = encodeURIComponent(searchParam);
+  var searchLocationApiParsed = encodeURIComponent(location);
+
+  var queryString = 'https://api.seatgeek.com/2/events?q=' + searchEventApiParsed +'&per_page=100&venue.city=' + searchLocationApiParsed + '&range=100mi&client_id=' + apiKey.api.seatGeekAPI;
 
   request(queryString, function (error, response, body) {
     if (error) {
@@ -61,20 +58,25 @@ var seatGeekGetter = function(searchParam, location, callback) {
     } else {
       var sgInfo = JSON.parse(body);
 
-      sgHelper(sgInfo, function(error, result) {
-        if (error) {
-          console.log('SG PARSING ERROR')
-          callback(error, null);
-        } else {
-          // console.log("SG ARR COMPLETE", result)
-          // console.log("SG ARR COMPLETE _--------------------------->")
-          sgParsedRes.push(result);
-          // callback(null, sgParsedRes);
-        }
-      });
-      callback(null, sgParsedRes);
-      // console.log("SG ARR COMPLETE", sgParsedRes)
-      // console.log("SG ARR COMPLETE _--------------------------->")
+      if (sgInfo.events.length === 0) {
+        callback(null, sgParsedRes);
+      } else {
+        sgHelper(sgInfo, searchParam, function(error, result) {
+          if (error) {
+            console.log('SG PARSING ERROR')
+            callback(error, null);
+          } else {
+            // console.log("SG ARR COMPLETE", result)
+            // console.log("SG ARR COMPLETE _--------------------------->")
+            sgParsedRes.push(result);
+            // callback(null, sgParsedRes);
+          }
+        });
+        callback(null, sgParsedRes);
+        // console.log("SG ARR COMPLETE", sgParsedRes)
+        // console.log("SG ARR COMPLETE _--------------------------->")
+      }
+
     }
   })
 }

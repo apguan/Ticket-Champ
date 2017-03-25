@@ -12,7 +12,6 @@ var port = process.env.PORT || 5000;
 
 
 var app = express();
-// console.log('WHERE IS THIS SHIT', __dirname + '../client/dist/')
 app.use(express.static(path.join(__dirname, '../client/dist/')));
 
 
@@ -22,7 +21,6 @@ app.get('/', function(req, res) {
 
 
 app.post('/event', function(req, res) {
-
   var body = '';
   req.on('data', function(chunk) {
     body += chunk;
@@ -35,45 +33,46 @@ app.post('/event', function(req, res) {
     var userLocation = userInput.location;
 
     var apiResCount = 0;
-    var tmResponse;
     var apiResListSend = [];
     var compareResArr = [];
+    var apiErrorFlag = false;
 
     ticketMasterAPI.queryTicketMasterForEvent(ticketMasterAPI.ticketmasterData, userInput, function(err, data) {
       // console.log("this is the event id ", ticketMasterAPI.ticketmasterData.id)
       if(err) {
         console.log('Error on query', err);
       } else {
-        ticketMasterAPI.queryTicketMasterForPrices(ticketMasterAPI.ticketmasterData, ticketMasterAPI.ticketmasterData.id, function(err, data2) {
-          if(err) {
-            console.log('Error in Ticket Master Price query', err);
+        var tmResponse = ticketMasterAPI.ticketmasterData;
+
+        //Check for error in TM API res
+        if (tmResponse.id === null) {
+          apiErrorFlag = true;
+          apiResCount++;
+        } else if (tmResponse.id !== null) {
+        // Add TM api res objects to client res
+          apiResListSend.push(tmResponse);
+          compareResArr.push(tmResponse);
+          apiResCount++;
+        //SAVE TM TO DB
+          db.addTicketMasterToDataBase(ticketMasterAPI.ticketmasterData);
+        }
+
+      //SEND COMPILED RES WHEN ALL API's RESPOND
+       if (apiResCount === 2 || apiErrorFlag) {
+          console.log('tm api error', apiErrorFlag)
+
+          var apiComboResults = [];
+          apiComboResults.push(apiResListSend);
+          apiComboResults.push(compareResArr);
+
+          if (apiErrorFlag) {
+            apiComboResults.push(false);
           } else {
-
-            ticketMasterAPI.ticketmasterDataParser(ticketMasterAPI.ticketmasterData, JSON.parse(data2));
-
-            // console.log(ticketMasterAPI.ticketmasterData)
-            tmResponse = ticketMasterAPI.ticketmasterData;
-
-            apiResListSend.push(tmResponse);
-
-            compareResArr.push(tmResponse);
-            apiResCount++;
-            // console.log('tmAPI SUCCESS', tmResponse);
-            console.log('tmAPI SUCCESS ----------------------------------->')
-
-          //SEND RES WHEN ALL API's RESPOND
-           if (apiResCount === 2) {
-              var apiComboResults = [];
-              apiComboResults.push(apiResListSend);
-              apiComboResults.push(compareResArr)
-              // console.log('API RES PRAY THIS WORKS', apiComboResults);
-              res.end(JSON.stringify(apiComboResults))
-            }
-
-          //SAVE TM TO DB
-            db.addTicketMasterToDataBase(ticketMasterAPI.ticketmasterData);
+            apiComboResults.push(true);
           }
-        })
+          res.end(JSON.stringify(apiComboResults))
+        }
+
       }
     });
 
@@ -83,28 +82,42 @@ app.post('/event', function(req, res) {
         } else {
           var sgAPIarr = results;
 
-          sgAPIarr.forEach(function(item) {
-            apiResListSend.push(item);
+          if (sgAPIarr.length === 0) {
+          // Check for SG Api errors
+            apiErrorFlag = true;
+            apiResCount++;
+          } else {
+          // Add SG api res upcoming events to client res
+            sgAPIarr.forEach(function(item) {
+              apiResListSend.push(item);
 
-            var tmResponse = ticketMasterAPI.ticketmasterData;
-            if (item.date === tmResponse.date) {
-              compareResArr.push(item)
-            }
-          });
+              var tmResponse = ticketMasterAPI.ticketmasterData;
+              if (item.date === tmResponse.date) {
+                compareResArr.push(item)
+              }
+            });
 
-          apiResCount++;
+            apiResCount++;
+          }
+
 
           //SEND RES WHEN ALL API's RESPOND
-          if (apiResCount === 2) {
+          if (apiResCount === 2 || apiErrorFlag) {
+            console.log('sg api error', apiErrorFlag)
             var apiComboResults = [];
             apiComboResults.push(apiResListSend);
-            apiComboResults.push(compareResArr)
+            apiComboResults.push(compareResArr);
+
+            if (apiErrorFlag) {
+              apiComboResults.push(false);
+            } else {
+              apiComboResults.push(true);
+            }
             console.log('API RES PRAY THIS WORKS', apiComboResults);
             res.end(JSON.stringify(apiComboResults))
           }
         }
       })
-
   })
 });
 

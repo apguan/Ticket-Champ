@@ -17,6 +17,7 @@ CREATE TABLE ticketinfo (
     venueLocation varchar(255),
     state varchar(255),
     eventUrl varchar(255),
+    searchParam varchar(255),
     PRIMARY KEY (id)
 );
 -- 45.0

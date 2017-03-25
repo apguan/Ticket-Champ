@@ -38,13 +38,13 @@ var getTopThreeTrending = function(callback) {
 
 
 var addTicketMasterToDataBase = function(dataObject) {
-	var params = [ dataObject.venueName, dataObject.lowPrice, dataObject.averagePrice, dataObject.highPrice, dataObject.url, dataObject.date, dataObject.apiId, dataObject.city, dataObject.venueLocation, dataObject.state, dataObject.eventUrl];
-	var queryString = 'INSERT INTO ticketinfo ( name, min, avg, max, webID, localDate, api, city, venueLocation, state, eventUrl ) VALUES (?,?,?,?,?,?,?,?,?,?,? )';
+	var params = [ dataObject.venueName, dataObject.lowPrice, dataObject.averagePrice, dataObject.highPrice, dataObject.url, dataObject.date, dataObject.apiId, dataObject.city, dataObject.venueLocation, dataObject.state, dataObject.eventUrl, dataObject.searchParam];
+	var queryString = 'INSERT INTO ticketinfo ( name, min, avg, max, webID, localDate, api, city, venueLocation, state, eventUrl, searchParam ) VALUES (?,?,?,?,?,?,?,?,?,?,?,? )';
 	connection.query(queryString, params, function(err) {
 		if(err) {
 			console.log('error saving to database', err);
 		} else {
-			console.log('saved query dataset to database');
+			console.log('successfully saved TM api res to db');
 		}
 	})
 }
