@@ -94,7 +94,7 @@ class App extends React.Component {
               <TicketList searchRes={this.state.searchResults} compareRes={this.state.compareResults} clickState={this.changeClickState} clicked={this.state.clicked} search={this.search}/>
             </div>
             ) :
-          (<Trending trending={this.state.trending} search={this.search} loading={this.changeClickState} clicked={this.state.clicked}/>)
+          (<Trending trending={this.state.trending} search={this.search} clickState={this.changeClickState} clicked={this.state.clicked}/>)
         }
           <div className="container">
             <footer className="footer">
@@ -109,6 +109,7 @@ class App extends React.Component {
       return (
         <div>
           <SearchUnit changePage={this.changePage} searchstate={this.state.value} onSearch={this.search} clickState={this.changeClickState} />
+
           <div className="jumbotron">
             <div className="container">
               <h1>Trending</h1>

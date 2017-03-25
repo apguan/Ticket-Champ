@@ -4,14 +4,7 @@ import TrendingItem from './TrendingItem.jsx';
 class Trending extends React.Component {
   constructor(props) {
     super(props);
-
-    this.changeClickState = this.changeClickState.bind(this);
   }
-
-  changeClickState() {
-    this.props.loading(this.state.clicked);
-  }
-
 
   render() {
     return (
@@ -24,14 +17,11 @@ class Trending extends React.Component {
         </div>
         <div id="trending" className="animate slideInUp row list-group">
            {this.props.trending.map( (item, key) =>
-            <TrendingItem key={key} item={item} search={this.props.search}/>
+            <TrendingItem key={key} item={item} search={this.props.search} changeClickState={this.props.clickState}/>
            )}
         </div>
       </div>
     )
-
-    {this.changeClickState(false)};
-
   }
 }
 
