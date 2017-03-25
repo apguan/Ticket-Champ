@@ -33,8 +33,8 @@ function TicketList (props) {
       <div>
 
         <div className="img-banner" width='100%'style={imgBannerUpdate}>
-        <h1 className="animated zoomInDown artist-name">{props.searchRes[0].venueName}</h1>
-        <h4 className="animated zoomInDown artist-name">{props.searchRes[0].city}, {props.searchRes[0].state}</h4>
+        <h1 className="animated zoomInDown artist-name">{props.searchRes[0].venueName} <span><h2>{props.searchRes[0].city}, {props.searchRes[0].state}</h2></span><span><h3>{props.searchRes[0].venueLocation}</h3></span></h1>
+
         </div>
 
       </div>
@@ -46,18 +46,25 @@ function TicketList (props) {
           <table className="table">
             <thead>
                 <tr>
-                    <th>Event Date</th>
-                    <th>Event Name</th>
-                    <th>Location</th>
+                    <th>Date</th>
+                    <th>Event</th>
+                    <th>Venue</th>
                     <th>Price</th>
                 </tr>
             </thead>
                <tbody>
-                {upcomingEvents.map(function(item) {
+                { props.searchRes.length <= 1 ?
+
+                  (props.searchRes.map(function(item) {
                     return (
                       <TicketListItem searchItem={item} search={props.search}/>
                     )
-                  })
+                  })) :
+                  (upcomingEvents.map(function(item) {
+                    return (
+                      <TicketListItem searchItem={item} search={props.search}/>
+                    )
+                  }))
                 }
               </tbody>
             </table>
@@ -71,7 +78,7 @@ function TicketList (props) {
           <div className="row well">
             { props.compareRes.map(function(item) {
                   return (
-                    <PriceComparisonItem compareItem={item} imgUrl={imgUrl}/>
+                    <PriceComparisonItem compareItem={item}/>
                   )
                 })
               }

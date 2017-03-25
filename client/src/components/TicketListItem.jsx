@@ -16,14 +16,29 @@ class TicketListItem extends React.Component {
 
   render () {
 
-  var formattedDate = moment(this.props.searchItem.date).format('LLLL')
-  console.log('formattedDate', formattedDate)
+  var formattedDate = (moment(this.props.searchItem.date).format('LLLL')).split(', 2017 ' || ', 2018 ' || ', 2019 ' || ', 2020 ');
+
+
+  console.log('formattedDate 1+2', formattedDate);
+  var weekDate = formattedDate[0];
+  console.log('formattedDate 1', formattedDate[0]);
+  var time = formattedDate[1];
+  console.log('formattedDate 2 ', formattedDate[1]);
+  var url = this.props.searchItem.eventUrl;
+
     return (
       <tr className='tbl-row' onClick={this.onSearch}>
-        <td>{moment(this.props.searchItem.date).format('LLLL')}</td>
+        <td>{weekDate} <span>{time}</span> </td>
         <td>{this.props.searchItem.venueName}</td>
         <td>{this.props.searchItem.venueLocation}</td>
-        <td>{this.props.searchItem.averagePrice}</td>
+        {this.props.searchItem.averagePrice === null ?
+          (<td><button onClick={
+                function() {
+                  window.open(url)}
+                } className='btn btn-default'
+            >Check Price</button></td>) :
+          (<td>${this.props.searchItem.averagePrice}</td>)
+        }
       </tr>
     )
   }

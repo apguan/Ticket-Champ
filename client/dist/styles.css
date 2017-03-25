@@ -42,17 +42,26 @@ REFACTOR CSS
   background-color: red;
 
 }
+
+  box-shadow: 0em 0em 0em;
+  transition: box-shadow .2s;
+
+}
+
+.thumbnailCompare:hover {
+  box-shadow: .4em .6em .8em rgba(0,0,0,.2);
+}
+
 .tbl-row {
-    /*border: 1px solid #ccc;*/
     border-collapse: collapse;
     padding-bottom: 2em;
-  /*border: 2px solid grey;*/
+    background-color: #fff;
+    transition: background-color .2s;
 }
 .tbl-row:hover {
-  background: #ddd;
-/*  border: 2px solid #ddd;
-*/  cursor: pointer;
-
+    background: #ddd;
+    border-radius: .3em;
+    cursor: pointer;
 }
 /*
 =====================================================================================================
@@ -89,16 +98,17 @@ REFACTOR CSS
 
 .buyButton {
   /* text styles */
-  font-size: 11px;
-  line-height: 18px;
+  font-size: 24px;
+  font-weight: lighter;
+  line-height: 0px;
   color: #fff;
   text-decoration: none;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
 
   /* box styles */
   display: inline-block;
   height: 19px;
-  padding: 0 10px;
+  padding: 0.8em 1.6em;
   border: 1px solid;
   border-color: #2d86b6 #24659e #255796;
   border-radius: 21px;
@@ -364,11 +374,13 @@ REFACTOR CSS
 }
 
 .artist-name {
-  color: #fff;
+  color: #ddd;
+  text-shadow: 4px 4px 0px rgba(0 , 0 , 0, .4);
   padding-top: 1.4em;
   text-align: center;
   font-size: 5em;
 }
+
 
 .priceCompare {
   margin-top: 0.7em;
@@ -387,8 +399,6 @@ REFACTOR CSS
 .thumbnail {
   margin-bottom: 20px;
   padding: 10px;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
   border-radius: 10px;
   min-height: 300px;
   min-width: 250px;
@@ -398,6 +408,27 @@ REFACTOR CSS
 .thumbnail:hover {
   border: 2px solid grey;
 }
+
+.thumbnailCompare {
+  margin-bottom: 20px;
+  padding: 3em;
+  background-color: #fff;
+  border-radius: 10px;
+  min-height: 300px;
+  min-width: 250px;
+  text-align: center;
+  box-shadow: 0em 0em 0em;
+  transition: box-shadow .2s;
+
+}
+
+.thumbnailCompare:hover {
+  box-shadow: .4em .6em .8em rgba(0,0,0,.2);
+}
+
+/*.bigAverage {
+  font-size: 1.4em;
+}*/
 
 .item.list-group-item {
   float: none;
