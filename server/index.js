@@ -57,7 +57,7 @@ app.post('/event', function(req, res) {
           db.addTicketMasterToDataBase(ticketMasterAPI.ticketmasterData);
         }
 
-      //SEND COMPILED RES WHEN ALL API's RESPOND
+       //SEND COMPILED RES WHEN ALL API's RESPOND
        if (apiResCount === 2 || apiErrorFlag) {
           console.log('tm api error', apiErrorFlag)
 
@@ -70,7 +70,7 @@ app.post('/event', function(req, res) {
           } else {
             apiComboResults.push(true);
           }
-          console.log('SEND API RES TM');
+
           console.log('SEND API RES TM TRUE/FALSE SEND OPPOSITE TO CLIENT', apiErrorFlag);
           res.end(JSON.stringify(apiComboResults))
         }
@@ -79,54 +79,54 @@ app.post('/event', function(req, res) {
     });
 
     seatGeekAPI.seatGeekGetter(userSearch, userLocation, function(err, results) {
-        var tmResponse = ticketMasterAPI.ticketmasterData;
 
-        if (err) {
-          console.log(err)
+      var tmResponse = ticketMasterAPI.ticketmasterData;
+
+      if (err) {
+        console.log(err)
+      } else {
+        var sgAPIarr = results;
+
+        if (sgAPIarr.length === 0) {
+        // Check for SG Api errors, change flag if error
+          apiErrorFlag = true;
+          apiResCount++;
         } else {
-          var sgAPIarr = results;
+        // Add SG api res upcoming events to client res
+          sgAPIarr.forEach(function(item) {
+            apiResListSend.push(item);
 
-          if (sgAPIarr.length === 0) {
-          // Check for SG Api errors
-            apiErrorFlag = true;
-            apiResCount++;
-          } else {
-          // Add SG api res upcoming events to client res
-            sgAPIarr.forEach(function(item) {
-              apiResListSend.push(item);
-
-              if (item.date === tmResponse.date) {
-                compareResArr.push(item)
-              }
-            });
-
-            //IF TM HAS ERROR + SG HAS NO ERROR --> SEND FIRST SG RESULT
-            if (tmResponse.id === null && sgAPIarr.length) {
-                compareResArr.push(sgAPIarr[0])
+            if (item.date === tmResponse.date) {
+              compareResArr.push(item)
             }
+          });
 
-            apiResCount++;
+          //IF TM HAS ERROR + SG HAS NO ERROR --> SEND FIRST SG RESULT
+          if (tmResponse.id === null && sgAPIarr.length) {
+              compareResArr.push(sgAPIarr[0])
           }
 
-
-          //SEND RES WHEN ALL API's RESPOND
-          if (apiResCount === 2 || apiErrorFlag) {
-            console.log('sg api error', apiErrorFlag)
-            var apiComboResults = [];
-            apiComboResults.push(apiResListSend);
-            apiComboResults.push(compareResArr);
-
-            if (apiErrorFlag) {
-              apiComboResults.push(false);
-            } else {
-              apiComboResults.push(true);
-            }
-            console.log('SEND API RES SG');
-            console.log('SEND API RES SG TRUE/FALSE SEND OPPOSITE TO CLIENT', apiErrorFlag);
-            res.end(JSON.stringify(apiComboResults))
-          }
+          apiResCount++;
         }
-      })
+
+        //SEND RES WHEN ALL API's RESPOND
+        if (apiResCount === 2 || apiErrorFlag) {
+          console.log('sg api error', apiErrorFlag)
+          var apiComboResults = [];
+          apiComboResults.push(apiResListSend);
+          apiComboResults.push(compareResArr);
+
+          if (apiErrorFlag) {
+            apiComboResults.push(false);
+          } else {
+            apiComboResults.push(true);
+          }
+
+          console.log('SEND API RES SG TRUE/FALSE SEND OPPOSITE TO CLIENT', apiErrorFlag);
+          res.end(JSON.stringify(apiComboResults))
+        }
+      }
+    })
   })
 });
 
