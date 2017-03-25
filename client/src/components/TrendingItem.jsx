@@ -8,8 +8,9 @@ class TrendingItem extends React.Component {
   }
 
   onSearch() {
-    this.props.search({"event": this.props.item.name, "location": this.props.item.city });
+    this.props.search({"event": this.props.item.searchParam, "location": this.props.item.city });
     console.log('fired');
+    this.props.changeClickState(true);
   }
 
   render() {
