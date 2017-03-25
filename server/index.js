@@ -12,7 +12,6 @@ var port = process.env.PORT || 5000;
 
 
 var app = express();
-// console.log('WHERE IS THIS SHIT', __dirname + '../client/dist/')
 app.use(express.static(path.join(__dirname, '../client/dist/')));
 
 
@@ -22,7 +21,6 @@ app.get('/', function(req, res) {
 
 
 app.post('/event', function(req, res) {
-
   var body = '';
   req.on('data', function(chunk) {
     body += chunk;
@@ -35,7 +33,7 @@ app.post('/event', function(req, res) {
     var userLocation = userInput.location;
 
     var apiResCount = 0;
-    var tmResponse;
+    // var tmResponse;
     var apiResListSend = [];
     var compareResArr = [];
 
@@ -44,15 +42,9 @@ app.post('/event', function(req, res) {
       if(err) {
         console.log('Error on query', err);
       } else {
-        ticketMasterAPI.queryTicketMasterForPrices(ticketMasterAPI.ticketmasterData, ticketMasterAPI.ticketmasterData.id, function(err, data2) {
-          if(err) {
-            console.log('Error in Ticket Master Price query', err);
-          } else {
-
-            ticketMasterAPI.ticketmasterDataParser(ticketMasterAPI.ticketmasterData, JSON.parse(data2));
-
-            // console.log(ticketMasterAPI.ticketmasterData)
-            tmResponse = ticketMasterAPI.ticketmasterData;
+            var tmResponse = ticketMasterAPI.ticketmasterData;
+            console.log("tmResponse", tmResponse)
+            console.log('tmAPI end ----------------------------------->')
 
             apiResListSend.push(tmResponse);
 
@@ -66,14 +58,19 @@ app.post('/event', function(req, res) {
               var apiComboResults = [];
               apiComboResults.push(apiResListSend);
               apiComboResults.push(compareResArr)
-              // console.log('API RES PRAY THIS WORKS', apiComboResults);
+              console.log('API RES PRAY THIS WORKS', apiComboResults);
               res.end(JSON.stringify(apiComboResults))
             }
 
           //SAVE TM TO DB
+
+          //COMMENT BACK IN!!!!!!!!!!!!!
             db.addTicketMasterToDataBase(ticketMasterAPI.ticketmasterData);
-          }
-        })
+
+
+
+          // }
+        // })
       }
     });
 
