@@ -26,7 +26,7 @@ function TicketList (props) {
     'overflow-x':'auto'
   }
 
-  var upcomingEvents = props.searchRes.splice();
+  var upcomingEvents = props.searchRes.slice(1);
 
   return (
     <div className="row">
@@ -34,6 +34,7 @@ function TicketList (props) {
 
         <div className="img-banner" width='100%'style={imgBannerUpdate}>
         <h1 className="animated zoomInDown artist-name">{props.searchRes[0].venueName}</h1>
+        <h4 className="animated zoomInDown artist-name">{props.searchRes[0].city}, {props.searchRes[0].state}</h4>
         </div>
 
       </div>
@@ -52,7 +53,7 @@ function TicketList (props) {
                 </tr>
             </thead>
                <tbody>
-                { props.searchRes.map(function(item) {
+                {upcomingEvents.map(function(item) {
                     return (
                       <TicketListItem searchItem={item} search={props.search}/>
                     )
