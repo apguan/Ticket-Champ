@@ -33,9 +33,9 @@ app.post('/event', function(req, res) {
     var userLocation = userInput.location;
 
     var apiResCount = 0;
-    // var tmResponse;
     var apiResListSend = [];
     var compareResArr = [];
+    var apiErrorFlag = false;
 
     ticketMasterAPI.queryTicketMasterForEvent(ticketMasterAPI.ticketmasterData, userInput, function(err, data) {
       // console.log("this is the event id ", ticketMasterAPI.ticketmasterData.id)
@@ -44,17 +44,28 @@ app.post('/event', function(req, res) {
       } else {
         var tmResponse = ticketMasterAPI.ticketmasterData;
 
+        //Check for error in TM API res
+        if (tmResponse.id === null) {
+          apiErrorFlag = true;
+          apiResCount++;
+        } else if (tmResponse.id !== null) {
         // Add TM api res objects to client res
-        apiResListSend.push(tmResponse);
-        compareResArr.push(tmResponse);
-        apiResCount++;
+          apiResListSend.push(tmResponse);
+          compareResArr.push(tmResponse);
+          apiResCount++;
+        }
 
-      //SEND RES WHEN ALL API's RESPOND
-       if (apiResCount === 2) {
+      //SEND COMPILED RES WHEN ALL API's RESPOND
+       if (apiResCount === 2 || apiErrorFlag) {
           var apiComboResults = [];
           apiComboResults.push(apiResListSend);
-          apiComboResults.push(compareResArr)
-          console.log('API RES PRAY THIS WORKS', apiComboResults);
+          apiComboResults.push(compareResArr);
+
+          if (apiErrorFlag) {
+            apiComboResults.push(false);
+          } else if (!apiErrorFlag) {
+            apiComboResults.push(true);
+          }
           res.end(JSON.stringify(apiComboResults))
         }
 
@@ -82,10 +93,16 @@ app.post('/event', function(req, res) {
           apiResCount++;
 
           //SEND RES WHEN ALL API's RESPOND
-          if (apiResCount === 2) {
+          if (apiResCount === 2 || apiErrorFlag) {
             var apiComboResults = [];
             apiComboResults.push(apiResListSend);
-            apiComboResults.push(compareResArr)
+            apiComboResults.push(compareResArr);
+
+            if (apiErrorFlag) {
+              apiComboResults.push(false);
+            } else if (!apiErrorFlag) {
+              apiComboResults.push(true);
+            }
             console.log('API RES PRAY THIS WORKS', apiComboResults);
             res.end(JSON.stringify(apiComboResults))
           }

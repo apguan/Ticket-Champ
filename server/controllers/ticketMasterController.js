@@ -32,7 +32,10 @@ var queryTicketMasterForEvent = function(dataOject, searchParam, callback) {
   // console.log('IS THIS HITTING TM API')
     var event = JSON.parse(body);
 
-    if (!error && response.statusCode == 200) {
+    if (!error) {
+      if (!event._embedded) {
+        callback(null, dataOject)
+      } else {
 
         if (event._embedded.events[0].priceRanges) {
           dataOject.highPrice = event._embedded.events[0].priceRanges[0].max;
@@ -52,6 +55,8 @@ var queryTicketMasterForEvent = function(dataOject, searchParam, callback) {
         var id = event._embedded.events[0].id;
 
         callback(null, dataOject);
+      }
+
 
     } else {
       callback(error, null);
