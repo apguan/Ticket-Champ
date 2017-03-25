@@ -1,4 +1,5 @@
 import React from 'react';
+var moment = require('moment');
 
 function TicketListItem (props) {
 
@@ -14,7 +15,7 @@ function TicketListItem (props) {
 
   return (
           <tr className='tbl-row'>
-            <td>{props.searchItem.date}</td>
+            <td>{dateReadable + ' ' + tm}</td>
             <td>{props.searchItem.venueName}</td>
             <td>{props.searchItem.venueLocation}</td>
             <td>{props.searchItem.averagePrice}</td>
