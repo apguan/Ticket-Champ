@@ -72,6 +72,7 @@ app.post('/event', function(req, res) {
           }
 
           console.log('SEND API RES TM TRUE/FALSE SEND OPPOSITE TO CLIENT', apiErrorFlag);
+          // console.log('SEND API RES TM ______________>', JSON.stringify(apiComboResults));
           res.end(JSON.stringify(apiComboResults))
         }
 
@@ -123,6 +124,8 @@ app.post('/event', function(req, res) {
           }
 
           console.log('SEND API RES SG TRUE/FALSE SEND OPPOSITE TO CLIENT', apiErrorFlag);
+          // console.log('SEND API RES SG ______________>', JSON.stringify(apiComboResults));
+
           res.end(JSON.stringify(apiComboResults))
         }
       }

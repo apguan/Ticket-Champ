@@ -39,15 +39,14 @@ class App extends React.Component {
         success: function(output) {
           console.log('Post Data Success Search', output);
           var searchRes = JSON.parse(output);
-          console.log("SERVER RES ARR 0", JSON.stringify(searchRes[0]))
+          console.log("SERVER RES ARR 0", searchRes[0])
           console.log("SERVER RES ARR 1", searchRes[1])
+          console.log("SERVER RES ARR 2", searchRes[2])
 
           context.setState({
             searchResults: searchRes[0],
             compareResults: searchRes[1]
           })
-
-          // $("#print").append(output)
         },
         error: function() {
           console.log('try again');
