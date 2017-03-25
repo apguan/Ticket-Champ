@@ -17,8 +17,15 @@ class App extends React.Component {
     }
     this.search = this.search.bind(this);
     this.changeClickState = this.changeClickState.bind(this);
+    this.changePage = this.changePage.bind(this);
   }
 
+  changePage() {
+    console.log('fired again')
+    this.setState({
+      searchResults: [],
+    })
+  }
 
   search(value) {
 
@@ -81,7 +88,7 @@ class App extends React.Component {
       return (
 
         <div>
-          <SearchUnit onSearch={this.search} clickstate={this.changeClickState}/>
+          <SearchUnit changePage={this.changePage} onSearch={this.search} clickstate={this.changeClickState}/>
 
         { this.state.searchResults.length > 0 ?
           (
