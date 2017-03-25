@@ -31,9 +31,11 @@ function TicketList (props) {
   return (
     <div className="row">
       <div>
+
         <div className="img-banner" width='100%'style={imgBannerUpdate}>
         <h1 className="animated zoomInDown artist-name">{props.searchRes[0].venueName}</h1>
         </div>
+
       </div>
 
       <div className='row'>
@@ -77,6 +79,7 @@ function TicketList (props) {
        </div>
 
       </div>
+
 
 
       {/*<ul className="flex-container">

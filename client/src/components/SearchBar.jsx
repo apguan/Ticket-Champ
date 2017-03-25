@@ -5,7 +5,7 @@ class Search extends React.Component {
     super(props);
     this.state = {
       location: "San Francisco",
-      search: ""
+      search: "",
     }
 
     this.onChange = this.onChange.bind(this);
@@ -35,6 +35,8 @@ class Search extends React.Component {
       location: this.state.location
     }
     console.log("RESPONSE OBJ --> Trigger AJAX search fn: ", responseObj);
+    // set State of clicked to true, pass this back up
+    this.props.changeClickState(true);
     this.props.searching(responseObj);
   }
 
@@ -42,7 +44,7 @@ class Search extends React.Component {
     return (
       <ul className="flex-container-search">
         <li className="flex-item-search" >
-          <input className="search-input" value={this.state.search} onChange={this.onChange}/>
+          <input className="search-input" value={this.state.search} onChange={this.onChange} placeholder={"Search for events, music, sports"} />
           <button className="search-button" onClick={this.searchBar}> Compare </button>
         </li>
         <li className="flex-item-gutter">
