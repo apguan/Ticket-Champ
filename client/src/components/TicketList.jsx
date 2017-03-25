@@ -26,14 +26,15 @@ function TicketList (props) {
     'overflow-x':'auto'
   }
 
-  var upcomingEvents = props.searchRes.splice();
+  var upcomingEvents = props.searchRes.slice(1);
 
   return (
     <div className="row">
       <div>
 
         <div className="img-banner" width='100%'style={imgBannerUpdate}>
-        <h1 className="animated zoomInDown artist-name">{props.searchRes[0].venueName}</h1>
+        <h1 className="animated zoomInDown artist-name">{props.searchRes[0].venueName} <span><h2>{props.searchRes[0].city}, {props.searchRes[0].state}</h2></span><span><h3>{props.searchRes[0].venueLocation}</h3></span></h1>
+
         </div>
 
       </div>
@@ -41,22 +42,31 @@ function TicketList (props) {
       <div className='row'>
 
        <div className='col-md-6'>
+
        <div className="table-responsive">
+      <div className="col-md-12"><h3>Upcoming Events</h3></div> 
           <table className="table">
             <thead>
                 <tr>
-                    <th>Event Date</th>
-                    <th>Event Name</th>
-                    <th>Location</th>
+                    <th>Date</th>
+                    <th>Event</th>
+                    <th>Venue</th>
                     <th>Price</th>
                 </tr>
             </thead>
                <tbody>
-                { props.searchRes.map(function(item) {
+                { props.searchRes.length <= 1 ?
+
+                  (props.searchRes.map(function(item) {
                     return (
                       <TicketListItem searchItem={item} search={props.search}/>
                     )
-                  })
+                  })) :
+                  (upcomingEvents.map(function(item) {
+                    return (
+                      <TicketListItem searchItem={item} search={props.search}/>
+                    )
+                  }))
                 }
               </tbody>
             </table>
@@ -68,9 +78,9 @@ function TicketList (props) {
             Price Comparison
           </div>
           <div className="row well">
-            { props.searchRes.map(function(item) {
+            { props.compareRes.map(function(item) {
                   return (
-                    <PriceComparisonItem compareItem={item} imgUrl={imgUrl}/>
+                    <PriceComparisonItem compareItem={item}/>
                   )
                 })
               }

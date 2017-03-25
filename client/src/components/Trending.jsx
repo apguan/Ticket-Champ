@@ -9,12 +9,18 @@ class Trending extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="jumbotron">
-          {this.props.clicked ? (<img className="img-center" src="https://s3-us-west-1.amazonaws.com/zollstorage/ticket-loader-lowRes.gif"/>)
+
+          {this.props.clicked ? (
+            <div className="jumbotron loader">
+            <img className="img-center" src="https://s3-us-west-1.amazonaws.com/zollstorage/ticket-loader-lowRes.gif"/>
+            <h2 className="loadingText" data-text="Finding Ticket Prices…"> Finding Ticket Prices... </h2>
+            </div>)
           :
-          (<h1>What's Hot</h1>)
-        }
-        </div>
+          (<div className="jumbotron">
+            <h1>What's Hot</h1>
+            </div>)
+          }
+
         <div id="trending" className="animate slideInUp row list-group">
            {this.props.trending.map( (item, key) =>
             <TrendingItem key={key} item={item} search={this.props.search} changeClickState={this.props.clickState}/>
