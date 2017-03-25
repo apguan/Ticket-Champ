@@ -82,7 +82,6 @@ class App extends React.Component {
 
   render() {
 
-
     if (this.state.trending.length > 0) {
 
       return (

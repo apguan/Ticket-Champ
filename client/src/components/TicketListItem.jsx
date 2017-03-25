@@ -4,14 +4,13 @@ var moment = require('moment');
 function TicketListItem (props) {
 
   var time = props.searchItem.date.slice(11);
-
   var dateObject = new Date(Date.parse(props.searchItem.date));
   var dateReadable = dateObject.toDateString()
   console.log('tick list item props: ', dateReadable);
   var d = moment.utc(props.searchItem.date);
-  var tm = d.local().format('h:mmA')
+  var tm = d.local().format('h:mm a');
 
-
+//
 
   return (
           <tr className='tbl-row'>

@@ -54,7 +54,7 @@ app.post('/event', function(req, res) {
           compareResArr.push(tmResponse);
           apiResCount++;
         //SAVE TM TO DB
-          // db.addTicketMasterToDataBase(ticketMasterAPI.ticketmasterData);
+          db.addTicketMasterToDataBase(ticketMasterAPI.ticketmasterData);
         }
 
       //SEND COMPILED RES WHEN ALL API's RESPOND
