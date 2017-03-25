@@ -10,7 +10,11 @@ function PriceComparisonItem (props) {
   return (
         <div className="col-md-12 poster">
           <div className="animated flipInX thumbnail">
-            <img src={props.imgUrl} width='50%' alt=""/>
+          {props.compareItem.apiId > 0 ?
+            (<img src={"https://s3-us-west-1.amazonaws.com/zollstorage/sg-cloud-logo.png"} width='50%' alt=""/>) :
+            (<img src={"https://s3-us-west-1.amazonaws.com/zollstorage/tm-cloud-logo.png"} width='50%' alt=""/>)
+          }
+
             <div className="caption">
               <h3>${props.compareItem.lowPrice}</h3>
               <button onClick={

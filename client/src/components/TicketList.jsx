@@ -68,7 +68,7 @@ function TicketList (props) {
             Price Comparison
           </div>
           <div className="row well">
-            { props.searchRes.map(function(item) {
+            { props.compareRes.map(function(item) {
                   return (
                     <PriceComparisonItem compareItem={item} imgUrl={imgUrl}/>
                   )
