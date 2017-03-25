@@ -22,7 +22,31 @@ REFACTOR CSS
 
 }
 
+.loader {
+  text-align: center;
+}
 
+.loadingText {
+    position: relative;
+    color: rgba(255, 255, 255, .7);
+    font-size: 2em;
+}
+
+.loadingText:before {
+    content: attr(data-text);
+    position: absolute;
+    overflow: hidden;
+    max-width: 11em;
+    white-space: nowrap;
+    color: rgba(0, 0, 0, .4);
+    animation: loadingText 8s linear;
+}
+
+@keyframes loadingText {
+    0% {
+        max-width: 0;
+    }
+}
 
 
 .table-responsive, .table, .table-bordered, tr, th {
