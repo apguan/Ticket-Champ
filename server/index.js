@@ -42,35 +42,24 @@ app.post('/event', function(req, res) {
       if(err) {
         console.log('Error on query', err);
       } else {
-            var tmResponse = ticketMasterAPI.ticketmasterData;
-            console.log("tmResponse", tmResponse)
-            console.log('tmAPI end ----------------------------------->')
+        var tmResponse = ticketMasterAPI.ticketmasterData;
 
-            apiResListSend.push(tmResponse);
+        // Add TM api res objects to client res
+        apiResListSend.push(tmResponse);
+        compareResArr.push(tmResponse);
+        apiResCount++;
 
-            compareResArr.push(tmResponse);
-            apiResCount++;
-            // console.log('tmAPI SUCCESS', tmResponse);
-            console.log('tmAPI SUCCESS ----------------------------------->')
+      //SEND RES WHEN ALL API's RESPOND
+       if (apiResCount === 2) {
+          var apiComboResults = [];
+          apiComboResults.push(apiResListSend);
+          apiComboResults.push(compareResArr)
+          console.log('API RES PRAY THIS WORKS', apiComboResults);
+          res.end(JSON.stringify(apiComboResults))
+        }
 
-          //SEND RES WHEN ALL API's RESPOND
-           if (apiResCount === 2) {
-              var apiComboResults = [];
-              apiComboResults.push(apiResListSend);
-              apiComboResults.push(compareResArr)
-              console.log('API RES PRAY THIS WORKS', apiComboResults);
-              res.end(JSON.stringify(apiComboResults))
-            }
-
-          //SAVE TM TO DB
-
-          //COMMENT BACK IN!!!!!!!!!!!!!
-            db.addTicketMasterToDataBase(ticketMasterAPI.ticketmasterData);
-
-
-
-          // }
-        // })
+      //SAVE TM TO DB
+        db.addTicketMasterToDataBase(ticketMasterAPI.ticketmasterData);
       }
     });
 
@@ -80,6 +69,7 @@ app.post('/event', function(req, res) {
         } else {
           var sgAPIarr = results;
 
+        // Add SG api res upcoming events to client res
           sgAPIarr.forEach(function(item) {
             apiResListSend.push(item);
 
@@ -101,7 +91,6 @@ app.post('/event', function(req, res) {
           }
         }
       })
-
   })
 });
 
