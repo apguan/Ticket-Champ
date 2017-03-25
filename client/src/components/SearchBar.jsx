@@ -14,19 +14,15 @@ class Search extends React.Component {
   }
 
   onChange(event) {
-    console.log('ON CHANGE EVENT', event)
-    console.log('ON CHANGE EVENT.TARGET', event.target)
     this.setState({
       search: event.target.value
     });
-    console.log('UPDATE SEARCH STATE', this.state.search)
   }
 
   handleLocation(event) {
     this.setState({
       location: event.target.value
     })
-    console.log('UPDATE SEARCH LOCATION', this.state.location)
   }
 
   searchBar() {

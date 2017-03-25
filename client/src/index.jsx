@@ -88,7 +88,7 @@ class App extends React.Component {
       return (
 
         <div>
-          <SearchUnit changePage={this.changePage} onSearch={this.search} clickstate={this.changeClickState}/>
+          <SearchUnit changePage={this.changePage} onSearch={this.search} clickState={this.changeClickState}/>
 
         { this.state.searchResults.length > 0 ?
           (
