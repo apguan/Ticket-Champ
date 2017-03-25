@@ -53,24 +53,26 @@ app.post('/event', function(req, res) {
           apiResListSend.push(tmResponse);
           compareResArr.push(tmResponse);
           apiResCount++;
+        //SAVE TM TO DB
+          db.addTicketMasterToDataBase(ticketMasterAPI.ticketmasterData);
         }
 
       //SEND COMPILED RES WHEN ALL API's RESPOND
        if (apiResCount === 2 || apiErrorFlag) {
+          console.log('tm api error', apiErrorFlag)
+
           var apiComboResults = [];
           apiComboResults.push(apiResListSend);
           apiComboResults.push(compareResArr);
 
           if (apiErrorFlag) {
             apiComboResults.push(false);
-          } else if (!apiErrorFlag) {
+          } else {
             apiComboResults.push(true);
           }
           res.end(JSON.stringify(apiComboResults))
         }
 
-      //SAVE TM TO DB
-        db.addTicketMasterToDataBase(ticketMasterAPI.ticketmasterData);
       }
     });
 
@@ -80,27 +82,35 @@ app.post('/event', function(req, res) {
         } else {
           var sgAPIarr = results;
 
-        // Add SG api res upcoming events to client res
-          sgAPIarr.forEach(function(item) {
-            apiResListSend.push(item);
+          if (sgAPIarr.length === 0) {
+          // Check for SG Api errors
+            apiErrorFlag = true;
+            apiResCount++;
+          } else {
+          // Add SG api res upcoming events to client res
+            sgAPIarr.forEach(function(item) {
+              apiResListSend.push(item);
 
-            var tmResponse = ticketMasterAPI.ticketmasterData;
-            if (item.date === tmResponse.date) {
-              compareResArr.push(item)
-            }
-          });
+              var tmResponse = ticketMasterAPI.ticketmasterData;
+              if (item.date === tmResponse.date) {
+                compareResArr.push(item)
+              }
+            });
 
-          apiResCount++;
+            apiResCount++;
+          }
+
 
           //SEND RES WHEN ALL API's RESPOND
           if (apiResCount === 2 || apiErrorFlag) {
+            console.log('sg api error', apiErrorFlag)
             var apiComboResults = [];
             apiComboResults.push(apiResListSend);
             apiComboResults.push(compareResArr);
 
             if (apiErrorFlag) {
               apiComboResults.push(false);
-            } else if (!apiErrorFlag) {
+            } else {
               apiComboResults.push(true);
             }
             console.log('API RES PRAY THIS WORKS', apiComboResults);

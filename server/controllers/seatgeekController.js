@@ -58,20 +58,25 @@ var seatGeekGetter = function(searchParam, location, callback) {
     } else {
       var sgInfo = JSON.parse(body);
 
-      sgHelper(sgInfo, searchParam, function(error, result) {
-        if (error) {
-          console.log('SG PARSING ERROR')
-          callback(error, null);
-        } else {
-          // console.log("SG ARR COMPLETE", result)
-          // console.log("SG ARR COMPLETE _--------------------------->")
-          sgParsedRes.push(result);
-          // callback(null, sgParsedRes);
-        }
-      });
-      callback(null, sgParsedRes);
-      // console.log("SG ARR COMPLETE", sgParsedRes)
-      // console.log("SG ARR COMPLETE _--------------------------->")
+      if (sgInfo.events.length === 0) {
+        callback(null, sgParsedRes);
+      } else {
+        sgHelper(sgInfo, searchParam, function(error, result) {
+          if (error) {
+            console.log('SG PARSING ERROR')
+            callback(error, null);
+          } else {
+            // console.log("SG ARR COMPLETE", result)
+            // console.log("SG ARR COMPLETE _--------------------------->")
+            sgParsedRes.push(result);
+            // callback(null, sgParsedRes);
+          }
+        });
+        callback(null, sgParsedRes);
+        // console.log("SG ARR COMPLETE", sgParsedRes)
+        // console.log("SG ARR COMPLETE _--------------------------->")
+      }
+
     }
   })
 }
