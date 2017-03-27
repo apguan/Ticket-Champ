@@ -28,12 +28,12 @@ class TrendingItem extends React.Component {
     console.log(this.props.item.venueLocation)
     return (
       <div className="item col-md-4">
-        <div className="thumbnail" onClick={this.onSearch} >
-          <div className="caption">
+        <div className="card" onClick={this.onSearch} >
+          <img className="trendingImg" width={'100%'} src={this.props.item.webId} />
+          <div className="cardContainer">
             <h3 className="group inner list-group-item-heading">{this.props.item.name}</h3>
             <h5 className="group inner list-group-item-text">{this.props.item.venueLocation + " - "}<span>{this.props.item.city}, {this.props.item.state}</span></h5>
           </div>
-          <img className="trendingImg" height={200} width={200} src={this.props.item.webId} />
         </div>
       </div>
     )

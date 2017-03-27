@@ -22,12 +22,10 @@ REFACTOR CSS
 
 }
 
-.trendingImg {
-  border-radius: 5px;
-}
 
 .loader {
   text-align: center;
+  min-height: 600px;
 }
 
 .loadingText {
@@ -76,9 +74,6 @@ REFACTOR CSS
 
 }
 
-.thumbnailCompare:hover {
-  box-shadow: .4em .6em .8em rgba(0,0,0,.2);
-}
 
 .tbl-row {
     border-collapse: collapse;
@@ -437,6 +432,28 @@ REFACTOR CSS
   border: 2px solid grey;
 }
 
+.trendingImg {
+  border-radius: 1px;
+  max-height: 200px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+    transition: 0.3s;
+    margin-bottom: 30px;
+    min-height: 22em;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.cardContainer {
+  padding: 4px 16px;
+  margin-top: .8em;
+
+}
+
 .thumbnailCompare {
   margin-bottom: 20px;
   padding: 3em;
@@ -449,6 +466,9 @@ REFACTOR CSS
   transition: box-shadow .2s;
 
 }
+
+
+
 
 .thumbnailCompare:hover {
   box-shadow: .4em .6em .8em rgba(0,0,0,.2);

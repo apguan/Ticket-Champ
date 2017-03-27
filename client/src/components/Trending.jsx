@@ -16,16 +16,21 @@ class Trending extends React.Component {
             <h2 className="loadingText" data-text="Finding Ticket Prices…"> Finding Ticket Prices... </h2>
             </div>)
           :
-          (<div className="jumbotron">
-            <h1>What's Hot</h1>
-            </div>)
+          (
+            <div>
+              <div className="jumbotron">
+                <h1>Champ Tickets</h1>
+              </div>
+              <div id="trending" className="animate slideInUp row list-group">
+                 {this.props.trending.map( (item, key) =>
+                  <TrendingItem key={key} item={item} search={this.props.search} changeClickState={this.props.clickState}/>
+                  )}
+              </div>
+            </div>
+            )
           }
 
-        <div id="trending" className="animate slideInUp row list-group">
-           {this.props.trending.map( (item, key) =>
-            <TrendingItem key={key} item={item} search={this.props.search} changeClickState={this.props.clickState}/>
-           )}
-        </div>
+
       </div>
     )
   }
