@@ -29,7 +29,7 @@ class TicketListItem extends React.Component {
   var url = this.props.searchItem.eventUrl;
 
     return (
-      <tr className='tbl-row' onClick={this.onSearch}>
+      <tr className='tbl-row'>
         <td>
           <div className='dateStyle'>
             <div className='dateStyle-date'>
@@ -58,3 +58,6 @@ class TicketListItem extends React.Component {
 export default TicketListItem;
 
 
+//Add into className tbl-row to hook up list item click functionality
+//...removed now for stability
+//onClick={this.onSearch}

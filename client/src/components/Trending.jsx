@@ -18,7 +18,7 @@ class Trending extends React.Component {
           (
             <div>
               <div className="animated lightSpeedIn jumbotron">
-                <h1>Trending Champ's</h1><div className="champ">Champ Tickets @ Champ Prices</div>
+                <h1>Trending Champs</h1><div className="champ">Champ Tickets @ Champ Prices</div>
 
               </div>
               <div id="trending" className="animated slideInUp row list-group">
