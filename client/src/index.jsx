@@ -98,7 +98,7 @@ class App extends React.Component {
         }
           <div className="container">
             <footer className="footer">
-              <p>&copy; 2017 TicketPal, Inc.</p>
+              <p>&copy; 2017 Ticket Champ ● Created by Aly, Allen, Chris, & Sam ● #73or✌️</p>
             </footer>
           </div>
         </div>
@@ -141,7 +141,7 @@ class App extends React.Component {
           </div>
             <div className="container">
               <footer className="footer">
-                <p>&copy; 2017 Ticket Champ * Created by Aly, Allen, Chris, & Sam * #73or</p>
+                <p>&copy; 2017 Ticket Champ ● Created by Aly, Allen, Chris, & Sam ● #73or✌️</p>
               </footer>
             </div>
         </div>

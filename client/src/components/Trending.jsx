@@ -9,7 +9,6 @@ class Trending extends React.Component {
   render() {
     return (
       <div className="container">
-
           {this.props.clicked ? (
             <div className="animated zoomIn jumbotron loader">
             <img className="animated flip img-center" src="https://s3-us-west-1.amazonaws.com/zollstorage/ticket-loader-lowRes.gif"/>
@@ -19,7 +18,8 @@ class Trending extends React.Component {
           (
             <div>
               <div className="animated lightSpeedIn jumbotron">
-                <h1>Champ Tickets</h1>
+                <h1>Trending Champ's</h1><div className="champ">Champ Tickets @ Champ Prices</div>
+
               </div>
               <div id="trending" className="animated slideInUp row list-group">
                  {this.props.trending.map( (item, key) =>

@@ -447,8 +447,29 @@ REFACTOR CSS
 }
 
 .trendingImg {
-  border-radius: 1px;
+  border-radius: .8em;
   max-height: 200px;
+}
+
+.champFound {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+
+.champ {
+  font-family: 'Lato', sans-serif;
+}
+
+.dateStyle {
+  text-align: center;
+}
+
+.dateStyle-date {
+  font-weight: bold;
+}
+
+.dateStyle-time {
+
 }
 
 .card {
@@ -456,6 +477,8 @@ REFACTOR CSS
     transition: 0.3s;
     margin-bottom: 30px;
     min-height: 22em;
+    border-radius: .8em;
+
 }
 
 .card:hover {

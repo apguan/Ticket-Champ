@@ -77,6 +77,12 @@ function TicketList (props) {
           <div className="col-md-12 priceCompare">
             Price Comparison
           </div>
+          <div className='champFound'>
+          {props.compareRes.length === 1 ?
+            (<p>{props.compareRes.length} Champ Found</p>)
+            : (<p>{props.compareRes.length} Champ's Found</p>)
+          }
+          </div>
           <div className="row well">
             { props.compareRes.map(function(item) {
                   return (
