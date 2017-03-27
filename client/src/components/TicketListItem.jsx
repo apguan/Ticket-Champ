@@ -20,15 +20,26 @@ class TicketListItem extends React.Component {
 
 
   console.log('formattedDate 1+2', formattedDate);
-  var weekDate = formattedDate[0];
+  var parseWeekDate = formattedDate[0].split(', ');
+  var weekDate = parseWeekDate[1].split(',');
   console.log('formattedDate 1', formattedDate[0]);
-  var time = formattedDate[1];
+  var parseTime = formattedDate[1].split(':');
+  var time = parseTime[0] + 'PM';
   console.log('formattedDate 2 ', formattedDate[1]);
   var url = this.props.searchItem.eventUrl;
 
     return (
       <tr className='tbl-row' onClick={this.onSearch}>
-        <td>{weekDate} <span>{time}</span> </td>
+        <td>
+          <div className='dateStyle'>
+            <div className='dateStyle-date'>
+              {weekDate}
+            </div>
+            <div className='dateStyle-time'>
+              ⏰{time}
+            </div>
+          </div>
+        </td>
         <td>{this.props.searchItem.venueName}</td>
         <td>{this.props.searchItem.venueLocation}</td>
         {this.props.searchItem.averagePrice === null ?

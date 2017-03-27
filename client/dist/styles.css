@@ -9,7 +9,7 @@ body {
 }
 
 h1 {
-  padding-bottom: 1em;
+  font-family: 'Lato', sans-serif;
 }
 /*
 =====================================================================================================
@@ -22,16 +22,15 @@ REFACTOR CSS
 
 }
 
-.trendingImg {
-  border-radius: 5px;
-}
 
 .loader {
   text-align: center;
+  min-height: 600px;
 }
 
 .loadingText {
     position: relative;
+    margin-top: 5em;
     color: rgba(0, 0, 0, 1);
     font-size: 2em;
 }
@@ -76,9 +75,6 @@ REFACTOR CSS
 
 }
 
-.thumbnailCompare:hover {
-  box-shadow: .4em .6em .8em rgba(0,0,0,.2);
-}
 
 .tbl-row {
     border-collapse: collapse;
@@ -187,7 +183,8 @@ REFACTOR CSS
   margin: 0;
   margin-top: 2em;
   /*margin-bottom: -2.8em;*/
-
+/*  background-color: blue;
+*/
 
   list-style: none;
   display: flex;
@@ -224,7 +221,7 @@ REFACTOR CSS
 }
 
 .flex-item-logo {
-  flex-grow: 2;
+  flex-grow: 1;
   height: 10%;
 
   color: white;
@@ -238,20 +235,22 @@ REFACTOR CSS
   height: 10%;
 
 
-  color: white;
-  font-weight: bold;
+  color: #333333;
+/*  font-weight: bold;
+*/
   font-size: 1.6em;
+  font-family: 'Lato', sans-serif;
 
   text-align: center;
 }
 
 .flex-item-location {
-  flex-grow: 2;
+  flex-grow: 1;
   height: 10%;
 
-  color: white;
+  color: #333333;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
 }
 
 
@@ -289,17 +288,17 @@ REFACTOR CSS
 
 .flex-item-gutter-header {
 
-  flex-grow: 6;
-
+  flex-grow: 1;
+  font-family: 'Lato', sans-serif;
   height: 10%;
-
+  font-size: 1.6em;
   color: white;
   font-weight: bold;
   text-align: center;
 }
 
 .flex-item-gutter {
-  flex-grow: 2;
+  flex-grow: 6;
   height: 10%;
 
   color: white;
@@ -310,6 +309,7 @@ REFACTOR CSS
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
+  background-color: #eee;
 }
 
 .card:hover {
@@ -321,13 +321,16 @@ REFACTOR CSS
 }
 
 .select-location {
-  width: 16em;
+  width: 20em;
   height: 3em;
-
+  font-family: 'Lato', sans-serif;
   -moz-border-radius: 5px 5px 0px 0px;
   -webkit-border-radius: 5px 5px 0px 0px;
   border-radius: 5px 5px 0px 0px;
   padding: 10px;
+
+  text-align-last: center;
+  font-size: 1.05em;
 
   color: #ffffff;
   background-color: #b5b5b5;
@@ -353,7 +356,7 @@ REFACTOR CSS
 
 .footer {
   position: initial;
-  padding-top: 24em;
+  padding-top: 12em;
 }
 /*
 #table {
@@ -382,6 +385,11 @@ REFACTOR CSS
   height: 3em;
 }
 
+.img-center {
+  margin-top: 6em;
+  min-width: 360px;
+}
+
 .img-trending {
   width: 200px;
   height: 200px;
@@ -393,9 +401,9 @@ REFACTOR CSS
   height: 300px;
   /*filter: blur(6px);*/
   padding-bottom: 1em;
-  /*border-radius: .2em;*/
-  /*background-image: url(http://www.nylon.com.sg/wp-content/uploads/2017/01/kanye-banner.png);*/
-  background-color: purple;
+  border-radius: .8em;
+  background-image: url(https://s3-us-west-1.amazonaws.com/zollstorage/fallback-img.jpg);
+
   background-position: center;
   margin-bottom: 1em;
 
@@ -403,14 +411,15 @@ REFACTOR CSS
 
 .artist-name {
   color: #ddd;
-  text-shadow: 4px 4px 0px rgba(0 , 0 , 0, .4);
+  text-shadow: 2px 2px 2px rgba(0 , 0 , 0, .4);
   padding-top: 1.4em;
   text-align: center;
-  font-size: 5em;
+  font-size: 4em;
 }
 
 
 .priceCompare {
+  font-family: 'Lato', sans-serif;
   margin-top: 0.7em;
   margin-bottom: .6em;
   text-align: center;
@@ -437,6 +446,51 @@ REFACTOR CSS
   border: 2px solid grey;
 }
 
+.trendingImg {
+  border-radius: .8em;
+  max-height: 200px;
+}
+
+.champFound {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+
+.champ {
+  font-family: 'Lato', sans-serif;
+}
+
+.dateStyle {
+  text-align: center;
+}
+
+.dateStyle-date {
+  font-weight: bold;
+}
+
+.dateStyle-time {
+
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+    transition: 0.3s;
+    margin-bottom: 30px;
+    min-height: 22em;
+    border-radius: .8em;
+
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.cardContainer {
+  padding: 4px 16px;
+  margin-top: .8em;
+
+}
+
 .thumbnailCompare {
   margin-bottom: 20px;
   padding: 3em;
@@ -449,6 +503,9 @@ REFACTOR CSS
   transition: box-shadow .2s;
 
 }
+
+
+
 
 .thumbnailCompare:hover {
   box-shadow: .4em .6em .8em rgba(0,0,0,.2);

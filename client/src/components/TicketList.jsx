@@ -44,7 +44,7 @@ function TicketList (props) {
        <div className='col-md-6'>
 
        <div className="table-responsive">
-      <div className="col-md-12"><h3>Upcoming Events</h3></div> 
+      <div className="col-md-12 priceCompare"><h3>Upcoming Events</h3></div> 
           <table className="table">
             <thead>
                 <tr>
@@ -76,6 +76,12 @@ function TicketList (props) {
        <div className='col-md-6'>
           <div className="col-md-12 priceCompare">
             Price Comparison
+          </div>
+          <div className='champFound'>
+          {props.compareRes.length === 1 ?
+            (<p>{props.compareRes.length} Champ Found</p>)
+            : (<p>{props.compareRes.length} Champ's Found</p>)
+          }
           </div>
           <div className="row well">
             { props.compareRes.map(function(item) {

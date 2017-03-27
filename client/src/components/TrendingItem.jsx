@@ -15,7 +15,15 @@ class TrendingItem extends React.Component {
   }
 
   render() {
-    var formattedDate = moment(this.props.item.date).format('LLLL');
+    // var formattedDate = moment(this.props.item.date).format('LLLL');
+
+    var formattedDate = (moment(this.props.item.date).format('LLLL')).split(', 2017 ' || ', 2018 ' || ', 2019 ' || ', 2020 ');
+
+    console.log('real date ---->', this.props.item.date);
+    var weekDate = formattedDate[0];
+    console.log('formattedDate 1', formattedDate[0]);
+    var time = formattedDate[1];
+    console.log('formattedDate 2 ', formattedDate[1]);
 
     var imgUrl = this.props.item.webId;
 
@@ -25,15 +33,15 @@ class TrendingItem extends React.Component {
       // 'filter':'blur(6px)',
     }
 
-    console.log(this.props.item.venueLocation)
     return (
       <div className="item col-md-4">
-        <div className="thumbnail" onClick={this.onSearch} >
-          <div className="caption">
-            <h3 className="group inner list-group-item-heading">{this.props.item.name}</h3>
-            <h5 className="group inner list-group-item-text">{this.props.item.venueLocation + " - "}<span>{this.props.item.city}, {this.props.item.state}</span></h5>
+        <div className="card" onClick={this.onSearch} >
+          <img className="trendingImg" width={'100%'} src={this.props.item.webId} />
+          <div className="animated zoomIn cardContainer">
+            <h4 className="group inner list-group-item-heading">{this.props.item.name}</h4>
+            <h5 className="group inner list-group-item-text">{this.props.item.venueLocation}</h5>
+            <p>{this.props.item.city}, {this.props.item.state}</p>
           </div>
-          <img className="trendingImg" height={200} width={200} src={this.props.item.webId} />
         </div>
       </div>
     )
