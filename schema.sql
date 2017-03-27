@@ -1,8 +1,8 @@
 -- DROP DATABASE IF EXISTS  ticketpal;
 
-CREATE DATABASE ticketpal;
+-- CREATE DATABASE ticketchamp;
 
-USE ticketpal;
+USE heroku_e38478c4930fdf0;
 
 CREATE TABLE ticketinfo (
     id int NOT NULL AUTO_INCREMENT,
