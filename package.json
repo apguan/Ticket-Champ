@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack -d --watch -p",
     "build": "webpack -p",
-    "server-dev": "nodemon server/index.js",
-    "start": "nodemon server/index.js",
-    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
+    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress",
+    "server-dev": "node server/index.js",
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -30,9 +30,7 @@
     "body-parser": "^1.17.1",
     "bootstrap-select": "^1.12.2",
     "express": "^4.15.2",
-    "gmaps": "^0.4.24",
     "jquery": "^3.1.1",
-    "materialize-css": "^0.98.1",
     "moment": "^2.18.1",
     "mysql": "^2.13.0",
     "react": "^15.4.2",
