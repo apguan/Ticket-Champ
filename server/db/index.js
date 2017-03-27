@@ -3,9 +3,10 @@ var express = require('express');
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-  user: 'root',
-  password: '',
-  database: 'ticketpal',
+  host:'us-cdbr-iron-east-03.cleardb.net/',
+  user: 'b7677576a47fb0',
+  password: '95df26d8',
+  database: 'heroku_e38478c4930fdf0'
 });
 
 connection.connect(function(err){
