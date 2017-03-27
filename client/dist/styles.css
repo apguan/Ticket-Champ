@@ -183,7 +183,8 @@ REFACTOR CSS
   margin: 0;
   margin-top: 2em;
   /*margin-bottom: -2.8em;*/
-
+/*  background-color: blue;
+*/
 
   list-style: none;
   display: flex;
@@ -220,7 +221,7 @@ REFACTOR CSS
 }
 
 .flex-item-logo {
-  flex-grow: 2;
+  flex-grow: 1;
   height: 10%;
 
   color: white;
@@ -234,20 +235,22 @@ REFACTOR CSS
   height: 10%;
 
 
-  color: white;
-  font-weight: bold;
+  color: #333333;
+/*  font-weight: bold;
+*/
   font-size: 1.6em;
+  font-family: 'Lato', sans-serif;
 
   text-align: center;
 }
 
 .flex-item-location {
-  flex-grow: 2;
+  flex-grow: 1;
   height: 10%;
 
-  color: white;
+  color: #333333;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
 }
 
 
@@ -285,17 +288,17 @@ REFACTOR CSS
 
 .flex-item-gutter-header {
 
-  flex-grow: 6;
-
+  flex-grow: 1;
+  font-family: 'Lato', sans-serif;
   height: 10%;
-
+  font-size: 1.6em;
   color: white;
   font-weight: bold;
   text-align: center;
 }
 
 .flex-item-gutter {
-  flex-grow: 2;
+  flex-grow: 6;
   height: 10%;
 
   color: white;
@@ -318,13 +321,16 @@ REFACTOR CSS
 }
 
 .select-location {
-  width: 16em;
+  width: 20em;
   height: 3em;
-
+  font-family: 'Lato', sans-serif;
   -moz-border-radius: 5px 5px 0px 0px;
   -webkit-border-radius: 5px 5px 0px 0px;
   border-radius: 5px 5px 0px 0px;
   padding: 10px;
+
+  text-align-last: center;
+  font-size: 1.05em;
 
   color: #ffffff;
   background-color: #b5b5b5;
@@ -405,14 +411,15 @@ REFACTOR CSS
 
 .artist-name {
   color: #ddd;
-  text-shadow: 4px 4px 0px rgba(0 , 0 , 0, .4);
+  text-shadow: 2px 2px 2px rgba(0 , 0 , 0, .4);
   padding-top: 1.4em;
   text-align: center;
-  font-size: 5em;
+  font-size: 4em;
 }
 
 
 .priceCompare {
+  font-family: 'Lato', sans-serif;
   margin-top: 0.7em;
   margin-bottom: .6em;
   text-align: center;
