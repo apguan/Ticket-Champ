@@ -2,19 +2,27 @@ var express = require('express');
 
 var mysql = require('mysql');
 
-var connection = mysql.createConnection({
-  user: 'root',
-  password: '',
-  database: 'ticketpal',
-});
+// var connection = mysql.createConnection({
+//   host:'us-cdbr-iron-east-03.cleardb.net/',
+//   user: 'b7677576a47fb0',
+//   password: '95df26d8',
+//   database: 'heroku_e38478c4930fdf0'
+// });
+
+var connection = mysql.createConnection('mysql://b7677576a47fb0:95df26d8@us-cdbr-iron-east-03.cleardb.net/heroku_e38478c4930fdf0?reconnect=true')
 
 connection.connect(function(err){
   if(err) {
     console.log('database did not load', err);
+    connection.end();
   } else {
     console.log('the database is connected');
   }
 })
+
+setInterval(function () {
+    connection.query('SELECT 1');
+}, 5000);
 
 // query to get our top three searches in our DB
 var getTopThreeTrending = function(callback) {

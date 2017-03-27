@@ -98,7 +98,7 @@ class App extends React.Component {
         }
           <div className="container">
             <footer className="footer">
-              <p>&copy; 2017 Ticket Champ ● Created by Aly, Allen, Chris, & Sam ● #73or✌️</p>
+              <p>&copy; 2017 Ticket Champ ● Created by Aly, Allen, Chris, & Sam ● #73or️☠️</p>
             </footer>
           </div>
         </div>
@@ -107,45 +107,19 @@ class App extends React.Component {
     } else {
 
       return (
+      <div>
         <div>
           <SearchUnit changePage={this.changePage} searchstate={this.state.value} onSearch={this.search} clickState={this.changeClickState} />
-
           <div className="jumbotron">
-            <div className="container">
-              <h1>Trending</h1>
-            </div>
+                <h1>Trending Champs</h1><div className="champ">Champ Tickets @ Champ Prices</div>
           </div>
-          <div className="container">
-            <div className="row">
-              <div className="col-md-4">
-                <h2>Trending 1</h2>
-                <img src='https://placeholdit.imgix.net/~text?txtsize=28&txt=300%C3%97200&w=300&h=200' />
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-              </div>
-
-              <div className="col-md-4">
-                <h2>Trending 2</h2>
-                <img src='https://placeholdit.imgix.net/~text?txtsize=28&txt=300%C3%97200&w=300&h=200' />
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
-              </div>
-
-              <div className="col-md-4">
-                <h2>Trending 2</h2>
-                <img src='https://placeholdit.imgix.net/~text?txtsize=28&txt=300%C3%97200&w=300&h=200' />
-               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-              </div>
-
-            </div>
-
-
-          </div>
-            <div className="container">
-              <footer className="footer">
-                <p>&copy; 2017 Ticket Champ ● Created by Aly, Allen, Chris, & Sam ● #73or✌️</p>
-              </footer>
-            </div>
         </div>
-
+          <div className="container">
+            <footer className="footer">
+              <p>&copy; 2017 Ticket Champ ● Created by Aly, Allen, Chris, & Sam ● #73or️☠</p>
+            </footer>
+          </div>
+        </div>
         )
     }
   }
