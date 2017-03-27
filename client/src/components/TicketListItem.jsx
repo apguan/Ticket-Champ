@@ -36,7 +36,7 @@ class TicketListItem extends React.Component {
               {weekDate}
             </div>
             <div className='dateStyle-time'>
-              ⏰{time}
+              ⏰  {time}
             </div>
           </div>
         </td>
