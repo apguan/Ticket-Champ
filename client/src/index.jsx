@@ -141,11 +141,9 @@ class App extends React.Component {
           </div>
             <div className="container">
               <footer className="footer">
-                <p>&copy; Created by Aly, Allen, Chris, & Sam * #73or✌️</p>
-                <p>&copy; 2017 Ticket Champ </p>
+                <p>&copy; 2017 Ticket Champ * Created by Aly, Allen, Chris, & Sam * #73or</p>
               </footer>
             </div>
-
         </div>
 
         )

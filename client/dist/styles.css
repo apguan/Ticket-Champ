@@ -356,7 +356,7 @@ REFACTOR CSS
 
 .footer {
   position: initial;
-  padding-top: 24em;
+  padding-top: 12em;
 }
 /*
 #table {
@@ -401,9 +401,9 @@ REFACTOR CSS
   height: 300px;
   /*filter: blur(6px);*/
   padding-bottom: 1em;
-  /*border-radius: .2em;*/
-  /*background-image: url(http://www.nylon.com.sg/wp-content/uploads/2017/01/kanye-banner.png);*/
-  background-color: purple;
+  border-radius: .8em;
+  background-image: url(https://s3-us-west-1.amazonaws.com/zollstorage/fallback-img.jpg);
+
   background-position: center;
   margin-bottom: 1em;
 
