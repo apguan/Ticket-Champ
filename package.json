@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "Ticket price aggregator and comparator ",
   "main": "index.js",
+  "engines": {
+    "node":"6.6.0",
+    "npm": "3.10.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack -d --watch -p",
     "build": "webpack -p",
-    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress",
     "server-dev": "node server/index.js",
     "start": "node server/index.js"
   },
