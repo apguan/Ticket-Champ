@@ -1,4 +1,4 @@
-# TicketPal
+# Ticket Champ
 
 ## Making tickets cheaper one seat at a time
 
